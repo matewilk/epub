@@ -1,0 +1,10 @@
+{
+  "name": "client",
+  "private": true,
+  "dependencies": {
+    "chai": "latest",
+    "mocha": "latest",
+    "sinonjs": "~1.10.2"
+  },
+  "devDependencies": {}
+}
