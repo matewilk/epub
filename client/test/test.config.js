@@ -4,6 +4,7 @@ require.config({
     baseUrl: '.',
 
     paths: {
+        scripts: "../app/scripts",
         models: "../app/scripts/models",
         collections: '../app/scripts/collections',
         views: '../app/scripts/views',
@@ -16,7 +17,8 @@ require.config({
 
 require([
     "spec/models/book",
-    "spec/collections/library"
+    "spec/collections/library",
+    "spec/urls"
 ], function() {
     if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
     else { mocha.run(); }
