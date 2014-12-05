@@ -16,3 +16,4 @@ client/test/bower_components/
 
 #server
 server/node_modules
+server/dist

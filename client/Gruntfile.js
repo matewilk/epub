@@ -23,7 +23,7 @@ module.exports = function (grunt) {
     // configurable paths
     var yeomanConfig = {
         app: 'app',
-        dist: 'dist'
+        dist: '../server/dist'
     };
 
     grunt.initConfig({
@@ -250,6 +250,11 @@ module.exports = function (grunt) {
                 }, {
                     src: 'node_modules/apache-server-configs/dist/.htaccess',
                     dest: '<%= yeoman.dist %>/.htaccess'
+                }, {
+                    expand: true,
+                    cwd: '<%= yeoman.app %>',
+                    src: 'bower_components/bootstrap-sass-official/assets/fonts/**/*',
+                    dest: '<%= yeoman.dist %>'
                 }]
             }
         },
