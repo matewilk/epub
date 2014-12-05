@@ -7,7 +7,7 @@ define([
 
     var LibraryCollection = Backbone.Collection.extend({
 
-        url: "http://localhost:3000/library",
+        url: "library",
 
         model: BookModel,
 
