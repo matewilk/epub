@@ -1,8 +1,6 @@
 define(function(require) {
     'use strict';
 
-    var apiPrefix = 'http://localhost:3000/';
-
     var ApiUrls = (function(){
         var urls = {
             library:  function() {
@@ -14,7 +12,7 @@ define(function(require) {
         };
 
         var getUrl = function(type) {
-            return urls[type] ? apiPrefix + urls[type].apply(this, [].slice.call(arguments, 1)) : undefined;
+            return urls[type] ? urls[type].apply(this, [].slice.call(arguments, 1)) : undefined;
         };
 
         return {

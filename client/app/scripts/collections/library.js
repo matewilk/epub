@@ -1,13 +1,14 @@
 define([
     'underscore',
     'backbone',
-    'models/book'
-], function (_, Backbone, BookModel) {
+    'models/book',
+    'urls'
+], function (_, Backbone, BookModel, apiUrls) {
     'use strict';
 
     var LibraryCollection = Backbone.Collection.extend({
 
-        url: "library",
+        url: apiUrls.getUrl("library"),
 
         model: BookModel,
 
