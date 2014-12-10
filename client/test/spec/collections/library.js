@@ -9,8 +9,29 @@ define(function(require) {
             this.libraryCollection = new Library;
         });
 
-        it("should have a correct api url", function() {
+        describe("creation", function() {
+            it("has default values", function() {
+                expect(this.libraryCollection).to.be.ok;
+                expect(this.libraryCollection).to.have.length(0);
+            });
 
+            it("should be empty on fetch", function(done) {
+                this.libraryCollection.once("reset", function() {
+                    expect(this.libraryCollection).to.have.length(0);
+
+                    done();
+                });
+
+                this.libraryCollection.fetch({reset: true});
+            })
+        });
+
+        it("should have a correct api url", function() {
+            expect(this.libraryCollection.url).to.equal("library");
+        });
+
+        it("should have a book model", function() {
+            //expect(this.libraryCollection.model).to.deep.equal(BookModel);
         });
 
         it("should fetch the data", function() {

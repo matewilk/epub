@@ -2,7 +2,7 @@ define([
     'underscore',
     'backbone',
     'models/book',
-    'urls'
+    'scripts/urls'
 ], function (_, Backbone, BookModel, apiUrls) {
     'use strict';
 
