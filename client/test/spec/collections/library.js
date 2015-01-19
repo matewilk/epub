@@ -6,7 +6,7 @@ define(function(require) {
 
     describe("Library Collection", function() {
         beforeEach(function(){
-            this.libraryCollection = new Library;
+            this.libraryCollection = new Library();
         });
 
         describe("creation", function() {
@@ -16,6 +16,7 @@ define(function(require) {
             });
 
             it("should be empty on fetch", function(done) {
+                // sinon.fakeServer.create();
                 this.libraryCollection.once("reset", function() {
                     expect(this.libraryCollection).to.have.length(0);
 
@@ -23,7 +24,7 @@ define(function(require) {
                 });
 
                 this.libraryCollection.fetch({reset: true});
-            })
+            });
         });
 
         it("should have a correct api url", function() {

@@ -1,7 +1,7 @@
 define(function(require){
     'use strict';
 
-    var $ = requie('jquery'),
+    var $ = require('jquery'),
         _ = require('underscore'),
         Backbone = require('backbone'),
         template = require('templates'),

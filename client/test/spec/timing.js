@@ -1,4 +1,6 @@
 describe("Test timing", function () {
+    'use strict';
+
     it("should be a fast test", function (done) {
         expect("hi").to.equal("hi");
         done();
@@ -32,6 +34,8 @@ describe("Test timing", function () {
 mocha.bail(false);
 
 describe("Test failures", function () {
+    'use strict';
+
     it("should fail on assertion", function () {
         expect("hi").to.equal("goodbye");
     });

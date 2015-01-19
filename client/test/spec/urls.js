@@ -22,7 +22,7 @@ define(function(require) {
         });
 
         it("main apiUrl function should return api address with additional params", function() {
-            expect(this.getUrl('book', 3)).to.equal('book/3')
+            expect(this.getUrl('book', 3)).to.equal('book/3');
         });
     });
 });

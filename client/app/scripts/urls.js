@@ -1,4 +1,4 @@
-define(function(require) {
+define(function() {
     'use strict';
 
     var ApiUrls = (function(){
@@ -17,7 +17,7 @@ define(function(require) {
 
         return {
             getUrl: getUrl
-        }
+        };
     })();
 
     return ApiUrls;

@@ -11,7 +11,7 @@ define(function (require) {
             isbn: 'isbn'
         },
 
-        parse: function(response, options)  {
+        parse: function(response)  {
             return response;
         }
     });

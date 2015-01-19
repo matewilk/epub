@@ -6,6 +6,7 @@ define([
     'views/footer',
     'models/book'
 ], function(Backbone, Header, Login, Library, Footer){
+    'use strict';
 
     var Router = Backbone.Router.extend({
 

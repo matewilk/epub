@@ -12,10 +12,10 @@ define(function(require){
         template: JST['app/scripts/templates/library.hbs'],
 
         initialize: function() {
-            this.libraryCollection = new LibraryCollection;
+            this.libraryCollection = new LibraryCollection();
             this.libraryCollection.on("fetch", this.onFetch, this);
 
-            this.libraryCollection.on("reset", function(){console.log('reset')});//do I really need it ?
+            this.libraryCollection.on("reset", function(){console.log('reset');});//do I really need it ?
 
             this.libraryCollection.fetch({
                 success: this.onSuccess.bind(this),
@@ -24,7 +24,7 @@ define(function(require){
         },
 
         onFetch: function() {
-            debugger;
+            //debugger;
         },
 
         onSuccess: function() {

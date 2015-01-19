@@ -18,8 +18,8 @@ define([
             return Backbone.Collection.prototype.fetch.call(this, options);
         },
 
-        parse: function(response, xhr) {
-            debugger;
+        parse: function(response/*, xhr*/) {
+            //debugger;
             return response;
         }
     });
