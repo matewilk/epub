@@ -1,18 +1,19 @@
 <div class="welcome center-block">
-    <div class="">
+    <div class="login-header">
         <h3>Please log in, and enjoy your new learning experience</h3>
     </div>
 </div>
 
 <div class="login">
-	<form class="navbar-form">
+	<form class="navbar-form" action="login" method="POST" role="form">
 		<div class="input-group">
 			<span class="input-group-addon">@</span>
-			<input type="text" class="form-control" placeholder="email">
+			<input type="text" class="form-control" name="email" placeholder="email">
 		</div>
 		<div class="input-group">
 			<span class="input-group-addon glyphicon glyphicon-user"></span>
-			<input type="text" class="form-control" placeholder="password">
+			<input type="text" class="form-control" name="password" placeholder="password">
 		</div>
+        <button type="submit" class="btn btn-default">Submit</button>
 	</form>
 </div>

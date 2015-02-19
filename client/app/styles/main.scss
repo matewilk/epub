@@ -77,11 +77,20 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 
   .input-group {
     margin: 10px 0;
+    width: 100%;
+  }
+
+  button {
+    margin: 10px 0;
+    width: 100%;
   }
 }
 
 .welcome {
-  width:60%
+  width:60%;
+  .login-header {
+    text-align: center;
+  }
 }
 
 
