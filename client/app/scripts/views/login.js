@@ -3,8 +3,7 @@ define([
     'underscore',
     'backbone',
     'templates',
-    'app'
-], function ($, _, Backbone, JST, Router) {
+], function ($, _, Backbone, JST) {
     'use strict';
 
     var LoginView = Backbone.View.extend({
@@ -35,10 +34,8 @@ define([
         },
 
         success: function(){
-            var router = Router;
             var url = '/library';
-            router.navigate(url, true)
-            //$(location).attr('href', url);
+            Backbone.trigger('login:success', {url: url})
         },
 
         render: function () {

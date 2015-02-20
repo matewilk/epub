@@ -16,6 +16,10 @@ define([
 
             var footer = new Footer();
             footer.render();
+
+            this.listenTo(Backbone, 'login:success', function(options){
+                this.navigate(options.url, {trigger: true, replace: true});
+            });
         },
 
         routes: {
