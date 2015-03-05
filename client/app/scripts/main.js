@@ -14,7 +14,8 @@ require.config({
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/lodash/dist/lodash',
         bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
-        handlebars: '../bower_components/handlebars/handlebars'
+        handlebars: '../bower_components/handlebars/handlebars',
+        templates: '../scripts/templates'
     }
 });
 

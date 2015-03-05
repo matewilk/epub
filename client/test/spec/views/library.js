@@ -1,9 +1,9 @@
 define(function(require) {
     'use strict';
 
-    var LibraryView = require('../../../app/scripts/views/library'),
-        BookModel = require('../../../app/scripts/models/book'),
-        Library = require('../../../app/scripts/collections/library');
+    var LibraryView = require('views/library'),
+        BookModel = require('models/book'),
+        Library = require('collections/library');
 
     describe("Library View", function() {
         beforeEach(function(){
