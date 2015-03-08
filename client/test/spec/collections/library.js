@@ -1,12 +1,19 @@
 define(function(require) {
    'use strict';
 
-    var BookModel = require('../../../app/scripts/models/book'),
-        Library = require('../../../app/scripts/collections/library');
+    var BookModel = require('models/book'),
+        Library = require('collections/library');
 
     describe("Library Collection", function() {
         beforeEach(function(){
+            this.server = sinon.fakeServer.create();
+            this.server.autoRespond = true;
+
             this.libraryCollection = new Library();
+        });
+
+        afterEach(function(){
+            this.server.restore();
         });
 
         describe("creation", function() {
@@ -16,9 +23,15 @@ define(function(require) {
             });
 
             it("should be empty on fetch", function(done) {
-                // sinon.fakeServer.create();
+                var libraryCollection = this.libraryCollection
+                this.server.respondWith("GET", "library", [
+                    200,
+                    { "Content-Type": "application/json" },
+                    '[]'
+                ]);
+
                 this.libraryCollection.once("reset", function() {
-                    expect(this.libraryCollection).to.have.length(0);
+                    expect(libraryCollection).to.have.length(0);
 
                     done();
                 });

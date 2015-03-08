@@ -15,9 +15,9 @@ define(function(require){
         });
 
         it('should render the template', function(){
-            var spy = sinon.spy(this.registrationView.template);
+            var spy = sinon.spy(this.registrationView, 'template');
             this.registrationView.render();
-            expect(spy).to.have.been.called();
+            expect(spy.called).to.be.true;
         });
 
         it('should have a default model with properties', function(){
