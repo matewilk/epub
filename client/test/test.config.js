@@ -18,9 +18,17 @@ require.config({
 });
 
 require([
+    //models
     "spec/models/book",
+    "spec/models/registration",
+
+    //collections
     "spec/collections/library",
+
+    //views
     "spec/views/registration",
+
+    //structure
     "spec/urls"
 ], function() {
     if (window.mochaPhantomJS) { mochaPhantomJS.run(); }

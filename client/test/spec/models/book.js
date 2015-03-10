@@ -1,7 +1,7 @@
 define(function(require){
     'use strict';
 
-    var BookModel = require('../../../app/scripts/models/book');
+    var BookModel = require('models/book');
 
     describe("Book Model", function() {
         beforeEach(function(){
@@ -13,7 +13,7 @@ define(function(require){
             this.model = new BookModel();
         });
 
-        it("should have proper defaults values", function() {
+        it("should have proper default values", function() {
             expect(this.model.defaults).to.deep.equal(this.defaults);
         });
     });

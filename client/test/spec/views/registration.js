@@ -1,6 +1,7 @@
 define(function(require){
 
     var RegistrationView = require('views/registration'),
+        RegistrationModel = require('models/registration')
         JST = require('templates');
 
     describe('Registration View', function(){
@@ -20,11 +21,24 @@ define(function(require){
             expect(spy.called).to.be.true;
         });
 
-        it('should have a default model with properties', function(){
-
+        it('should have a correct model property', function(){
+            var registrationModelInstance = new this.registrationView.model();
+            expect(registrationModelInstance).is.an.instanceof(RegistrationModel);
         });
 
         it('should update a model on submit', function(){
+
+        });
+
+        it('should send the form on submit', function(){
+
+        });
+
+        it('should notify user about registration success', function(){
+
+        });
+
+        it('should redirect user after registration success', function(){
 
         });
 
