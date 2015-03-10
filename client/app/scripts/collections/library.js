@@ -1,10 +1,9 @@
-define([
-    'underscore',
-    'backbone',
-    'models/book',
-    'scripts/urls'
-], function (_, Backbone, BookModel, apiUrls) {
+define(function(require){
     'use strict';
+
+    var Backbone = require('backbone'),
+        BookModel = require('models/book'),
+        apiUrls = require('scripts/urls');
 
     var LibraryCollection = Backbone.Collection.extend({
 

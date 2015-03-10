@@ -23,7 +23,7 @@ define(function(require){
 
         register: function(e){
             e.preventDefault();
-            
+
         }
 
     });

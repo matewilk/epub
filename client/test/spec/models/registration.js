@@ -17,6 +17,10 @@ define(function(require){
             expect(this.model.defaults).to.deep.equal(this.defaults);
         });
 
+        it('should have a proper url', function(){
+            expect(this.model.url).to.equal('registration');
+        });
+
         it("should validate form values", function(){
 
         });

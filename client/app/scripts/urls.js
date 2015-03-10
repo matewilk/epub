@@ -8,6 +8,12 @@ define(function() {
             },
             book: function(id) {
                 return 'book/'+ id;
+            },
+            registration: function() {
+                return 'registration';
+            },
+            login: function() {
+                return 'login';
             }
         };
 
