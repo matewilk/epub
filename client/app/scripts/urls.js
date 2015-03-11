@@ -4,16 +4,16 @@ define(function() {
     var ApiUrls = (function(){
         var urls = {
             library:  function() {
-                return 'library';
+                return 'api/library';
             },
             book: function(id) {
-                return 'book/'+ id;
+                return 'api/book/'+ id;
             },
             registration: function() {
-                return 'registration';
+                return 'api/registration';
             },
             login: function() {
-                return 'login';
+                return 'api/login';
             }
         };
 

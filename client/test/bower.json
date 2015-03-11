@@ -4,7 +4,8 @@
   "dependencies": {
     "chai": "latest",
     "mocha": "latest",
-    "sinonjs": "~1.10.2"
+    "sinonjs": "~1.10.2",
+    "fixtures": "~1.5.3"
   },
   "devDependencies": {}
 }

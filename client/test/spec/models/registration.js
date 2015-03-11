@@ -18,7 +18,7 @@ define(function(require){
         });
 
         it('should have a proper url', function(){
-            expect(this.model.url).to.equal('registration');
+            expect(this.model.url).to.equal('api/registration');
         });
 
         it("should validate form values", function(){

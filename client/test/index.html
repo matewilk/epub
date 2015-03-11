@@ -11,7 +11,9 @@
     <script>mocha.setup('bdd')</script>
     <script src="bower_components/chai/chai.js"></script>
     <script src="bower_components/sinonjs/sinon.js"></script>
+    <script src="bower_components/fixtures/fixtures.js"></script>
     <script>
+        fixtures.path = 'spec/fixtures';
         var assert = chai.assert;
         var expect = chai.expect;
         var should = chai.should();

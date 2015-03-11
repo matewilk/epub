@@ -26,6 +26,7 @@ require([
     "spec/collections/library",
 
     //views
+    "spec/views/form",
     "spec/views/registration",
 
     //structure

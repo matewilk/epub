@@ -24,7 +24,7 @@ define(function(require) {
 
             it("should be empty on fetch", function(done) {
                 var libraryCollection = this.libraryCollection
-                this.server.respondWith("GET", "library", [
+                this.server.respondWith("GET", "api/library", [
                     200,
                     { "Content-Type": "application/json" },
                     '[]'
@@ -41,7 +41,7 @@ define(function(require) {
         });
 
         it("should have a correct api url", function() {
-            expect(this.libraryCollection.url).to.equal("library");
+            expect(this.libraryCollection.url).to.equal("api/library");
         });
 
         it("should have a book model", function() {

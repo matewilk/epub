@@ -1,4 +1,4 @@
 module.exports = function (app) {
-    app.use('/library', require('./routes/library'));
-    app.use('/login', require('./routes/login'));
+    app.use('/api/library', require('./routes/library'));
+    app.use('/api/login', require('./routes/login'));
 };
