@@ -5,6 +5,10 @@ define(function(require){
 
     return Backbone.View.extend({
 
+        initialize: function(){
+            this.listenTo(this.model, "invalid", this.showErrors);
+        },
+
         getFieldValue: function(name){
             return this.$el.find('input[name="'+ name +'"]').val();
         },
@@ -16,6 +20,10 @@ define(function(require){
             });
 
             this.model.save();
+        },
+
+        showErrors: function(model, errors){
+
         }
 
     });

@@ -8,9 +8,11 @@ define(function(require){
             this.fixture = fixtures.body();
             this.formId = $(this.fixture).find('form').attr('id');
 
+            sinon.spy(Backbone.Model.prototype, '_validate');
             this.model = new Backbone.Model();
             sinon.stub(this.model, 'save');
 
+            sinon.spy(FormView.prototype, 'showErrors');
             this.formView = new FormView({
                 el: $(this.fixture),
                 model: this.model
@@ -19,6 +21,8 @@ define(function(require){
 
         afterEach(function(){
             fixtures.cleanUp();
+            FormView.prototype.showErrors.restore();
+            Backbone.Model.prototype._validate.restore();
         });
 
         it('should be able to get input field value by name', function(){
@@ -36,7 +40,9 @@ define(function(require){
         });
 
         it('should be able to detect if field is valid/invalid', function(){
-
+            this.formView.model.trigger('invalid');
+            expect(this.formView.showErrors.called).to.be.true;
+            expect(this.formView.model._validate.called).to.be.true;
         });
 
         it('should be able to show validation errors', function(){
@@ -48,7 +54,7 @@ define(function(require){
         });
 
         it('should destroy the model on model success?', function(){
-            //responsibility of the model itself ? 
+            //responsibility of the model itself ?
         })
     });
 });
