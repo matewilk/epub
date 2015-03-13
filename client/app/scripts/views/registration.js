@@ -3,9 +3,10 @@ define(function(require){
     var $ = require('jquery'),
         Backbone = require('backbone'),
         JST = require('templates'),
-        RegistrationModel = require('models/registration');
+        RegistrationModel = require('models/registration'),
+        FormView = require('views/form');
 
-    return Backbone.View.extend({
+    return FormView.extend({
 
         model: RegistrationModel,
 
@@ -13,6 +14,10 @@ define(function(require){
 
         events: {
             'submit form': 'register'
+        },
+
+        initialize: function(){
+            //after extending tests doesn't run without this!!!
         },
 
         render: function(){

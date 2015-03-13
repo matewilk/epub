@@ -1,7 +1,8 @@
 define(function(require){
 
     var RegistrationView = require('views/registration'),
-        RegistrationModel = require('models/registration')
+        RegistrationModel = require('models/registration'),
+        FormView = require('views/form'),
         JST = require('templates');
 
     describe('Registration View', function(){
@@ -24,6 +25,10 @@ define(function(require){
         it('should have a correct model property', function(){
             var registrationModelInstance = new this.registrationView.model();
             expect(registrationModelInstance).is.an.instanceof(RegistrationModel);
+        });
+
+        it('should extend Form view', function(){
+            expect(this.registrationView).to.be.instanceof(FormView);
         });
 
         it('should update a model on submit', function(){

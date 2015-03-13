@@ -1,16 +1,18 @@
 define(function(require){
     'use strict';
 
-    var Backbone = require('backbone')
+    var Backbone = require('backbone'),
+        _ = require('underscore');
 
     return Backbone.View.extend({
 
         initialize: function(){
+            _.bind(this.showError, this);
             this.listenTo(this.model, "invalid", this.onInvalid);
         },
 
-        getFieldValue: function(name){
-            return this.$el.find('input[name="'+ name +'"]').val();
+        getField: function(name){
+            return this.$el.find('input[name="'+ name +'"]');
         },
 
         submitForm: function(formId){
@@ -23,10 +25,16 @@ define(function(require){
         },
 
         onInvalid: function(model, errors){
-
+            _.each(errors, function(error){
+                this.showError(error.field, error.message);
+            }, this);
         },
 
-        showError: function(input, message){
+        showError: function(inputName, message){
+            var input = this.getField(inputName);
+
+            this.clearError(input);
+
             input.addClass('invalid')
                 .after('<p class="errorMessage">'+ message +'</p>');
         },
