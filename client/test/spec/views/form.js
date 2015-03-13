@@ -6,22 +6,23 @@ define(function(require){
         beforeEach(function(){
             fixtures.load('form.html');
             this.fixture = fixtures.body();
-            this.formId = $(this.fixture).find('form').attr('id');
+            this.fixtureElement = $(this.fixture);
+            this.formId = this.fixtureElement.find('form').attr('id');
 
             sinon.spy(Backbone.Model.prototype, '_validate');
             this.model = new Backbone.Model();
             sinon.stub(this.model, 'save');
 
-            sinon.spy(FormView.prototype, 'showErrors');
+            sinon.spy(FormView.prototype, 'onInvalid');
             this.formView = new FormView({
-                el: $(this.fixture),
+                el: this.fixtureElement,
                 model: this.model
             });
         });
 
         afterEach(function(){
             fixtures.cleanUp();
-            FormView.prototype.showErrors.restore();
+            FormView.prototype.onInvalid.restore();
             Backbone.Model.prototype._validate.restore();
         });
 
@@ -41,16 +42,26 @@ define(function(require){
 
         it('should be able to detect if field is valid/invalid', function(){
             this.formView.model.trigger('invalid');
-            expect(this.formView.showErrors.called).to.be.true;
+            expect(this.formView.onInvalid.called).to.be.true;
             expect(this.formView.model._validate.called).to.be.true;
         });
 
         it('should be able to show validation errors', function(){
-
+            var input = this.fixtureElement.find('[name="name"]');
+            this.formView.showError(input);
+            expect(input.attr('class')).to.have.string('invalid');
         });
 
         it('should be able to reset validation errors', function(){
+            var input = this.fixtureElement.find('[name="name"]');
 
+            this.formView.showError(input, 'Nasty error');
+            expect(input).to.have.class('invalid');
+            expect(input.next()).to.have.class('errorMessage');
+
+            this.formView.clearError(input);
+            expect(input).to.not.have.class('invalid');
+            expect(input.next()).to.not.have.class('errorMessage');
         });
 
         it('should destroy the model on model success?', function(){

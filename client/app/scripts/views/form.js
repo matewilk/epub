@@ -6,7 +6,7 @@ define(function(require){
     return Backbone.View.extend({
 
         initialize: function(){
-            this.listenTo(this.model, "invalid", this.showErrors);
+            this.listenTo(this.model, "invalid", this.onInvalid);
         },
 
         getFieldValue: function(name){
@@ -22,8 +22,17 @@ define(function(require){
             this.model.save();
         },
 
-        showErrors: function(model, errors){
+        onInvalid: function(model, errors){
 
+        },
+
+        showError: function(input, message){
+            input.addClass('invalid')
+                .after('<p class="errorMessage">'+ message +'</p>');
+        },
+
+        clearError: function(input){
+            input.removeClass('invalid').next().remove('.errorMessage');
         }
 
     });
