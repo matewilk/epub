@@ -8,8 +8,15 @@ define(function(require){
     describe('Registration View', function(){
 
         beforeEach(function(){
+            sinon.stub(FormView.prototype, 'submitForm');
+            sinon.spy(RegistrationView.prototype, 'register');
             this.registrationView = new RegistrationView();
             this.template = JST['app/scripts/templates/registration.hbs']
+        });
+
+        afterEach(function(){
+            FormView.prototype.submitForm.restore();
+            RegistrationView.prototype.register.restore();
         });
 
         it('should have a proper template', function(){
@@ -31,13 +38,20 @@ define(function(require){
             expect(this.registrationView).to.be.instanceof(FormView);
         });
 
-        it('should update a model on submit', function(){
+        describe('on form submit', function() {
+            beforeEach(function(){
+                this.registrationView.render();
+                this.registrationView.$el.find('form').submit();
+            });
+            it('should call register method', function(){
+                expect(this.registrationView.register.called).to.be.true;
+            });
 
+            it('should call submitForm with form id', function(){
+                expect(this.registrationView.submitForm.calledWith('registration')).to.be.true;
+            });
         });
 
-        it('should send the form on submit', function(){
-
-        });
 
         it('should notify user about registration success', function(){
 

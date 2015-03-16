@@ -2,6 +2,7 @@ define(function(require){
 
     var $ = require('jquery'),
         Backbone = require('backbone'),
+        _ = require('underscore'),
         JST = require('templates'),
         RegistrationModel = require('models/registration'),
         FormView = require('views/form');
@@ -28,7 +29,7 @@ define(function(require){
 
         register: function(e){
             e.preventDefault();
-
+            this.submitForm(this.$el.find('form').attr('id'));
         }
 
     });
