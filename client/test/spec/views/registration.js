@@ -81,9 +81,7 @@ define(function(require){
                 sinon.stub(FormView.prototype, 'submitForm');
             });
 
-            it('should redirect user after registration success', function(){
-
-            });
+            it('should redirect user after registration success');
         })
     });
 

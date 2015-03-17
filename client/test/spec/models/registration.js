@@ -21,20 +21,14 @@ define(function(require){
             expect(this.model.url).to.equal('api/registration');
         });
 
-        it("should validate form values", function(){
+        it("should validate form values");
 
+        xit('validate function should return error on invalid', function(){
+            expect(this.model.validate()).to.have.length(4);
         });
 
-        it('validate function should return error on invalid', function(){
+        it('should trigger invalid event on invalid form submission');
 
-        });
-
-        it('should trigger invalid event on invalid form submission', function(){
-
-        });
-
-        it('should call onInvalid function if form is invalid', function(){
-
-        });
+        it('should call onInvalid function if form is invalid');
     });
 });
