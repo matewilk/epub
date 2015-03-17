@@ -1,9 +1,6 @@
 define(function(require){
 
-    var $ = require('jquery'),
-        Backbone = require('backbone'),
-        _ = require('underscore'),
-        JST = require('templates'),
+    var JST = require('templates'),
         RegistrationModel = require('models/registration'),
         FormView = require('views/form');
 
@@ -18,7 +15,6 @@ define(function(require){
         },
 
         initialize: function(){
-            //after extending tests doesn't run without this!!!
             this.listenTo(this.model, 'sync', this.registrationSuccess)
         },
 
@@ -34,7 +30,7 @@ define(function(require){
         },
 
         registrationSuccess: function(){
-            var xxx;
+
         }
     });
 });

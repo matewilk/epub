@@ -64,14 +64,14 @@ define(function(require){
                     '[]'
                 ]);
             });
-            it('should notify user about registration success', function(){
+            it('should notify user about registration success', function(done){
                 FormView.prototype.submitForm.restore();
+
                 var registrationView = this.registrationView;
                 registrationView.render();
                 registrationView.$el.find('[name="email"]').val('matewilk@gmail.com');
 
                 this.registrationView.model.once("sync", function() {
-
                     expect(registrationView.registrationSuccess.called).to.be.true;
 
                     done();
