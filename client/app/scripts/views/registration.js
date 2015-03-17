@@ -9,7 +9,7 @@ define(function(require){
 
     return FormView.extend({
 
-        model: RegistrationModel,
+        model: new RegistrationModel(),
 
         template: JST['app/scripts/templates/registration.hbs'],
 
@@ -19,6 +19,7 @@ define(function(require){
 
         initialize: function(){
             //after extending tests doesn't run without this!!!
+            this.listenTo(this.model, 'sync', this.registrationSuccess)
         },
 
         render: function(){
@@ -30,7 +31,10 @@ define(function(require){
         register: function(e){
             e.preventDefault();
             this.submitForm(this.$el.find('form').attr('id'));
-        }
+        },
 
+        registrationSuccess: function(){
+            var xxx;
+        }
     });
 });

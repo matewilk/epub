@@ -10,6 +10,7 @@ define(function(require){
         beforeEach(function(){
             sinon.stub(FormView.prototype, 'submitForm');
             sinon.spy(RegistrationView.prototype, 'register');
+            sinon.spy(RegistrationView.prototype, 'registrationSuccess');
             this.registrationView = new RegistrationView();
             this.template = JST['app/scripts/templates/registration.hbs']
         });
@@ -17,6 +18,7 @@ define(function(require){
         afterEach(function(){
             FormView.prototype.submitForm.restore();
             RegistrationView.prototype.register.restore();
+            RegistrationView.prototype.registrationSuccess.restore();
         });
 
         it('should have a proper template', function(){
@@ -30,8 +32,7 @@ define(function(require){
         });
 
         it('should have a correct model property', function(){
-            var registrationModelInstance = new this.registrationView.model();
-            expect(registrationModelInstance).is.an.instanceof(RegistrationModel);
+            expect(this.registrationView.model).is.an.instanceof(RegistrationModel);
         });
 
         it('should extend Form view', function(){
@@ -53,14 +54,37 @@ define(function(require){
         });
 
 
-        it('should notify user about registration success', function(){
+        describe('on registration success', function(){
+            beforeEach(function(){
+                this.server = sinon.fakeServer.create();
+                this.server.autoRespond = true;
+                this.server.respondWith("POST", "api/registration", [
+                    200,
+                    { "Content-Type": "application/json" },
+                    '[]'
+                ]);
+            });
+            it('should notify user about registration success', function(){
+                FormView.prototype.submitForm.restore();
+                var registrationView = this.registrationView;
+                registrationView.render();
+                registrationView.$el.find('[name="email"]').val('matewilk@gmail.com');
 
-        });
+                this.registrationView.model.once("sync", function() {
 
-        it('should redirect user after registration success', function(){
+                    expect(registrationView.registrationSuccess.called).to.be.true;
 
-        });
+                    done();
+                });
 
+                registrationView.$el.find('form').submit();
+                sinon.stub(FormView.prototype, 'submitForm');
+            });
+
+            it('should redirect user after registration success', function(){
+
+            });
+        })
     });
 
 });
