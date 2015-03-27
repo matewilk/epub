@@ -1,3 +1,9 @@
-/**
- * Created by wolfie on 17/03/15.
- */
+define(function(require){
+    'use strict';
+
+    var Backbone = require('backbone');
+
+    return Backbone.View.extend({
+
+    });
+});
