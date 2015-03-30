@@ -28,6 +28,7 @@ require([
     //views
     "spec/views/form",
     "spec/views/registration",
+    "spec/views/dialog",
 
     //structure
     "spec/urls"
