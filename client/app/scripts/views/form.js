@@ -18,7 +18,7 @@ define(function(require){
         submitForm: function(formId){
             var self = this;
             this.$('#'+formId+' :input').each(function (index, el) {
-                self.model.set($(el).attr('name'), $(el).val())
+                self.model.set($(el).attr('name'), {value: $(el).val(), required: $(el).attr('required') || false})
             });
 
             this.model.save();

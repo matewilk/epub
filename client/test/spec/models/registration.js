@@ -6,9 +6,9 @@ define(function(require){
     describe("Registration Model", function() {
         beforeEach(function(){
             this.defaults = {
-                name: '',
-                email: '',
-                password: ''
+                name: {value: '', required: true},
+                email: {value: '', required: true},
+                password: {value: '', required: true}
             };
             this.model = new RegistrationModel();
         });
@@ -41,7 +41,11 @@ define(function(require){
 
                 done();
             });
-            this.model.save({name: 'Mateusz', email: 'matewilk@gmail.com', password: 'password'});
+            this.model.save({
+                name: {value: 'Mateusz', required: true},
+                email: {value: 'matewilk@gmail.com', required: true},
+                password: {value: 'password', required: true}
+            });
         });
 
         it('should trigger invalid event on invalid form submission', function(done){

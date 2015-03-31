@@ -8,5 +8,4 @@ define(function(require){
             message: ''
         }
     });
-
 });

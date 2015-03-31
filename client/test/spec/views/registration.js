@@ -69,7 +69,13 @@ define(function(require){
 
                 var registrationView = this.registrationView;
                 registrationView.render();
+                //fill out form values
+                registrationView.$el.find('[name="name"]').val('Mateusz');
+                registrationView.$el.find('[name="surname"]').val('Test');
                 registrationView.$el.find('[name="email"]').val('matewilk@gmail.com');
+                registrationView.$el.find('[name="email_repeat"]').val('matewilk@gmail.com');
+                registrationView.$el.find('[name="password"]').val('pass');
+                registrationView.$el.find('[name="password_repeat"]').val('pass');
 
                 this.registrationView.model.once("sync", function() {
                     expect(registrationView.registrationSuccess.called).to.be.true;

@@ -327,7 +327,6 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'createDefaultTemplate',
-            //'jst',
             'handlebars',
             'compass:server',
             'connect:livereload',
@@ -341,7 +340,6 @@ module.exports = function (grunt) {
         var testTasks = [
                 'clean:server',
                 'createDefaultTemplate',
-                //'jst',
                 'handlebars',
                 'compass',
                 'connect:test',
@@ -360,7 +358,6 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'createDefaultTemplate',
-        //'jst',
         'handlebars',
         'compass:dist',
         'useminPrepare',

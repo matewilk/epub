@@ -1,17 +1,17 @@
 define(function (require) {
     'use strict';
 
-    var Backbone = require('backbone'),
+    var FormModel = require('models/form'),
         apiUrls = require('scripts/urls');
 
-    var RegistrationModel = Backbone.Model.extend({
+    var RegistrationModel = FormModel.extend({
 
         url: apiUrls.getUrl('registration'),
 
         defaults: {
-            name: '',
-            email: '',
-            password: ''
+            name: {value: '', required: true},
+            email: {value: '', required: true},
+            password: {value: '', required: true}
         },
 
         parse: function(response)  {
@@ -21,18 +21,13 @@ define(function (require) {
         validate: function(attrs, options) {
             var errors = [];
 
-            if(attrs.name.length === 0){
-                errors.push({name: 'name', message: 'Field cannot be empty'});
-            }
-            if(attrs.email.length === 0){
-                errors.push({name: 'email', message: 'Field cannot be empty'});
-            }
-            if(attrs.email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/) === null){
-                errors.push({name: 'email', message: "It's not valid email address"});
-            }
-            if(attrs.password.length ===0){
-                errors.push({name: 'password', message: 'Field cannot be empty'});
-            }
+            var basicErrors = FormModel.prototype.validate.apply(this, arguments);
+
+            /**
+             * TODO check if email and password are same in both fields
+             */
+
+            if(basicErrors && basicErrors.length > 0) errors = errors.concat(basicErrors);
 
             if(errors.length > 0) return errors;
         }

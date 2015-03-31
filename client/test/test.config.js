@@ -21,6 +21,7 @@ require([
     //models
     "spec/models/book",
     "spec/models/registration",
+    "spec/models/dialog",
 
     //collections
     "spec/collections/library",

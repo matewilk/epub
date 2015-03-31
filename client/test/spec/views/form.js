@@ -32,7 +32,12 @@ define(function(require){
 
         it('should be able to update the model', function(){
             this.formView.submitForm(this.formId);
-            expect(this.formView.model.attributes).to.eql({name: 'Test Name', email: 'test@email.com'})
+            expect(this.formView.model.attributes)
+                .to.eql(
+                    {
+                        name: {value: 'Test Name', required: false},
+                        email: {value: 'test@email.com', required: false}
+                    })
         });
 
         it('should be able to save the model', function(){
