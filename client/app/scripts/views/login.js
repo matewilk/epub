@@ -1,49 +1,39 @@
-define([
-    'jquery',
-    'underscore',
-    'backbone',
-    'templates',
-], function ($, _, Backbone, JST) {
+define(function(require){
     'use strict';
 
-    var LoginView = Backbone.View.extend({
+    var FormView = require('views/form'),
+        LoginModel = require('models/login'),
+        JST = require('templates')
+
+    return FormView.extend({
+        model: new LoginModel(),
+
         template: JST['app/scripts/templates/login.hbs'],
 
         events: {
             'submit form': 'login'
         },
 
-        login: function(e){
-            e.preventDefault();
-            var data = {};
-            var inputs = this.$('input');
-            $.each(inputs, function(index, item){
-                data[$(item).attr('name')] = $(item).val();
-            });
-            this.submit(data)
-        },
+        initialize: function(){
+            this.listenTo(this.model, 'sync', this.success);
 
-        submit: function(data) {
-            $.ajax({
-                method: 'POST',
-                url: 'login',
-                data: data,
-                success: this.success,
-                error: this.error
-            })
-        },
-
-        success: function(){
-            var url = '/library';
-            Backbone.trigger('login:success', {url: url})
+            this.render();
         },
 
         render: function () {
             this.$el.html(this.template());
 
             return this;
+        },
+
+        login: function(e){
+            e.preventDefault();
+            this.submitForm(this.$el.find('form').attr('id'))
+        },
+
+        success: function(){
+            var url = '/library';
+            Backbone.trigger('login:success', {url: url})
         }
     });
-
-    return LoginView;
 });

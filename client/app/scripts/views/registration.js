@@ -1,4 +1,5 @@
 define(function(require){
+    'use strict';
 
     var JST = require('templates'),
         RegistrationModel = require('models/registration'),

@@ -5,14 +5,14 @@
 </div>
 
 <div class="login">
-	<form class="navbar-form" action="login" method="POST" role="form">
+	<form class="navbar-form" id="login" action="login" method="POST" role="form">
 		<div class="input-group">
 			<span class="input-group-addon">@</span>
-			<input type="text" class="form-control" name="email" placeholder="email">
+			<input type="text" class="form-control" name="email" placeholder="email" required="true">
 		</div>
 		<div class="input-group">
 			<span class="input-group-addon glyphicon glyphicon-user"></span>
-			<input type="text" class="form-control" name="password" placeholder="password">
+			<input type="text" class="form-control" name="password" placeholder="password" required="true">
 		</div>
         <button type="submit" class="btn btn-default">Submit</button>
 	</form>

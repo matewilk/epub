@@ -22,6 +22,7 @@ require([
     "spec/models/book",
     "spec/models/registration",
     "spec/models/dialog",
+    "spec/models/login",
 
     //collections
     "spec/collections/library",
@@ -30,6 +31,7 @@ require([
     "spec/views/form",
     "spec/views/registration",
     "spec/views/dialog",
+    "spec/views/login",
 
     //structure
     "spec/urls"
