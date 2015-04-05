@@ -19,11 +19,28 @@ module.exports = function(grunt){
             },
             all: ['Gruntfile.js', 'app/scripts/**/*.js', 'test/spec/**/*.js']
         },
+        sass: {
+            compile: {
+                options: {
+                    trace: true
+                },
+                files: {
+                    '.tmp/styles/main.css': ['app/styles/**/*.scss']
+                }
+            }
+        },
 
         watch: {
             handlebars: {
                 files: 'app/scripts/templates/*.hbs',
                 tasks: ['handlebars'],
+                options: {
+                    livereload: true
+                }
+            },
+            sass: {
+                files: ['app/styles/**/*.scss'],
+                tasks: ['sass'],
                 options: {
                     livereload: true
                 }
@@ -33,7 +50,8 @@ module.exports = function(grunt){
 
     grunt.loadNpmTasks('grunt-contrib-handlebars');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['handlebars', 'jshint']);
+    grunt.registerTask('default', ['handlebars', /*'jshint',*/ 'sass']);
 };
