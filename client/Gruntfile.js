@@ -45,6 +45,22 @@ module.exports = function(grunt){
                     livereload: true
                 }
             }
+        },
+
+        clean: {
+            options: {
+                force: true
+            },
+            dist: ['../server/dist']
+        },
+
+        copy: {
+            dist: {
+                expand: true,
+                cwd: 'app',
+                src: '**',
+                dest: '../server/dist/'
+            }
         }
     });
 
@@ -52,6 +68,10 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.registerTask('default', ['handlebars', /*'jshint',*/ 'sass']);
+
+    grunt.registerTask('build', ['clean', 'copy']);
 };
