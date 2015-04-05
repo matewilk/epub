@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
-    "grunt": "^0.4.5"
+    "grunt": "^0.4.5",
+    "grunt-contrib-handlebars": "^0.10.1"
   },
   "engines": {
     "node": ">=0.10.0"
