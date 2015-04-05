@@ -1,4 +1,5 @@
 define(function(require){
+    'use strict';
 
     var Dialog = require('views/dialog'),
         DialogModel = require('models/dialog'),

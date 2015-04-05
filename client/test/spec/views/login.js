@@ -1,4 +1,5 @@
 define(function(require){
+    'use strict';
 
     var LoginForm = require('views/login'),
         LoginModel = require('models/login'),

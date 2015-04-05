@@ -1,4 +1,5 @@
 define(function(require){
+    'use strict';
 
     var LoginModel = require('models/login');
 

@@ -1,4 +1,5 @@
 define(function(require){
+    'use strict';
 
     var RegistrationView = require('views/registration'),
         RegistrationModel = require('models/registration'),
