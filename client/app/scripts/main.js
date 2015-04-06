@@ -15,7 +15,8 @@ require.config({
         underscore: '../bower_components/lodash/dist/lodash',
         bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
         handlebars: '../bower_components/handlebars/handlebars',
-        templates: '../scripts/templates'
+        templates: '../scripts/templates',
+        "jquery-cookie": '../bower_components/jquery-cookie/jquery.cookie'
     }
 });
 

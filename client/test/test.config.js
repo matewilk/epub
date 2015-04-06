@@ -12,7 +12,8 @@ require.config({
         backbone: "../app/bower_components/backbone/backbone",
         underscore: "../app/bower_components/underscore/underscore",
         handlebars: '../app/bower_components/handlebars/handlebars',
-        templates: "../.tmp/scripts/templates"
+        templates: "../.tmp/scripts/templates",
+        "jquery-cookie": '../app/bower_components/jquery-cookie/jquery.cookie'
 
     }
 });
@@ -23,6 +24,7 @@ require([
     "spec/models/registration",
     "spec/models/dialog",
     "spec/models/login",
+    "spec/models/session",
 
     //collections
     "spec/collections/library",
