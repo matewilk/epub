@@ -35,10 +35,11 @@ define(function(require){
 
         describe("authenticate()", function(){
             it("should return 'true' if user has token", function(){
-
+                this.model.set('access_token', 'access_token_to_handle_session');
+                expect(this.model.authenticated()).to.equal(true);
             });
             it("should return 'false' if user is not authenticated", function(){
-
+                expect(this.model.authenticated()).to.equal(false);
             });
         });
 

@@ -4,6 +4,10 @@ define(function(require){
     require('jquery-cookie');
 
     return Backbone.Model.extend({
+        /**
+         * access_token - backend generated session id
+         * passed to the client on user login
+         */
         defaults: {
             access_token: null,
             user_id: null
@@ -11,6 +15,10 @@ define(function(require){
 
         initialize: function(){
             this.load();
+        },
+
+        authenticated: function(){
+            return !!this.get('access_token');
         },
 
         save: function(hash){
