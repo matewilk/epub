@@ -3,8 +3,8 @@ var router = express.Router();
 
 router.post('/', function(req, res){
     res.contentType('application/json');
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    req.session.user = req.body.email.value;
+
+    res.session.destroy();
     res.send(true);
 });
 
