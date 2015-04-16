@@ -56,10 +56,20 @@ module.exports = function(grunt){
 
         copy: {
             dist: {
-                expand: true,
-                cwd: 'app',
-                src: '**',
-                dest: '../server/dist/'
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'app',
+                        src: ['**'],
+                        dest: '../server/dist/'
+                    },
+                    {
+                        expand: true,
+                        cwd: '.tmp',
+                        src: ['**'],
+                        dest: '../server/dist/'
+                    }
+                ]
             }
         }
     });
