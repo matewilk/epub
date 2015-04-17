@@ -1,1 +1,6 @@
-{}
+{
+    "scripts": {
+        "postinstall": "cd client;grunt build"
+    }
+
+}
