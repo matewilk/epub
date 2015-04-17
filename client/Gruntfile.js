@@ -83,5 +83,5 @@ module.exports = function(grunt){
 
     grunt.registerTask('default', ['handlebars', /*'jshint',*/ 'sass']);
 
-    grunt.registerTask('build', ['clean', 'copy']);
+    grunt.registerTask('build', ['handlebars', 'sass','clean', 'copy']);
 };

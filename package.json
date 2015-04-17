@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "postinstall": "cd client; NODE_ENV=dev npm i; node_modules/grunt-cli/bin/grunt build"
+        "postinstall": "cd client; npm i; node_modules/bower/bin/bower install; node_modules/grunt-cli/bin/grunt build"
     }
 
 }
