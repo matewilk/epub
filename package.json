@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "postinstall": "cd client; npm i; node_modules/bower/bin/bower install; node_modules/grunt-cli/bin/grunt build"
+        "postinstall": "cd client; npm i; node_modules/bower/bin/bower install; node_modules/grunt-cli/bin/grunt build; cd ../server npm i"
     },
     "engines": {
         "node": ">=0.10.0"
