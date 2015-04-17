@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "postinstall": "cd client;grunt build"
+        "postinstall": "cd client; npm i; node_modules/grunt-cli/bin/grunt build"
     }
 
 }
