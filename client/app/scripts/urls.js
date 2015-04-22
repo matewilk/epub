@@ -14,6 +14,12 @@ define(function() {
             },
             login: function() {
                 return 'api/login';
+            },
+            logout: function() {
+                return 'api/logout';
+            },
+            authenticated: function() {
+                return 'api/session/authenticated';
             }
         };
 

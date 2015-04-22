@@ -1,11 +1,12 @@
-define([
-    'jquery',
-    'underscore',
-    'backbone',
-    'templates',
-    'models/header'
-], function ($, _, Backbone, JST, HeaderModel) {
+define(function(require){
     'use strict';
+
+    var $ = require('jquery'),
+        _ = require('underscore'),
+        Backbone = require('backbone'),
+        JST = require('templates'),
+        HeaderModel = require('models/header'),
+        LogoutView = require('views/logout');
 
     var HeaderView = Backbone.View.extend({
 
@@ -20,6 +21,7 @@ define([
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
+            this.$('.header-right').append(new LogoutView().render().el);
         }
     });
 

@@ -8,6 +8,9 @@ define([
 ], function(Backbone, Header, Login, Library, Footer){
     'use strict';
 
+    /**
+     * TODO write tests for Router
+     */
     var Router = Backbone.Router.extend({
 
         initialize: function(){
@@ -17,9 +20,11 @@ define([
             var footer = new Footer();
             footer.render();
 
-            this.listenTo(Backbone, 'login:success', function(options){
-                this.navigate(options.url, {trigger: true, replace: true});
-            });
+            this.listenTo(Backbone, 'router:go', this.go);
+        },
+
+        go: function(route) {
+            this.navigate(route, {trigger:true, replace:true})
         },
 
         routes: {

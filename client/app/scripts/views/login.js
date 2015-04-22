@@ -33,7 +33,7 @@ define(function(require){
 
         success: function(){
             var url = '/library';
-            Backbone.trigger('login:success', {url: url})
+            Backbone.trigger('router:go', url)
         }
     });
 });

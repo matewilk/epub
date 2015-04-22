@@ -22,9 +22,11 @@ require.config({
 
 require([
     'backbone',
-    'app'
-], function (Backbone, App) {
+    'app',
+    'models/session'
+], function (Backbone, App, SessionModel) {
 
-    new App();
+    App = new App();
+    App.session = new SessionModel();
     Backbone.history.start();
 });

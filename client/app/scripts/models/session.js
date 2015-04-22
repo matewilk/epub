@@ -1,15 +1,17 @@
 define(function(require){
 
-    var Backbone = require('backbone');
+    var Backbone = require('backbone'),
+        ApiUrls = require('urls');
     require('jquery-cookie');
 
     return Backbone.Model.extend({
+        url: ApiUrls.getUrl('authenticated'),
         /**
-         * access_token - backend generated session id
+         * connect.sid - backend (express-session) generated session id
          * passed to the client on user login
          */
         defaults: {
-            access_token: null,
+            "connect.sid": null,
             user_id: null
         },
 
@@ -18,7 +20,9 @@ define(function(require){
         },
 
         authenticated: function(){
-            return !!this.get('access_token');
+            //check on backend if cookie (connect.sid) matches session id
+            //and return true or false ?
+            return !!this.get('connect.sid');
         },
 
         save: function(hash){
@@ -29,7 +33,7 @@ define(function(require){
         load: function(){
             this.set({
                 user_id: $.cookie('user_id'),
-                access_token: $.cookie('access_token')
+                "connect.sid": $.cookie('connect.sid')
             });
         }
     });

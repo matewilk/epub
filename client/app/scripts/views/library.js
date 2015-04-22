@@ -11,22 +11,6 @@ define(function(require){
     var LibraryView = Backbone.View.extend({
         template: JST['app/scripts/templates/library.hbs'],
 
-        events: {
-            'submit form': 'logout'
-        },
-
-        logout: function(e){
-            e.preventDefault();
-
-            $.ajax({
-                url: 'api/logout',
-                method: 'POST',
-                success: function(){
-                    console.log('successfully logged out!');
-                }
-            })
-        },
-
         initialize: function() {
             this.libraryCollection = new LibraryCollection();
             this.libraryCollection.on("fetch", this.onFetch, this);

@@ -24,6 +24,7 @@ require([
     "spec/models/registration",
     "spec/models/dialog",
     "spec/models/login",
+    "spec/models/logout",
     "spec/models/session",
 
     //collections
@@ -34,6 +35,7 @@ require([
     "spec/views/registration",
     "spec/views/dialog",
     "spec/views/login",
+    "spec/views/logout",
 
     //structure
     "spec/urls"
