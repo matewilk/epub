@@ -15,7 +15,15 @@ define(function(require){
         },
 
         initialize: function(){
-            this.render();
+            this.listenTo(Backbone, 'session:change', this.showHide)
+        },
+
+        showHide: function(show){
+            if(show){
+                this.render()
+            } else {
+                this.remove();
+            }
         },
 
         render: function(){

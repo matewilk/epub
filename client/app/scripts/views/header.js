@@ -21,7 +21,8 @@ define(function(require){
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
-            this.$('.header-right').append(new LogoutView().render().el);
+            this.logoutButton = new LogoutView();
+            this.$('.header-right').append(this.logoutButton.$el);
         }
     });
 
