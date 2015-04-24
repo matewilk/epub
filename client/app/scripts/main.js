@@ -24,9 +24,9 @@ require([
     'backbone',
     'app',
     'models/session'
-], function (Backbone, App, SessionModel) {
+], function (Backbone, Application, SessionModel) {
 
-    App = new App();
+    window.App = new Application();
     App.session = new SessionModel();
     Backbone.history.start();
 });

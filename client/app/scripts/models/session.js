@@ -5,6 +5,12 @@ define(function(require){
     require('jquery-cookie');
 
     return Backbone.Model.extend({
+        /**
+         * variable responsible for checking if some UI components should be displayed
+         * (less important components like "Logout (view)" button)
+         */
+        auth: false,
+
         url: ApiUrls.getUrl('authenticated'),
         /**
          * connect.sid - backend (express-session) generated session id
@@ -16,19 +22,44 @@ define(function(require){
         },
 
         initialize: function(){
+            this.listenTo(this, 'sync', this.update);
             this.load();
         },
 
-        authenticated: function(){
-            //check on backend if cookie (connect.sid) matches session id
-            //and return true or false ?
-            return !!this.get('connect.sid');
+        /**
+         * Called on model sync to set "auth" variable
+         *
+         * triggers event for other components to change state eventually
+         *
+         * @param model
+         * @param response
+         * @param options
+         */
+        update: function(model, response, options){
+            this.auth = response.authenticated;
+            this.trigger('session:change', this.auth);
         },
 
-        save: function(hash){
-            //$.cookie('user_id', hash.id);
-            //$.cookie('access_token', hash.token);
+        /**
+         * Call this function to check on less important components if user is authenticated
+         * otherwise use "check" function which calls ajax to check auth on server side
+         * @returns {boolean}
+         */
+        authenticated: function(){
+            return this.auth;
         },
+
+        /**
+         * Sends ajax request for authentication check
+         */
+        check: function(){
+            this.save();
+        },
+
+//        save: function(hash){
+//            //$.cookie('user_id', hash.id);
+//            //$.cookie('access_token', hash.token);
+//        },
 
         load: function(){
             this.set({
