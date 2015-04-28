@@ -22,6 +22,9 @@ define(function(require){
             if(show){
                 this.render()
             } else {
+                //TODO do I want to add/remove the view dynamically ?
+                //it can relay on parent view render instead
+                //after remove it's no longer listening for 'session:change'
                 this.remove();
             }
         },

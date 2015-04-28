@@ -16,12 +16,13 @@ define(function(require){
 
         initialize: function() {
             this.model = new HeaderModel();
+
+            this.logoutButton = new LogoutView();
             this.listenTo(this.model, 'change', this.render);
         },
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
-            this.logoutButton = new LogoutView();
             this.$('.header-right').append(this.logoutButton.$el);
         }
     });
