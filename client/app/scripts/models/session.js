@@ -1,7 +1,7 @@
 define(function(require){
 
     var Backbone = require('backbone'),
-        ApiUrls = require('urls');
+        ApiUrls = require('scripts/urls');
     require('jquery-cookie');
 
     return Backbone.Model.extend({
@@ -51,9 +51,25 @@ define(function(require){
 
         /**
          * Sends ajax request for authentication check
+         *
+         * if successfully authenticated call callback.success function
+         * otherwise call callback.error function
+         *
+         * @param callback
          */
-        check: function(){
-            this.save();
+        check: function(callback){
+            this.fetch({
+                success: function(model, response){
+                    if(response.authenticated){
+                        if('success' in callback) callback.success(model, response);
+                    } else {
+                        if('error' in callback) callback.error(model, response);
+                    }
+                },
+                error: function(model, response){
+                    if('error' in callback) callback.error(model, response);
+                }
+            })
         },
 
 //        save: function(hash){

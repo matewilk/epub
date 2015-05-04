@@ -34,20 +34,34 @@ define([
         },
 
         showLogin: function() {
-            this.showView(new Login());
+            this.showView(new Login(), {requiresAuth: false});
             this.header.model.set('title', 'Login');
         },
 
         showLibrary: function() {
-            this.showView(new Library());
+            this.showView(new Library(), {requiresAuth: true});
             this.header.model.set('title', 'Library');
         },
 
-        showView: function(view) {
+        showView: function(view, options) {
+
             if(this.currentView) this.currentView.remove();
-            $('.content').html(view.render().$el);
+
+            if(options.requiresAuth){
+                var self = this;
+                App.session.check({
+                    success: function(){
+                        $('.content').html(view.render().$el);
+                    },
+                    error: function(){
+                        self.go('login');
+                    }
+                });
+            } else {
+                $('.content').html(view.render().$el);
+            }
             this.currentView = view;
-            return view;
+            //return view;
         }
 
     });
