@@ -1,12 +1,11 @@
-define([
-    'backbone',
-    'views/header',
-    'views/login',
-    'views/library',
-    'views/footer',
-    'models/book'
-], function(Backbone, Header, Login, Library, Footer){
+define(function(require){
     'use strict';
+
+    var Backbone = require('backbone'),
+        Header = require('views/header'),
+        Login = require('views/login'),
+        Library = require('views/library'),
+        Footer = require('views/footer');
 
     /**
      * TODO write tests for Router
@@ -30,7 +29,12 @@ define([
         routes: {
             'login': 'showLogin',
             'library': 'showLibrary',
-            'books/:id': 'showBook'
+            'books/:id': 'showBook',
+            '*path': 'defaultRoute'
+        },
+
+        defaultRoute: function(){
+
         },
 
         showLogin: function() {
@@ -51,6 +55,7 @@ define([
                 var self = this;
                 App.session.check({
                     success: function(){
+                        //additional condition if not authenticated
                         $('.content').html(view.render().$el);
                     },
                     error: function(){

@@ -1,6 +1,11 @@
 $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
-@import '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap';
+//@import '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap';
+$screen-sm-min: 768px;
+@import '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css';
+@import '../bower_components/bootstrap-material-design/dist/css/roboto.css';
+@import '../bower_components/bootstrap-material-design/dist/css/material.css';
+@import '../bower_components/bootstrap-material-design/dist/css/ripples.css';
 @import 'variables';
 
 .browsehappy {
@@ -12,7 +17,6 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 
 .header {
   height: $header-height;
-  border-bottom: 1px solid #e5e5e5;
   color: white;
   background-color: #37A344;
 
@@ -71,9 +75,17 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 }
 
 .login {
-  margin: auto;
-  width: 250px;
-  height: 250px;
+  margin: 0 35px 0 35px;
+  @media (min-width: $screen-sm-min){
+    margin-top: 50px;
+    margin: auto;
+    width: 400px;
+  }
+
+
+  form {
+    border-radius: 3px;
+  }
 
   .input-group {
     margin: 10px 0;

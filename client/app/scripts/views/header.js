@@ -12,7 +12,7 @@ define(function(require){
 
         template: JST['app/scripts/templates/header.hbs'],
 
-        el: '.header',
+        el: '.header-wrapper',
 
         initialize: function() {
             this.model = new HeaderModel();

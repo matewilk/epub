@@ -10,7 +10,8 @@
     "requirejs-text": "~2.0.10",
     "modernizr": "~2.7.1",
     "handlebars": "~2.0.0",
-    "jquery-cookie": "~1.4.1"
+    "jquery-cookie": "~1.4.1",
+    "bootstrap-material-design": "~0.3.0"
   },
   "devDependencies": {}
 }

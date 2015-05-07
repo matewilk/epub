@@ -20,8 +20,8 @@ define(function(require){
 
         render: function(){
             this.$el.html(this.template(this.model.toJSON()));
-            //needs to delegate events as view was rendered
-            //after the view's $el was appended to the parent view
+            // || needs to delegate events as event of the view were removed
+            // \/ on this.$el.html of the parent view
             this.delegateEvents();
             return this;
         },

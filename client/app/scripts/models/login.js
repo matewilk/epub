@@ -13,6 +13,13 @@ define(function(require){
             password: {value: '', required: true}
         },
 
+//        defaults: {
+//            email: '',
+//            password: '',
+//        },
+//
+//        required: ['email', 'password'],
+
         validate: function(attrs, options){
             var errors = [];
 
