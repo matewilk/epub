@@ -1,0 +1,43 @@
+.header {
+  height: $header-height;
+
+  position:relative;
+  padding-left: $header-padding-left;
+  padding-right: $header-padding;
+
+  @media (min-width: $screen-sm-min){
+    padding-left: $header-padding-lg;
+    padding-right: $header-padding-lg;
+
+    .navbar-brand {
+      padding: 10px 10px;
+      span {
+        font-size: 28px;
+      }
+    }
+  }
+
+  .header-left {
+    position: absolute;
+    left: 0;
+    width: $header-padding-left;
+
+    @media (min-width: $screen-sm-min) {
+      width: $header-padding-left;
+    }
+  }
+
+  .header-middle {
+    width: 100%;
+  }
+
+  .header-right {
+    position: absolute;
+    right:0;
+    width: $header-padding;
+
+    @media (min-width: $screen-sm-min) {
+      width: $header-padding-lg;
+    }
+  }
+}

@@ -1,108 +1,20 @@
-$icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-
-//@import '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap';
-$screen-sm-min: 768px;
-@import '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css';
+@import '../bower_components/bootstrap/dist/css/bootstrap.min.css';
 @import '../bower_components/bootstrap-material-design/dist/css/roboto.css';
 @import '../bower_components/bootstrap-material-design/dist/css/material.css';
 @import '../bower_components/bootstrap-material-design/dist/css/ripples.css';
+
+//project files
 @import 'variables';
+
+@import 'components/header';
+@import 'components/footer';
+@import 'components/login';
 
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
     color: #000;
     padding: 0.2em 0;
-}
-
-.header {
-  height: $header-height;
-  color: white;
-  background-color: #37A344;
-
-  position:relative;
-  padding-left: $header-padding-left;
-  padding-right: $header-padding;
-
-  @media (min-width: $screen-sm-min){
-    padding-left: $header-padding-lg;
-    padding-right: $header-padding-lg;
-
-    .navbar-brand {
-      padding: 10px 10px;
-      span {
-        font-size: 28px;
-      }
-    }
-  }
-
-  .header-left {
-    position: absolute;
-    left: 0;
-    width: $header-padding-left;
-
-    @media (min-width: $screen-sm-min) {
-      width: $header-padding-left;
-    }
-  }
-
-  .header-middle {
-    width: 100%;
-  }
-
-  .header-right {
-    position: absolute;
-    right:0;
-    width: $header-padding;
-
-    @media (min-width: $screen-sm-min) {
-      width: $header-padding-lg;
-    }
-  }
-}
-
-.footer {
-  height:$footer-height;
-  line-height: $footer-height;
-  background-color: #37A344;
-  padding: 0 15px;
-  color: white;
-
-  a {
-    text-decoration: none;
-    color: #f7ecb5;
-  }
-}
-
-.login {
-  margin: 0 35px 0 35px;
-  @media (min-width: $screen-sm-min){
-    margin-top: 50px;
-    margin: auto;
-    width: 400px;
-  }
-
-
-  form {
-    border-radius: 3px;
-  }
-
-  .input-group {
-    margin: 10px 0;
-    width: 100%;
-  }
-
-  button {
-    margin: 10px 0;
-    width: 100%;
-  }
-}
-
-.welcome {
-  width:60%;
-  .login-header {
-    text-align: center;
-  }
 }
 
 

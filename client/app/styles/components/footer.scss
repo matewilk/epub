@@ -1,0 +1,10 @@
+.footer {
+  height:$footer-height;
+  line-height: $footer-height;
+  padding: 0 15px;
+  border-top: 1px solid lightgrey;
+
+  a {
+    text-decoration: none;
+  }
+}

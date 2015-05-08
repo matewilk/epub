@@ -1,0 +1,30 @@
+.welcome {
+  width:60%;
+  .login-header {
+    text-align: center;
+  }
+}
+
+.login {
+  margin: 0 35px 0 35px;
+  @media (min-width: $screen-sm-min){
+    margin-top: 50px;
+    margin: auto;
+    width: 400px;
+  }
+
+
+  form {
+    border-radius: 3px;
+  }
+
+  .input-group {
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  button {
+    margin: 10px 0;
+    width: 100%;
+  }
+}

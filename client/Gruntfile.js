@@ -25,7 +25,7 @@ module.exports = function(grunt){
                     trace: true
                 },
                 files: {
-                    '.tmp/styles/main.css': ['app/styles/**/*.scss']
+                    '.tmp/styles/main.css': ['app/styles/main.scss']
                 }
             }
         },
