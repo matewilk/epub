@@ -36,6 +36,7 @@ require([
     "spec/views/dialog",
     "spec/views/login",
     "spec/views/logout",
+    "spec/views/home",
 
     //structure
     "spec/urls"

@@ -5,7 +5,8 @@ define(function(require){
         Header = require('views/header'),
         Login = require('views/login'),
         Library = require('views/library'),
-        Footer = require('views/footer');
+        Footer = require('views/footer'),
+        MainPage = require('views/home');
 
     /**
      * TODO write tests for Router
@@ -34,7 +35,7 @@ define(function(require){
         },
 
         defaultRoute: function(){
-
+            this.showView(new MainPage(), {requiresAuth: false});
         },
 
         showLogin: function() {

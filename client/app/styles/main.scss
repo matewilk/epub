@@ -1,6 +1,6 @@
 @import '../bower_components/bootstrap/dist/css/bootstrap.min.css';
 @import '../bower_components/bootstrap-material-design/dist/css/roboto.css';
-@import '../bower_components/bootstrap-material-design/dist/css/material.css';
+@import '../bower_components/bootstrap-material-design/dist/css/material-fullpalette.css';
 @import '../bower_components/bootstrap-material-design/dist/css/ripples.css';
 
 //project files
@@ -9,6 +9,7 @@
 @import 'components/header';
 @import 'components/footer';
 @import 'components/login';
+@import 'components/home';
 
 .browsehappy {
     margin: 0.2em 0;
