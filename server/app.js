@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var multer = require('multer');
 
 var app = express();
 
@@ -21,6 +22,26 @@ app.use(session({
     saveUninitialized: false
 }));
 
+app.use(multer({
+    dest: './uploads/',
+    rename: function (fieldname, filename) {
+        return filename.replace(/\W+/g, '-').toLowerCase() + Date.now()
+    },
+    onFileUploadStart: function(file, req, res) {
+        console.log('file upload start');
+        console.log('fileupload done: '+app.fileuploaddone);
+    },
+    onFileUploadData: function(file, data, req, res) {
+        console.log(data.length + ' of ' + file.fieldname + ' arrived')
+    },
+    onFileUploadComplete: function(file, req, res) {
+        console.log('file upload complete');
+        app.fileuploaddone = true;
+        console.log('fileupload done: '+app.fileuploaddone);
+    }
+}));
+app.fileuploaddone = false;
+
 
 // error handlers
 
@@ -36,10 +57,11 @@ if (app.get('env') === 'development') {
 
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+//        res.render('error', {
+//            message: err.message,
+//            error: err
+//        });
+        console.log(err.message);
     });
 }
 
