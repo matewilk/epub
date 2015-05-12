@@ -35,7 +35,7 @@ define(function(require){
          * @param response
          * @param options
          */
-        update: function(model, response, options){
+        update: function(model, response){
             this.auth = response.authenticated;
             Backbone.trigger('session:change', this.auth);
         },
@@ -71,11 +71,6 @@ define(function(require){
                 }
             })
         },
-
-//        save: function(hash){
-//            //$.cookie('user_id', hash.id);
-//            //$.cookie('access_token', hash.token);
-//        },
 
         load: function(){
             this.set({
