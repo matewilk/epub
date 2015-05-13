@@ -1,11 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var login = require('./functions/login');
 
-router.get('/', function(req, res){
-    res.contentType('application/json');
-
-    req.session.destroy();
-    res.send({logout: true});
-});
+router.get('/', login.delete);
 
 module.exports = router;

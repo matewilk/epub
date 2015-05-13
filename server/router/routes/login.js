@@ -1,13 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var login = require('./functions/login');
 
-router.post('/', function(req, res){
-    if(req.body.password.value == 'pass'){
-        req.session.user = req.body.email.value;
-        res.send(true);
-    } else {
-        res.send(false);
-    }
-});
+router.post('/', login.post);
 
 module.exports = router;
