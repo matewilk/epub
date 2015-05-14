@@ -82,6 +82,11 @@ if (app.get('env') === 'production') {
 }
 
 /**
+ * DB connection
+ */
+var db = require('./database')(app);
+
+/**
  * Routes
  */
 var router = require('./router')(app);
