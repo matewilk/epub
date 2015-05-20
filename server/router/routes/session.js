@@ -1,10 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var login = require('./functions/login');
 
-router.get('/authenticated', function(req, res){
+router.post('/', login.post);
+
+router.get('/', function(req, res){
     if(req.session.user){
         //check in db if user exists ?
-        //if not do not authenticate and destroy session ?
+        //if not, do not authenticate and destroy session ?
         //-------------------------------------------
         //create global app.use(function(req,res, next)
         // which checks for auth in db ???
@@ -16,5 +19,7 @@ router.get('/authenticated', function(req, res){
         res.send({authenticated: false});
     }
 });
+
+router.delete('/', login.delete);
 
 module.exports = router;

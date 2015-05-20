@@ -11,7 +11,7 @@ var login = {
         res.contentType('application/json');
 
         req.session.destroy();
-        res.send({logout: true});
+        res.send({authenticated: false});
     }
 };
 

@@ -6,24 +6,23 @@ define(function(require){
 
     return Backbone.Model.extend({
         /**
-         * variable responsible for checking if some UI components should be displayed
+         * auth: false - variable responsible for checking if some UI components should be displayed
          * (less important components like "Logout (view)" button)
-         */
-        auth: false,
-
-        url: ApiUrls.getUrl('authenticated'),
-        /**
+         *
          * connect.sid - backend (express-session) generated session id
          * passed to the client on user login
          */
         defaults: {
+            id: 1,
+            authenticated: false,
             "connect.sid": null,
             user_id: null
         },
 
+        url: ApiUrls.getUrl('session'),
+
         initialize: function(){
             this.listenTo(this, 'sync', this.update);
-            this.load();
         },
 
         /**
@@ -36,8 +35,7 @@ define(function(require){
          * @param options
          */
         update: function(model, response){
-            this.auth = response.authenticated;
-            Backbone.trigger('session:change', this.auth);
+            this.set('authenticated', response.authenticated);
         },
 
         /**
@@ -46,7 +44,7 @@ define(function(require){
          * @returns {boolean}
          */
         authenticated: function(){
-            return this.auth;
+            return this.get('authenticated');
         },
 
         /**
@@ -70,13 +68,6 @@ define(function(require){
                     if('error' in callback) callback.error(model, response);
                 }
             })
-        },
-
-        load: function(){
-            this.set({
-                user_id: $.cookie('user_id'),
-                "connect.sid": $.cookie('connect.sid')
-            });
         }
     });
 });

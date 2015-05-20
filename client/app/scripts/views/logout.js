@@ -2,11 +2,12 @@ define(function(require){
     'use strict';
 
     var Backbone = require('backbone'),
-        LogoutModel = require('models/logout'),
         JST = require('templates')
 
     return Backbone.View.extend({
-        model: new LogoutModel(),
+        // or use SessionModel required by require('scripts/session')
+        // it will return exactly the same model instance
+        model: App.session,
 
         template: JST['app/scripts/templates/logout.hbs'],
 
@@ -29,14 +30,15 @@ define(function(require){
         logout: function(e){
             e.preventDefault();
 
-            this.model.fetch({
-                success: this.redirect.bind(this)
+            this.model.destroy({
+                success: this.redirect.bind(this),
+                wait: true
             });
         },
 
         redirect: function(model, response){
-            if(response.logout){
-                this.model.set({show: !response.logout});
+            //is it correct way to check on response and not on model itself ?
+            if(!response.authenticated){
                 Backbone.trigger('router:go', 'login')
             }
         }

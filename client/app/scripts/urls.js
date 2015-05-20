@@ -12,14 +12,8 @@ define(function() {
             registration: function() {
                 return 'api/registration';
             },
-            login: function() {
-                return 'api/login';
-            },
-            logout: function() {
-                return 'api/logout';
-            },
-            authenticated: function() {
-                return 'api/session/authenticated';
+            session: function() {
+                return 'api/session';
             }
         };
 

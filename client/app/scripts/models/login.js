@@ -6,7 +6,7 @@ define(function(require){
 
     return FormModel.extend({
 
-        url: apiUrls.getUrl('login'),
+        url: apiUrls.getUrl('session'),
 
         defaults: {
             email: {value: '', required: true},

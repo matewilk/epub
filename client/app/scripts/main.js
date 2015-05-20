@@ -20,10 +20,13 @@ require.config({
     }
 });
 
+//what the hell ????
+window.App = {};
+
 require([
     'backbone',
     'app',
-    'models/session'
+    'scripts/session'
 ], function (Backbone, Application, SessionModel) {
 
     $(document).on('change', '.btn-file :file', function() {
@@ -48,7 +51,8 @@ require([
         });
     });
 
-    window.App = new Application();
-    App.session = new SessionModel();
+    new Application();
+    App.session = SessionModel;
+
     Backbone.history.start();
 });
