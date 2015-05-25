@@ -2,7 +2,7 @@ define(function(require){
     'use strict';
 
     var Logout = require('views/logout'),
-        LogoutModel = require('models/logout'),
+        LogoutModel = require('models/session'),
         JST = require('templates'),
         $ = require('jquery');
 

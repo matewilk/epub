@@ -3,7 +3,7 @@ define(function(require){
 
     var Backbone = require('backbone'),
         BookModel = require('models/book'),
-        apiUrls = require('scripts/urls');
+        apiUrls = require('globals/urls');
 
     var LibraryCollection = Backbone.Collection.extend({
 

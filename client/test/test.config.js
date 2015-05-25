@@ -4,6 +4,7 @@ require.config({
     baseUrl: '.',
 
     paths: {
+        globals: "../app/scripts/globals",
         scripts: "../app/scripts",
         models: "../app/scripts/models",
         collections: '../app/scripts/collections',
@@ -24,7 +25,6 @@ require([
     "spec/models/registration",
     "spec/models/dialog",
     "spec/models/login",
-    "spec/models/logout",
     "spec/models/session",
 
     //collections

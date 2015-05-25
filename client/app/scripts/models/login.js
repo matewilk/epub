@@ -2,7 +2,7 @@ define(function(require){
     'use strict';
 
     var FormModel = require('models/form'),
-        apiUrls = require('scripts/urls');
+        apiUrls = require('globals/urls');
 
     return FormModel.extend({
 

@@ -1,7 +1,7 @@
 define(function(require) {
     'use strict';
 
-    var ApiUrls = require('scripts/urls');
+    var ApiUrls = require('globals/urls');
 
     describe("Api Urls module", function() {
 

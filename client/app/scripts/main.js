@@ -10,6 +10,7 @@ require.config({
     },
     paths: {
         scripts: '../scripts',
+        globals: './globals',
         jquery: '../bower_components/jquery/dist/jquery',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/lodash/dist/lodash',
@@ -20,13 +21,10 @@ require.config({
     }
 });
 
-//what the hell ????
-window.App = {};
-
 require([
     'backbone',
     'app',
-    'scripts/session'
+    'globals/session'
 ], function (Backbone, Application, SessionModel) {
 
     $(document).on('change', '.btn-file :file', function() {
@@ -51,8 +49,11 @@ require([
         });
     });
 
+
+    window.App = {
+        session: SessionModel
+    };
     new Application();
-    App.session = SessionModel;
 
     Backbone.history.start();
 });

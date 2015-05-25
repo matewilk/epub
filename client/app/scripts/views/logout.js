@@ -2,12 +2,11 @@ define(function(require){
     'use strict';
 
     var Backbone = require('backbone'),
-        JST = require('templates')
+        JST = require('templates'),
+        SessionModel = require('globals/session');
 
     return Backbone.View.extend({
-        // or use SessionModel required by require('scripts/session')
-        // it will return exactly the same model instance
-        model: App.session,
+        model: SessionModel,
 
         template: JST['app/scripts/templates/logout.hbs'],
 

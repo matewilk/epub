@@ -1,7 +1,7 @@
 define(function(require){
 
     var Backbone = require('backbone'),
-        ApiUrls = require('scripts/urls');
+        ApiUrls = require('globals/urls');
     require('jquery-cookie');
 
     return Backbone.Model.extend({
