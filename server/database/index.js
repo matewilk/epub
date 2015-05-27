@@ -1,26 +1,29 @@
-module.exports = function(app){
-    var modules = require('./modules')(app);
-    var MongoClient = require('mongodb').MongoClient;
-    var dbUrl;
-    var _db;
+var MongoClient = require('mongodb').MongoClient;
 
-    if(app.get('env') === 'development'){
-        dbUrl = "mongodb://localhost:27017/test";
-    }
-    if(app.get('env') === 'production'){
-        dbUrl = "NOT KNOWN YET"
-    }
+var state = {
+    db: null
+};
 
-    MongoClient.connect(dbUrl, function(err, db){
-        if(err) return err;
-        _db = db;
-        console.log('MongoDB connected successfully.');
-        app.db = db;
+exports.connect = function(url, done) {
+    if(state.db) return done();
+
+    MongoClient.connect(url, function(err, db){
+        if(err) return done(err);
+        state.db = db;
+        done();
     });
+};
 
-    return {
-        getDbConnection: function(){
-            return _db;
-        }
-    }
+exports.get = function() {
+    return state.db;
+};
+
+exports.close = function(done){
+    if(state.db) {
+        state.db.close(function(err, result){
+            state.db = null;
+            state.mode = null;
+            done(err);
+        });
+    };
 };

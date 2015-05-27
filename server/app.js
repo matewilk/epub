@@ -91,7 +91,23 @@ if (app.get('env') === 'production') {
 /**
  * DB connection
  */
-var db = require('./database')(app);
+var dbUrl;
+if(app.get('env') === 'development'){
+    dbUrl = "mongodb://localhost:27017/test";
+}
+if(app.get('env') === 'production'){
+    dbUrl = "NOT KNOWN YET"
+}
+var db = require('./database');
+
+db.connect(dbUrl, function(err){
+    if(err) {
+        console.log('Unable to connect to MongoDB');
+    } else {
+        console.log('MongoDB connected successfully!');
+    }
+});
+
 
 /**
  * Routes

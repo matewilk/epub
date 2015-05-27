@@ -1,4 +1,4 @@
-module.exports = function(app){
+module.exports = (function(){
 
     var getUser = function(user, callback){
         //var login = app.db.collection('session');
@@ -14,4 +14,4 @@ module.exports = function(app){
     return {
         getUser: getUser
     }
-};
+})();
