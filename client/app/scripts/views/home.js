@@ -18,6 +18,7 @@ define(function(require){
         },
 
         upload: function(e){
+            var self = this;
             e.preventDefault();
 
             var data = new FormData(this.$('#upload-form')[0]);
@@ -29,11 +30,25 @@ define(function(require){
                 contentType: false,
                 processData: false,
                 type: 'POST',
+                xhr: function(evt){
+                    var myXhr = $.ajaxSettings.xhr();
+                    if(myXhr.upload){ // Check if upload property exists
+                        myXhr.upload.addEventListener('progress',self.progressHandlingFunction, false); // For handling the progress of the upload
+                    }
+                    return myXhr;
+                },
                 success: function(data){
                     console.log('front end upload success');
                     console.log(data);
                 }
             });
+        },
+
+        progressHandlingFunction: function (e){
+            if(e.lengthComputable){
+                console.log(e.loaded+" "+e.total);
+                $('progress').attr({value:e.loaded,max:e.total});
+            }
         }
     });
 

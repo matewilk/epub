@@ -39,7 +39,7 @@ app.use(multer({
         console.log('fileupload done: '+app.fileuploaddone);
     },
     onFileUploadData: function(file, data, req, res) {
-        console.log(data.length + ' of ' + file.fieldname + ' arrived')
+        console.log(data.length + ' of ' + file.fieldname + ' arrived');
     },
     onFileUploadComplete: function(file, req, res) {
         console.log('file upload complete');
