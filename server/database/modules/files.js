@@ -11,7 +11,16 @@ module.exports = (function(){
         });
     };
 
+    var getAllFiles = function(callback){
+        db.get().collection('files').find().toArray(function(err, files){
+            if(err) return err;
+
+            callback(files);
+        });
+    };
+
     return {
-        saveFile: saveFile
+        saveFile: saveFile,
+        getAllFiles: getAllFiles
     }
 })();

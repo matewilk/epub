@@ -10,6 +10,11 @@
 @import 'components/footer';
 @import 'components/login';
 @import 'components/home';
+@import 'components/book';
+
+.container {
+  padding-top: 10px;
+}
 
 .browsehappy {
     margin: 0.2em 0;

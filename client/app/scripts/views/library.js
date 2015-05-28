@@ -6,18 +6,21 @@ define(function(require){
         Backbone = require('backbone'),
         template = require('templates'),
         LibraryCollection = require('collections/library'),
-        BookModel = require('models/book');
+        BookView = require('views/book');
 
     var LibraryView = Backbone.View.extend({
+
+        className: 'container',
+
         template: JST['app/scripts/templates/library.hbs'],
 
         initialize: function() {
-            this.libraryCollection = new LibraryCollection();
-            this.libraryCollection.on("fetch", this.onFetch, this);
+            this.collection = new LibraryCollection();
+            this.collection.on("fetch", this.onFetch, this);
 
-            this.libraryCollection.on("reset", function(){console.log('reset');});//do I really need it ?
+            this.collection.on("reset", function(){console.log('reset');});//do I really need it ?
 
-            this.libraryCollection.fetch({
+            this.collection.fetch({
                 success: this.onSuccess.bind(this),
                 reset: true
             });
@@ -34,7 +37,18 @@ define(function(require){
         render: function () {
             this.$el.html(this.template());
 
+            this.collection.each(function(item) {
+                this.renderBook(item);
+            }, this);
+
             return this;
+        },
+
+        renderBook: function(book) {
+            var bookView = new BookView({
+                model: book
+            });
+            this.$('.row').append(bookView.render().el);
         }
     });
 

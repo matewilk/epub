@@ -11,6 +11,17 @@ var files = {
 
             filesDb.saveFile(req.files.file, callback);
         }
+    },
+    'get': function(req, res){
+        if(req.session.user){
+            var callback = function(files){
+                res.send(files);
+            };
+
+            filesDb.getAllFiles(callback);
+        } else {
+            res.send({access: 'denied'});
+        }
     }
 };
 

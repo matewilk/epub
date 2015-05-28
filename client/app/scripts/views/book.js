@@ -9,6 +9,7 @@ define(function(require){
         BookModel = require('models/book');
 
     var BookView = Backbone.View.extend({
+
         template: JST['app/scripts/templates/book.hbs'],
 
         initialize: function () {
@@ -17,6 +18,8 @@ define(function(require){
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
+
+            return this;
         }
     });
 
