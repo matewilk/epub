@@ -32,6 +32,7 @@ define(function(require){
 
         onSuccess: function() {
             //render template but it's already rendered in router - render second time ?
+            this.render();
         },
 
         render: function () {

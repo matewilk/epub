@@ -1,3 +1,15 @@
+.container {
+  .row {
+    .thumbnail {
+      img {
+        @media (min-width:769px) {
+          height: 180px;
+        }
+      }
+    }
+  }
+}
+
 .caption {
   height: 170px;
 

@@ -62,6 +62,9 @@ if (app.get('env') === 'development') {
     app.use(express.static(path.join(__dirname, '../client/.tmp')));
     app.use(express.static(path.join(__dirname, '../client/app')));
 
+    //serve uploads
+    app.use('/static', express.static('uploads'));
+
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
 //        res.render('error', {
