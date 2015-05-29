@@ -6,7 +6,8 @@ define(function(require){
         Login = require('views/login'),
         Library = require('views/library'),
         Footer = require('views/footer'),
-        MainPage = require('views/home');
+        MainPage = require('views/home'),
+        Reader = require('views/reader');
 
     /**
      * TODO write tests for Router
@@ -31,6 +32,7 @@ define(function(require){
             'login': 'showLogin',
             'library': 'showLibrary',
             'books/:id': 'showBook',
+            'read/:id': 'reader',
             '*path': 'defaultRoute'
         },
 
@@ -46,6 +48,11 @@ define(function(require){
         showLibrary: function() {
             this.showView(new Library(), {requiresAuth: true});
             this.header.model.set('title', 'Library');
+        },
+
+        reader: function(id) {
+            this.showView(new Reader(id), {requiresAuth: true});
+            this.header.model.set('title', 'Book');
         },
 
         showView: function(view, options) {

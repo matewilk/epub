@@ -14,6 +14,9 @@ define(function() {
             },
             session: function() {
                 return 'api/session';
+            },
+            reader: function(id) {
+                return 'api/reader/' + id;
             }
         };
 
