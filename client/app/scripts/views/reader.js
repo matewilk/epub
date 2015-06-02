@@ -15,12 +15,22 @@ define(function(require){
         initialize: function (id) {
             this.model.set({id: id});
             this.model.url = apiUrls.getUrl('reader', id);
-            this.model.fetch();
+            this.model.fetch({
+                dataType: 'html'
+            });
             this.listenTo(this.model, 'change', this.render);
         },
 
+        success: function(){
+            this.render();
+        },
+
+        error: function(){
+            debugger;
+        },
+
         render: function () {
-            this.$el.html(this.template(this.model.toJSON()));
+            this.$el.html($.parseHTML(this.model.get('snippet')));
 
             return this;
         }

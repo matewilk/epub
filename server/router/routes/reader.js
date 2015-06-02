@@ -4,4 +4,6 @@ var reader = require('./functions/reader');
 
 router.get('/:id', reader.get);
 
+router.get('/:image_id/:folder/:image', reader.getImage);
+
 module.exports = router;
