@@ -9,9 +9,11 @@ var reader = {
 
         var bookPath = path.join(appDir, '..', "/uploads/", book_id);
 
+        this.epubData;
+
         this.epub = new EPub(bookPath,  "/image/", "/articlewebroot/");
         this.epubParser = EPubParser.open(bookPath, function(err, epubData){
-            debugger;
+            this.epubData = epubData;
         });
         this.epub.on("error", function(err){
             console.log("ERROR\n-----");
@@ -29,14 +31,17 @@ var reader = {
             console.log("\nTOC:\n");
             console.log(epub.toc);
 
+            epub.flow.forEach(function(chapter, index){
+                console.log(chapter.id);
+            });
+
+
             // get first chapter
-            self.epub.getChapter(self.epub.spine.contents[0].id, function (err, data) {
+            self.epub.getChapter(self.epub.flow[2].id, function (err, data) {
                 if (err) {
                     console.log(err);
                     return;
                 }
-                console.log("\nFIRST CHAPTER:\n");
-                console.log(data.substr(0, 512) + "..."); // first 512 bytes
 
                 res.send(data);
             });
