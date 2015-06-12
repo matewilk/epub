@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var fs = require("fs");
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -116,5 +117,12 @@ db.connect(dbUrl, function(err){
  * Routes
  */
 var router = require('./router')(app);
+
+/**
+ * Push state
+ */
+app.get('*', function(req, res){
+    fs.createReadStream("../client/app/index.html").pipe(res);
+});
 
 module.exports = app;

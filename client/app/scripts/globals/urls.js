@@ -4,19 +4,19 @@ define(function() {
     var ApiUrls = (function(){
         var urls = {
             library:  function() {
-                return 'api/library';
+                return '/api/library';
             },
             book: function(id) {
-                return 'api/book/'+ id;
+                return '/api/book/'+ id;
             },
             registration: function() {
-                return 'api/registration';
+                return '/api/registration';
             },
             session: function() {
-                return 'api/session';
+                return '/api/session';
             },
             reader: function(id) {
-                return 'api/reader/' + id;
+                return '/api/reader/' + id;
             }
         };
 

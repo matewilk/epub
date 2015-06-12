@@ -55,5 +55,5 @@ require([
     };
     new Application();
 
-    Backbone.history.start();
+    Backbone.history.start({pushState: true});
 });

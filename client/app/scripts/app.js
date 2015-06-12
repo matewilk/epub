@@ -48,11 +48,13 @@ define(function(require){
         showLibrary: function() {
             this.showView(new Library(), {requiresAuth: true});
             this.header.model.set('title', 'Library');
+            this.navigate('library');
         },
 
         reader: function(id) {
             this.showView(new Reader(id), {requiresAuth: true});
             this.header.model.set('title', 'Book');
+            this.navigate('reader/'+id);
         },
 
         showView: function(view, options) {
