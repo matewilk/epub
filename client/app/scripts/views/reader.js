@@ -1,24 +1,31 @@
 define(function(require){
     'use strict';
 
+    //require('jszip');
+
     var Backbone = require('backbone'),
         JST = require('templates'),
         ReaderModel = require('models/reader'),
-        apiUrls = require('globals/urls');
+        apiUrls = require('globals/urls'),
+        ePub = require('epubjs');
 
     var Reader = Backbone.View.extend({
 
-        model: new ReaderModel(),
+        id: 'reader',
+
+        //model: new ReaderModel(),
+        events: {
+            'click #next': 'nextPage',
+            'click #prev': 'prevPage'
+        },
 
         template: JST['app/scripts/templates/reader.hbs'],
 
         initialize: function (id) {
-            this.model.set({id: id});
-            this.model.url = apiUrls.getUrl('reader', id);
-            this.model.fetch({
-                dataType: 'html'
-            });
-            this.listenTo(this.model, 'change', this.render);
+            this.area = $('<div id="iframe-placeholder"></div>');
+            this.book = ePub("/api/reader/"+id, { restore: true });
+
+            this.book.renderTo(this.area[0]);
         },
 
         success: function(){
@@ -30,9 +37,21 @@ define(function(require){
         },
 
         render: function () {
-            this.$el.html($.parseHTML(this.model.get('snippet')));
+            this.$el.html(this.template());
+
+            this.$('#area').html(this.area);
 
             return this;
+        },
+
+        nextPage: function(e){
+            e.preventDefault();
+            this.book.nextPage();
+        },
+
+        prevPage: function(e){
+            e.preventDefault();
+            this.book.prevPage();
         }
     });
 

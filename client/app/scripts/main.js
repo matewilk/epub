@@ -17,7 +17,9 @@ require.config({
         bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
         handlebars: '../bower_components/handlebars/handlebars',
         templates: '../scripts/templates',
-        "jquery-cookie": '../bower_components/jquery-cookie/jquery.cookie'
+        "jquery-cookie": '../bower_components/jquery-cookie/jquery.cookie',
+        epubjs: "../bower_components/epubjs/build/epub",
+        jszip: "../bower_components/jszip/dist/jszip.min"
     }
 });
 
