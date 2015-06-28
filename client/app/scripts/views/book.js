@@ -25,7 +25,7 @@ define(function(require){
         openBook: function(e){
             e.preventDefault();
 
-            var url = '/read/'+this.model.get('name');
+            var url = '/reader/'+this.model.get('name');
             Backbone.trigger('router:go', url);
         }
     });
