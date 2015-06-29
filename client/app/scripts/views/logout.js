@@ -11,7 +11,8 @@ define(function(require){
         template: JST['app/scripts/templates/logout.hbs'],
 
         events: {
-            'submit form': 'logout'
+            //'submit form': 'logout'
+            'click form button[type="submit"]': 'logout'
         },
 
         initialize: function(){

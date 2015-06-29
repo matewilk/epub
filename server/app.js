@@ -123,6 +123,9 @@ var router = require('./router')(app);
  *
  * change path for production /dist
  */
+//app.post('/reader/logout', function(req, res){
+//    debugger;
+//});
 //handle /reader/logout route
 //handle /reader/ route when user not logged in
 app.get('*', function(req, res){
