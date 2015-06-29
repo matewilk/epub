@@ -123,13 +123,8 @@ var router = require('./router')(app);
  *
  * change path for production /dist
  */
-app.get('/reader/*', function(req, res){
-    res.redirect('/#'+req.url);
-});
-
 //handle /reader/logout route
 //handle /reader/ route when user not logged in
-
 app.get('*', function(req, res){
     fs.createReadStream("../client/app/index.html").pipe(res);
 });
