@@ -57,5 +57,8 @@ require([
     };
     new Application();
 
-    Backbone.history.start({pushState: true, root: '/'});
+    Backbone.history.start({
+        pushState: true,
+        hasChange: false
+    });
 });

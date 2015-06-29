@@ -1,11 +1,14 @@
+@import '../variables';
+
 #reader {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: calc(100% - #{$content-padding});
+  background-color: white;
 
   #area {
     width: 80%;
-    height: 80%;
+    height: 90%;
     margin: 1% auto;
     max-width: 1250px;
 

@@ -7,7 +7,8 @@ define(function(require){
         JST = require('templates'),
         ReaderModel = require('models/reader'),
         apiUrls = require('globals/urls'),
-        ePub = require('epubjs');
+        ePub = require('epubjs'),
+        selection = require('epubhooks/selection');
 
     var Reader = Backbone.View.extend({
 

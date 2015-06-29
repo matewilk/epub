@@ -13,8 +13,19 @@
 @import 'components/book';
 @import 'components/reader';
 
+.header-wrapper {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+
+
+.content {
+  padding-top: $content-padding;
+}
+
 .container {
-  padding-top: 10px;
+  padding-top: $container-padding;
 }
 
 .browsehappy {
@@ -27,6 +38,24 @@
 .col-centered {
   float:none;
   margin: 0 auto;
+}
+
+//adjust btn-responsive sizes for the project
+@media (max-width: 768px) {
+  .btn-responsive {
+    padding:2px 4px;
+    font-size:80%;
+    line-height: 2.5;
+    border-radius:3px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .btn-responsive {
+    padding:4px 9px;
+    font-size:90%;
+    line-height: 1.8;
+  }
 }
 
 
