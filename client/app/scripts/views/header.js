@@ -18,13 +18,19 @@ define(function(require){
             this.model = new HeaderModel();
 
             this.logoutButton = new LogoutView();
-            this.listenTo(this.model, 'change', this.render);
+            this.listenTo(this.model, 'change', this.render);//call this.updateTitle
         },
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
+            //this.$('.header-right).append(this.logoutButton.render().$el)'
             this.$('.header-right').append(this.logoutButton.$el);
         }
+
+        /**
+         * updateTitle
+         * find div and replace innerHTML
+         */
     });
 
     return HeaderView;
