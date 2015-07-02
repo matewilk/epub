@@ -18,11 +18,11 @@ define(function(require) {
         });
 
         it("main apiUrl function should return correct api address", function() {
-            expect(this.getUrl('library')).to.equals('api/library');
+            expect(this.getUrl('library')).to.equals('/api/library');
         });
 
         it("main apiUrl function should return api address with additional params", function() {
-            expect(this.getUrl('book', 3)).to.equal('api/book/3');
+            expect(this.getUrl('book', 3)).to.equal('/api/book/3');
         });
     });
 });

@@ -13,6 +13,7 @@ define(function(require){
          * passed to the client on user login
          */
         defaults: {
+            //backbone can REST only with model id
             id: 1,
             authenticated: false,
             "connect.sid": null,
@@ -65,9 +66,9 @@ define(function(require){
                     }
                 },
                 error: function(model, response){
-                    if('error' in callback) callback.error(model, response);
+                    if('error' in callback) callback.error(model, response.responseJSON[0]);
                 }
-            })
+            });
         }
     });
 });
