@@ -59,7 +59,7 @@ define(function(require){
             beforeEach(function(){
                 this.server = sinon.fakeServer.create();
                 this.server.autoRespond = true;
-                this.server.respondWith("POST", "api/registration", [
+                this.server.respondWith("POST", "/api/registration", [
                     200,
                     { "Content-Type": "application/json" },
                     '[]'

@@ -22,13 +22,13 @@ define(function(require){
         });
 
         it('should have a proper url', function(){
-            expect(this.model.url).to.equal('api/registration');
+            expect(this.model.url).to.equal('/api/registration');
         });
 
         it("should validate form values", function(done){
             this.server = sinon.fakeServer.create();
             this.server.autoRespond = true;
-            this.server.respondWith("POST", "api/registration", [
+            this.server.respondWith("POST", "/api/registration", [
                 200,
                 { "Content-Type": "application/json" },
                 '[]'

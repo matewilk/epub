@@ -13,7 +13,7 @@ define(function(require){
         });
 
         it("should have a proper url", function(){
-            expect(this.model.url).to.equal('api/login');
+            expect(this.model.url).to.equal('/api/session');
         });
 
         it("should have a proper default values", function(){
@@ -23,7 +23,7 @@ define(function(require){
         it("should validate form values", function(done){
             this.server = sinon.fakeServer.create();
             this.server.autoRespond = true;
-            this.server.respondWith("POST", "api/login", [
+            this.server.respondWith("POST", "/api/session", [
                 200,
                 { "Content-Type": "application/json" },
                 '[]'
@@ -64,7 +64,7 @@ define(function(require){
         it("validate function should return 'undefined' on validation success", function(done){
             this.server = sinon.fakeServer.create();
             this.server.autoRespond = true;
-            this.server.respondWith("POST", "api/login", [
+            this.server.respondWith("POST", "/api/session", [
                 200,
                 { "Content-Type": "application/json" },
                 '[]'

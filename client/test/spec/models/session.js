@@ -136,6 +136,9 @@ define(function(require){
                     expect(this.callback.error.callCount).to.equal(1);
                     expect(this.callback.error.called).to.be.ok;
 
+                    //need to restore clock after tick at the end of the test
+                    //otherwise it will affect all the server related test in the suite!
+                    clock.restore();
                     done();
                 }, this);
 
