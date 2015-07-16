@@ -120,7 +120,6 @@ define(function(require){
             });
 
             it("should call callback error on server error", function(done){
-                var clock = sinon.useFakeTimers();
                 this.callback = {
                     success:  sinon.spy(),
                     error: sinon.spy()
@@ -136,16 +135,10 @@ define(function(require){
                     expect(this.callback.error.callCount).to.equal(1);
                     expect(this.callback.error.called).to.be.ok;
 
-                    //need to restore clock after tick at the end of the test
-                    //otherwise it will affect all the server related test in the suite!
-                    clock.restore();
                     done();
                 }, this);
 
                 this.model.check(this.callback);
-
-                //why clock has to be set here at min 10ms?
-                clock.tick(10);
             });
         });
     });
