@@ -47,7 +47,7 @@ define(function(require){
             sinon.stub(this.logout.model, 'destroy');
             this.logout.render();
 
-            this.logout.$el.find('form button[type="submit"]').click();
+            this.logout.$el.find('form').submit();
 
             expect(this.logout.logout.called).to.be.true;
             expect(this.logout.model.destroy.called).to.be.true;
