@@ -29,20 +29,28 @@ define(function(require){
             expect(this.logout.template()).to.equal(this.template())
         });
 
-        it("should call render on initialize", function(){
+        it("should not call render on initialize", function(){
+            expect(this.logout.render.called).to.not.be.true;
+        });
+
+        it("should not render a template on initialize", function(){
+            expect(this.logout.$el.html.calledWith(this.logout.template())).to.not.be.true;
+        });
+
+        it("should call render and render a template on model change", function(){
+            this.logout.model.trigger('change');
+
             expect(this.logout.render.called).to.be.true;
         });
 
-        it("should render a template on initialize", function(){
-            expect(this.logout.$el.html.calledWith(this.logout.template())).to.be.true;
-        });
+        it("should call logout function and model destroy on form submission", function(){
+            sinon.stub(this.logout.model, 'destroy');
+            this.logout.render();
 
-        it("should call logout function on form submission", function(){
-            sinon.stub(this.logout.model, 'save');
-            this.logout.$el.find('form').submit();
+            this.logout.$el.find('form button[type="submit"]').click();
 
             expect(this.logout.logout.called).to.be.true;
-            expect(this.logout.model.save.called).to.be.true;
+            expect(this.logout.model.destroy.called).to.be.true;
         });
     });
 });
