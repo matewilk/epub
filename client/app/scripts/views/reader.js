@@ -1,12 +1,8 @@
 define(function(require){
     'use strict';
 
-    //require('jszip');
-
     var Backbone = require('backbone'),
         JST = require('templates'),
-        ReaderModel = require('models/reader'),
-        apiUrls = require('globals/urls'),
         ePub = require('epubjs'),
         selection = require('epubhooks/selection');
 
@@ -14,7 +10,6 @@ define(function(require){
 
         id: 'reader',
 
-        //model: new ReaderModel(),
         events: {
             'click #next': 'nextPage',
             'click #prev': 'prevPage'
