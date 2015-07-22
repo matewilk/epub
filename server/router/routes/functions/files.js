@@ -13,12 +13,18 @@ var files = {
         }
     },
     'get': function(req, res){
-        if(req.session.user){
-            var callback = function(files){
+        if(req.session.user) {
+            var callback = function (files) {
                 res.send(files);
             };
 
             filesDb.getAllFiles(callback);
+        } else if(req.cookies.guestuser) {
+            var callback = function(file) {
+                res.send(file);
+            };
+
+            filesDb.getGuestUserFile(req, callback);
         } else {
             res.send({access: 'denied'});
         }

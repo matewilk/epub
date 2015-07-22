@@ -5,7 +5,8 @@ var reader = {
     'get': function(req, res){
         var book_id = req.params.id;
 
-        var bookPath = path.join(appDir, '..', "/uploads/", book_id);
+        //correct this path for registered users when functionality implemented
+        var bookPath = path.join(appDir, '..', "/uploads/"+req.cookies.guestuser+"/", book_id);
 
         res.sendFile(bookPath);
     }

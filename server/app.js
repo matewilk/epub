@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var fs = require("fs");
+var extfs = require("extfs");
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -30,12 +31,42 @@ app.use(session({
     })
 }));
 
+//set a cookie for not logged in users
+app.use(function (req, res, next){
+    var cookie = req.cookies.guestuser;
+    if(cookie === undefined){
+        var randomNo = Math.random().toString();
+        randomNo = randomNo.substring(2, randomNo.length);
+        //one year guestuser cookie
+        res.cookie('guestuser', randomNo, {maxAge: 31536000, httpOnly: false});
+    }
+    next();
+});
+
 app.use(multer({
     dest: './uploads/',
+    limits: { fileSize: 10* 1024 * 1024}, //10mb
+    changeDest: function(dest, req, rest) {
+        var newDest = dest + req.cookies.guestuser;
+        var stat = null;
+        try {
+            stat = fs.statSync(newDest);
+        } catch (err) {
+            fs.mkdirSync(newDest);
+        }
+        if (stat && !stat.isDirectory()) {
+            throw new Error('Directory already exists "' + dest + '"');
+        }
+        return newDest;
+    },
     rename: function (fieldname, filename) {
         return filename.replace(/\W+/g, '-').toLowerCase() + Date.now()
     },
     onFileUploadStart: function(file, req, res) {
+        //stop file upload if guestuser dir is not empty (only one book allowed)
+        var isEmptyDir = extfs.isEmptySync(file.path.replace(/\/[^\/]+$/, ''));
+        return isEmptyDir;
+
         console.log('file upload start');
         console.log('fileupload done: '+app.fileuploaddone);
     },

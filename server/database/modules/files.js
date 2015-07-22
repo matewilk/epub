@@ -19,8 +19,16 @@ module.exports = (function(){
         });
     };
 
+    var getGuestUserFile = function(req, callback){
+        var guestuserDir = new RegExp(req.cookies.guestuser);
+        db.get().collection('files').find({path: guestuserDir}).toArray(function(err, file){
+            callback(file);
+        });
+    };
+
     return {
         saveFile: saveFile,
-        getAllFiles: getAllFiles
+        getAllFiles: getAllFiles,
+        getGuestUserFile: getGuestUserFile
     }
 })();
