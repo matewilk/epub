@@ -19,7 +19,8 @@ require.config({
         templates: '../scripts/templates',
         "jquery-cookie": '../bower_components/jquery-cookie/jquery.cookie',
         epubjs: "../bower_components/epubjs/build/epub",
-        jszip: "../bower_components/jszip/dist/jszip.min"
+        jszip: "../bower_components/jszip/dist/jszip.min",
+        dropzone: "../bower_components/dropzone/dist/dropzone-amd-module"
     }
 });
 

@@ -2,7 +2,9 @@ define(function(require){
     'use strict';
 
     var Backbone = require('backbone'),
-        JST = require('templates');
+        JST = require('templates'),
+        Dropzone = require('dropzone');
+        //Dropzone.autoDiscover = false;
 
     var HomePage = Backbone.View.extend({
         template: JST['app/scripts/templates/main.hbs'],
@@ -13,6 +15,21 @@ define(function(require){
 
         render: function () {
             this.$el.html(this.template());
+
+            this.dropzone = new Dropzone(this.$el.find('form')[0],{
+                url: "/api/upload",
+                init: function() {
+                    this.on("addedfile", function(file) {
+                        console.log("added file");
+                    });
+                    this.on("success", function(file) {
+                        //maybe add timeout so the user can see
+                        //that something is going on
+                        //or is it better to popup dialog ?
+                        this.removeFile(file);
+                    });
+                }
+            });
 
             return this;
         },

@@ -6,25 +6,11 @@
             <h4 class="text-center">Read</h4>
             <h4 class="text-center">Translate</h4>
             <h4 class="text-center">Learn</h4>
-            <div class="upload-form">
-                <form id="upload-form" class="upload-form shadow-z-1" method="POST" action="upload" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <div class="input-group">
-                        <span class="input-group-btn">
-                            <span class="btn btn-primary btn-sm btn-file">
-                                Browse&hellip; <input type="file" name="file">
-                            </span>
-                        </span>
-                            <input type="text" class="form-control" readonly="true">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg">Upload</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+            <form class="dropzone">
+                <div class="fallback">
+                    <input name="file" type="file" multiple />
+                </div>
+            </form>
         </div>
     </div>
 </div>
