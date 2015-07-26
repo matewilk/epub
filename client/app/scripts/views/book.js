@@ -9,7 +9,8 @@ define(function(require){
         template: JST['app/scripts/templates/book.hbs'],
 
         events: {
-            'click a#open': 'openBook'
+            'click a#open': 'openBook',
+            'click a#delete': 'deleteBook'
         },
 
         initialize: function () {
@@ -27,6 +28,20 @@ define(function(require){
 
             var url = '/reader/'+this.model.get('name');
             Backbone.trigger('router:go', url);
+        },
+
+        deleteBook: function(e) {
+            e.preventDefault();
+
+            this.model.destroy({
+                success: this.deleteBookCallback.bind(this),
+                wait: true
+            });
+        },
+
+        deleteBookCallback: function() {
+            console.log('book successfully deleted');
+            Backbone.trigger('router:go', '/');
         }
     });
 

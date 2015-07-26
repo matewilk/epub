@@ -5,6 +5,8 @@ define(function (require) {
 
     var BookModel = Backbone.Model.extend({
 
+        idAttribute: '_id',
+
         defaults: {
             title: 'Book Title',
             author: 'Unknown Author',

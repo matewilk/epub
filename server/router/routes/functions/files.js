@@ -1,4 +1,5 @@
-var filesDb = require('../../../database/modules/files');
+var filesDb = require('../../../database/modules/files'),
+    fs = require('fs');
 
 var files = {
     'post': function(req, res){
@@ -13,21 +14,30 @@ var files = {
         }
     },
     'get': function(req, res){
+        var callback = function (files) {
+            res.send(files);
+        };
         if(req.session.user) {
-            var callback = function (files) {
-                res.send(files);
-            };
-
             filesDb.getAllFiles(callback);
         } else if(req.cookies.guestuser) {
-            var callback = function(file) {
-                res.send(file);
-            };
-
             filesDb.getGuestUserFile(req, callback);
         } else {
             res.send({access: 'denied'});
         }
+    },
+    'delete': function(req, res){
+        var id = req.params.id;
+        var callback = function(filePath, result) {
+            if(result === 1){
+                fs.unlink(filePath, function(){
+                    res.send(result);
+                });
+            } else {
+                res.send(result);
+            }
+
+        };
+        filesDb.deleteBook(id, callback);
     }
 };
 

@@ -1,6 +1,7 @@
 module.exports = (function(){
 
-    var db = require('../../database');
+    var db = require('../../database'),
+        ObjectId = require('mongodb').ObjectID;
 
     var saveFile = function(file, callback){
         db.get().collection('files').insert(file, function(err, result){
@@ -26,9 +27,23 @@ module.exports = (function(){
         });
     };
 
+    var deleteBook = function(id, callback){
+        db.get().collection('files').findOne({_id: ObjectId(id)}, {path: 1}, function(err, file){
+            if(err) return err;
+
+            var filePath = file.path;
+            db.get().collection('files').remove({_id: ObjectId(id)}, function(err, result){
+                if(err) return err;
+
+                callback(filePath, result.result.n);
+            })
+        });
+    };
+
     return {
         saveFile: saveFile,
         getAllFiles: getAllFiles,
-        getGuestUserFile: getGuestUserFile
+        getGuestUserFile: getGuestUserFile,
+        deleteBook: deleteBook
     }
 })();
