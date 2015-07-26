@@ -27,6 +27,7 @@ define(function(require){
                         //that something is going on
                         //or is it better to popup dialog ?
                         this.removeFile(file);
+                        Backbone.trigger('router:go', '/library');
                     });
                 }
             });

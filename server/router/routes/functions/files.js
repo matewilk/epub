@@ -30,10 +30,10 @@ var files = {
         var callback = function(filePath, result) {
             if(result === 1){
                 fs.unlink(filePath, function(){
-                    res.send(result);
+                    res.send({filesDeleted: result});
                 });
             } else {
-                res.send(result);
+                res.send({filesDeleted: result});
             }
 
         };
