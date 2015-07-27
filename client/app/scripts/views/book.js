@@ -40,7 +40,6 @@ define(function(require){
         },
 
         deleteBookCallback: function() {
-            console.log('book successfully deleted');
             Backbone.trigger('router:go', '/');
         }
     });

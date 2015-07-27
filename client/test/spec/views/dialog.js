@@ -9,7 +9,7 @@ define(function(require){
     describe('Dialog View', function(){
         beforeEach(function(){
             sinon.spy(Dialog.prototype, 'render');
-            this.template = JST['app/scripts/templates/dialog.hbs']
+            this.template = JST['app/scripts/templates/dialog.hbs'];
             this.dialog = new Dialog({title: 'Test', message: 'Dialog message'});
         });
 

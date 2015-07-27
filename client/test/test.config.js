@@ -14,8 +14,8 @@ require.config({
         underscore: "../app/bower_components/underscore/underscore",
         handlebars: '../app/bower_components/handlebars/handlebars',
         templates: "../.tmp/scripts/templates",
-        "jquery-cookie": '../app/bower_components/jquery-cookie/jquery.cookie'
-
+        "jquery-cookie": '../app/bower_components/jquery-cookie/jquery.cookie',
+        dropzone: "../app/bower_components/dropzone/dist/dropzone-amd-module"
     }
 });
 
@@ -37,6 +37,7 @@ require([
     "spec/views/login",
     "spec/views/logout",
     "spec/views/home",
+    "spec/views/book",
 
     //structure
     "spec/urls"
