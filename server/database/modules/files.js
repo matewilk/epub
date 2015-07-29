@@ -1,6 +1,7 @@
 module.exports = (function(){
 
     var db = require('../../database'),
+        extfs = require("extfs"),
         ObjectId = require('mongodb').ObjectID;
 
     var saveFile = function(file, callback){
@@ -22,7 +23,11 @@ module.exports = (function(){
 
     var getGuestUserFile = function(req, callback){
         var guestuserDir = new RegExp(req.cookies.guestuser);
-        db.get().collection('files').find({path: guestuserDir}).toArray(function(err, file){
+        db.get().collection('files').findOne({path: guestuserDir}, function(err, file){
+            //check if file exists in the dir (is in sync with the db)
+            //or if file path exists (if not - first time guestuser)
+            var isEmptyDir = file && file.path ? extfs.isEmptySync(file.path.replace(/\/[^\/]+$/, '')) : true;
+            file = isEmptyDir ? null : file;
             callback(file);
         });
     };

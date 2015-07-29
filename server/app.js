@@ -38,7 +38,7 @@ app.use(function (req, res, next){
         var randomNo = Math.random().toString();
         randomNo = randomNo.substring(2, randomNo.length);
         //one year guestuser cookie
-        res.cookie('guestuser', randomNo, {maxAge: 31536000, httpOnly: false});
+        res.cookie('guestuser', randomNo, { maxAge: 31556952000, httpOnly: false});
     }
     next();
 });
@@ -65,21 +65,20 @@ app.use(multer({
     onFileUploadStart: function(file, req, res) {
         //stop file upload if guestuser dir is not empty (only one book allowed)
         var isEmptyDir = extfs.isEmptySync(file.path.replace(/\/[^\/]+$/, ''));
-        return isEmptyDir;
-
-        console.log('file upload start');
-        console.log('fileupload done: '+app.fileuploaddone);
+        if(!isEmptyDir){
+            app.fileuploadcancelled = true;
+            return isEmptyDir;
+        }
     },
     onFileUploadData: function(file, data, req, res) {
         console.log(data.length + ' of ' + file.fieldname + ' arrived');
     },
     onFileUploadComplete: function(file, req, res) {
-        console.log('file upload complete');
         app.fileuploaddone = true;
-        console.log('fileupload done: '+app.fileuploaddone);
     }
 }));
 app.fileuploaddone = false;
+app.fileuploadcancelled = false;
 
 
 // error handlers

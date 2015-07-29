@@ -7,10 +7,13 @@ var files = {
 
             var callback = function(noFilesInserted){
                 req.app.fileuploaddone = false;
-                res.end(noFilesInserted + " File uploaded.");
+                res.json({uploaded: true, filesUploaded: noFilesInserted});
             };
 
             filesDb.saveFile(req.files.file, callback);
+        }
+        else if(req.app.fileuploadcancelled === true){
+            res.json({uploaded: false, filesUploaded: 0});
         }
     },
     'get': function(req, res){

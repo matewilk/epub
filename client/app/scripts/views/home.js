@@ -22,12 +22,17 @@ define(function(require){
                     this.on("addedfile", function(file) {
                         console.log("added file");
                     });
-                    this.on("success", function(file) {
+                    this.on("success", function(file, response) {
                         //maybe add timeout so the user can see
                         //that something is going on
                         //or is it better to popup dialog ?
                         this.removeFile(file);
-                        Backbone.trigger('router:go', '/library');
+                        if(response.uploaded){
+                            Backbone.trigger('router:go', '/library');
+                        } else {
+                            //TODO: show appropriate dialog
+                            alert('Sorry, guest users can upload only one book');
+                        }
                     });
                 }
             });

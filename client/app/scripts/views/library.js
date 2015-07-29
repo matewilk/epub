@@ -36,7 +36,9 @@ define(function(require){
         },
 
         render: function () {
-            this.$el.html(this.template());
+            this.$el.html(this.template({
+                count: this.collection.length
+            }));
 
             this.collection.each(function(item) {
                 this.renderBook(item);
