@@ -127,8 +127,7 @@ if (app.get('env') === 'production') {
  */
 var dbUrl;
 if(app.get('env') === 'development'){
-    //dbUrl = "mongodb://localhost:27017/test";
-    dbUrl = process.env.MONGOLAB_URI;
+    dbUrl = process.env.MONGOLAB_URI || "mongodb://localhost:27017/test";;
 }
 if(app.get('env') === 'production'){
     dbUrl = process.env.MONGOLAB_URI;
