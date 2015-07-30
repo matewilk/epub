@@ -133,7 +133,7 @@ if(app.get('env') === 'production'){
     dbUrl = process.env.MONGOLAB_URI;
 }
 var db = require('./database');
-
+dbUrl = "mongodb://heroku_7t803rsz:kouv7evu9snb0tsr5r0iacnqkd@ds029787.mongolab.com:29787/heroku_7t803rsz";
 db.connect(dbUrl, function(err){
     if(err) {
         console.log('Unable to connect to MongoDB');
