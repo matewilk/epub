@@ -127,10 +127,11 @@ if (app.get('env') === 'production') {
  */
 var dbUrl;
 if(app.get('env') === 'development'){
-    dbUrl = "mongodb://localhost:27017/test";
+    //dbUrl = "mongodb://localhost:27017/test";
+    dbUrl = process.env.MONGOLAB_URI;
 }
 if(app.get('env') === 'production'){
-    dbUrl = "NOT KNOWN YET"
+    dbUrl = process.env.MONGOLAB_URI;
 }
 var db = require('./database');
 
