@@ -7,7 +7,9 @@ var state = {
 exports.connect = function(url, done) {
     if(state.db) return done();
 
+    console.log("trying to connect to mongodb");
     MongoClient.connect(url, function(err, db){
+        console.log("mongodb callback");
         if(err) return done(err);
         state.db = db;
         done();
