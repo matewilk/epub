@@ -9,6 +9,12 @@ define(function(require){
             var selection = $(renderer.element).contents()[0].getSelection().toString();
             console.log(selection);
         });
+
+        $(renderer.element).contents().find('body').bind('touchend', function(){
+
+            var selection = $(renderer.element).contents()[0].getSelection().toString();
+            console.log('mobile: '+selection);
+        });
         callback();
     };
 
