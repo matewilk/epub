@@ -14,7 +14,7 @@ require.config({
         jquery: '../bower_components/jquery/dist/jquery',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/lodash/dist/lodash',
-        bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
+        bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
         handlebars: '../bower_components/handlebars/handlebars',
         templates: '../scripts/templates',
         "jquery-cookie": '../bower_components/jquery-cookie/jquery.cookie',
@@ -27,7 +27,8 @@ require.config({
 require([
     'backbone',
     'app',
-    'globals/session'
+    'globals/session',
+    'bootstrap'
 ], function (Backbone, Application, SessionModel) {
 
     $(document).on('change', '.btn-file :file', function() {

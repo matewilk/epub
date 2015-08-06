@@ -38,6 +38,7 @@ require([
     "spec/views/logout",
     "spec/views/home",
     "spec/views/book",
+    "spec/views/menu",
 
     //structure
     "spec/urls"

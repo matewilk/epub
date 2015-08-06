@@ -6,9 +6,10 @@ define(function(require){
         Backbone = require('backbone'),
         JST = require('templates'),
         HeaderModel = require('models/header'),
-        LogoutView = require('views/logout');
+        LogoutView = require('views/logout'),
+        MainMenu = require('views/menu');
 
-    var HeaderView = Backbone.View.extend({
+    return Backbone.View.extend({
 
         template: JST['app/scripts/templates/header.hbs'],
 
@@ -18,6 +19,7 @@ define(function(require){
             this.model = new HeaderModel();
 
             this.logoutButton = new LogoutView();
+            this.mainMenu = new MainMenu();
             this.listenTo(this.model, 'change:title', this.updateTitle);
         },
 
@@ -25,6 +27,7 @@ define(function(require){
             this.$el.html(this.template(this.model.toJSON()));
             //this.$('.header-right).append(this.logoutButton.render().$el)'
             this.$('.header-right').append(this.logoutButton.$el);
+            this.$('.header-right').append(this.mainMenu.render().$el);
         },
 
         /**
@@ -35,6 +38,4 @@ define(function(require){
             this.$('.header-left #title').text(this.model.get('title'));
         }
     });
-
-    return HeaderView;
 });

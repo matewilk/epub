@@ -38,7 +38,7 @@ define(function(require){
         redirect: function(model, response){
             //is it correct way to check on response and not on model itself ?
             if(!response.authenticated){
-                Backbone.trigger('router:go', 'login')
+                Backbone.trigger('router:go', 'login');
             }
         }
 
