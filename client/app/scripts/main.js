@@ -4,16 +4,14 @@
 require.config({
     shim: {
         bootstrap: {
-            deps: ['jquery'],
+            deps: ["jquery"],
             exports: 'jquery'
+        },
+        ripples : {
+            deps: ["jquery", 'arrive']
         },
         material: {
-            deps: ['jquery', 'ripples'],
-            exports: 'jquery'
-        },
-        ripples: {
-            deps: ['jquery'],
-            exports: 'jquery'
+            deps: ["bootstrap", 'ripples']
         }
     },
     paths: {
@@ -24,6 +22,7 @@ require.config({
         underscore: '../bower_components/lodash/dist/lodash',
         bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
         material: '../bower_components/bootstrap-material-design/dist/js/material',
+        arrive: '../bower_components/arrive/src/arrive',
         ripples: '../bower_components/bootstrap-material-design/dist/js/ripples',
         handlebars: '../bower_components/handlebars/handlebars',
         templates: '../scripts/templates',
