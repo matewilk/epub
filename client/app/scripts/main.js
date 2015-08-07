@@ -4,17 +4,30 @@
 require.config({
     shim: {
         bootstrap: {
-            deps: ['jquery'],
+            deps: ["jquery", "jquery-easing"],
             exports: 'jquery'
+        },
+        ripples : {
+            deps: ["jquery", 'arrive']
+        },
+        material: {
+            deps: ["bootstrap", 'ripples']
+        },
+        "jquery-easing": {
+            deps: ["jquery"]
         }
     },
     paths: {
         scripts: '../scripts',
         globals: './globals',
         jquery: '../bower_components/jquery/dist/jquery',
+        "jquery-easing": '../bower_components/jquery-easing-original/jquery.easing',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/lodash/dist/lodash',
-        bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
+        bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
+        material: '../bower_components/bootstrap-material-design/dist/js/material',
+        arrive: '../bower_components/arrive/src/arrive',
+        ripples: '../bower_components/bootstrap-material-design/dist/js/ripples',
         handlebars: '../bower_components/handlebars/handlebars',
         templates: '../scripts/templates',
         "jquery-cookie": '../bower_components/jquery-cookie/jquery.cookie',
@@ -27,31 +40,14 @@ require.config({
 require([
     'backbone',
     'app',
-    'globals/session'
+    'globals/session',
+    'bootstrap',
+    'material'
 ], function (Backbone, Application, SessionModel) {
 
-    $(document).on('change', '.btn-file :file', function() {
-        var input = $(this),
-            numFiles = input.get(0).files ? input.get(0).files.length : 1,
-            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-        input.trigger('fileselect', [numFiles, label]);
-    });
-
     $(document).ready( function() {
-        $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
-
-            var input = $(this).parents('.input-group').find(':text'),
-                log = numFiles > 1 ? numFiles + ' files selected' : label;
-
-            if( input.length ) {
-                input.val(log);
-            } else {
-                if( log ) alert(log);
-            }
-
-        });
+        $.material.init();
     });
-
 
     window.App = {
         session: SessionModel

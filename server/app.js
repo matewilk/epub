@@ -127,13 +127,14 @@ if (app.get('env') === 'production') {
  */
 var dbUrl;
 if(app.get('env') === 'development'){
+    //"mongodb://testuser:testpassword@ds029787.mongolab.com:29787/heroku_7t803rsz"
     dbUrl = process.env.MONGOLAB_URI || "mongodb://localhost:27017/test";;
 }
 if(app.get('env') === 'production'){
     dbUrl = process.env.MONGOLAB_URI;
 }
 var db = require('./database');
-dbUrl = "mongodb://testuser:testpassword@ds029787.mongolab.com:29787/heroku_7t803rsz";
+
 db.connect(dbUrl, function(err){
     if(err) {
         console.log('Unable to connect to MongoDB');

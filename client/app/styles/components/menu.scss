@@ -1,0 +1,11 @@
+.dropdown {
+  .navbar-toggle .icon-bar {
+    background-color: white;
+  }
+  @media (max-width: $screen-sm-min) {
+    .dropdown-menu {
+      margin-top: 58px;
+    }
+  }
+}
+
