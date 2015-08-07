@@ -4,7 +4,7 @@
 require.config({
     shim: {
         bootstrap: {
-            deps: ["jquery"],
+            deps: ["jquery", "jquery-easing"],
             exports: 'jquery'
         },
         ripples : {
@@ -12,12 +12,16 @@ require.config({
         },
         material: {
             deps: ["bootstrap", 'ripples']
+        },
+        "jquery-easing": {
+            deps: ["jquery"]
         }
     },
     paths: {
         scripts: '../scripts',
         globals: './globals',
         jquery: '../bower_components/jquery/dist/jquery',
+        "jquery-easing": '../bower_components/jquery-easing-original/jquery.easing',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/lodash/dist/lodash',
         bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',

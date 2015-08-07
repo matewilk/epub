@@ -3,10 +3,10 @@ define(function(require){
 
     var Backbone = require('backbone'),
         JST = require('templates'),
-        Dropzone = require('dropzone');
-        //Dropzone.autoDiscover = false;
+        Dropzone = require('dropzone'),
+        Dialog = require('views/dialog');
 
-    var HomePage = Backbone.View.extend({
+    return Backbone.View.extend({
         template: JST['app/scripts/templates/main.hbs'],
 
         events: {
@@ -25,6 +25,11 @@ define(function(require){
                         //or is it better to popup dialog ?
                         this.removeFile(file);
                         if(response.uploaded){
+                            this.dialog = new Dialog({
+                                title: 'Well done!',
+                                message: 'The book has been successfully uploaded'
+                            });
+
                             Backbone.trigger('router:go', '/library');
                         } else {
                             //TODO: show appropriate dialog
@@ -37,6 +42,4 @@ define(function(require){
             return this;
         }
     });
-
-    return HomePage;
 });

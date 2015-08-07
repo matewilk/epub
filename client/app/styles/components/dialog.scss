@@ -1,0 +1,10 @@
+.dialog {
+  top: 0;
+  width:60%;
+  z-index: 9999;
+  .alert {
+    @include border-radius( 5px );
+    //to be able to animate
+    position: relative;
+  }
+}

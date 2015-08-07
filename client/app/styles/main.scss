@@ -5,6 +5,7 @@
 //dropzone
 @import '../bower_components/dropzone/dist/dropzone.css';
 //project files
+@import 'mixins';
 @import 'variables';
 
 @import 'components/header';
@@ -14,6 +15,7 @@
 @import 'components/book';
 @import 'components/reader';
 @import 'components/menu';
+@import 'components/dialog';
 
 .header-wrapper {
   position: fixed;
@@ -21,6 +23,13 @@
   z-index: 999;
 }
 
+.absolute-centered {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
 
 .content {
   padding-top: $content-padding;
