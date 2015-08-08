@@ -2,14 +2,11 @@ define(function(require){
     'use strict';
 
     var Backbone = require('backbone'),
-        JST = require('templates'),
-        DialogModel = require('models/dialog');
+        JST = require('templates');
 
     return Backbone.View.extend({
 
         className: 'dialog invisible absolute-centered',
-
-        model: new DialogModel(),
 
         template: JST['app/scripts/templates/dialog.hbs'],
 
@@ -19,20 +16,14 @@ define(function(require){
         delay: 5000,
 
         initialize: function(options){
-            this.model.set(
-                {
-                    title: options.title,
-                    message: options.message,
-                    type: options.type || 'success'
-                }
-            );
+            this.options = options;
 
             $('body').append(this.render().$el);
             this.show();
         },
 
         render: function(){
-            this.$el.html(this.template(this.model.attributes));
+            this.$el.html(this.template(this.options));
 
             return this;
         },

@@ -2,7 +2,8 @@ define(function(require){
     'use strict';
 
     var Backbone = require('backbone'),
-        JST = require('templates');
+        JST = require('templates'),
+        Modal = require('views/modal');
 
     var BookView = Backbone.View.extend({
 
@@ -33,10 +34,15 @@ define(function(require){
         deleteBook: function(e) {
             e.preventDefault();
 
-            this.model.destroy({
-                success: this.deleteBookCallback.bind(this),
-                wait: true
+            this.modal = new Modal({
+                callback: this.model.destroy,
+                title: 'Delete book',
+                message: 'Are you sure you want to delete the book?'
             });
+//            this.model.destroy({
+//                success: this.deleteBookCallback.bind(this),
+//                wait: true
+//            });
         },
 
         deleteBookCallback: function() {
