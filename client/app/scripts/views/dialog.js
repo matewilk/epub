@@ -40,13 +40,12 @@ define(function(require){
         },
 
         hide: function(){
-
             this.$alert.animate({top: -this.height}, 400, 'easeInOutElastic', function(){
                 this.$el.addClass('invisible');
             }.bind(this));
 
-            //view removes itself after delay + 1000ms (in case any animation applies)
-            _.delay(_.bind(this.remove, this), this.delay + 1000);
+            //view removes itself after 1000ms (in case any animation applies)
+            _.delay(_.bind(this.remove, this), 1000);
         }
     });
 });

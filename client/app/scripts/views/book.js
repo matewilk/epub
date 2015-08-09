@@ -35,14 +35,17 @@ define(function(require){
             e.preventDefault();
 
             this.modal = new Modal({
-                callback: this.model.destroy,
+                callback: this.deleteSuccessCallback.bind(this),
                 title: 'Delete book',
                 message: 'Are you sure you want to delete the book?'
             });
-//            this.model.destroy({
-//                success: this.deleteBookCallback.bind(this),
-//                wait: true
-//            });
+        },
+
+        deleteSuccessCallback: function() {
+            this.model.destroy({
+                success: this.deleteBookCallback,
+                wait: true
+            });
         },
 
         deleteBookCallback: function() {

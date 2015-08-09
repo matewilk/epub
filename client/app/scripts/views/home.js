@@ -27,7 +27,8 @@ define(function(require){
                         if(response.uploaded){
                             this.dialog = new Dialog({
                                 title: 'Well done!',
-                                message: 'The book has been successfully uploaded'
+                                message: 'The book has been successfully uploaded',
+                                type: 'success'
                             });
 
                             Backbone.trigger('router:go', '/library');
