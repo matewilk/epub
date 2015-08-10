@@ -8,10 +8,6 @@ define(function(require){
 
         className: 'modal',
 
-        attributes: {
-            "data-easein": "bounceDownI"
-        },
-
         template: JST['app/scripts/templates/modal.hbs'],
 
         events: {
