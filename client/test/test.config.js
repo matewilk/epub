@@ -23,7 +23,6 @@ require([
     //models
     "spec/models/book",
     "spec/models/registration",
-    "spec/models/dialog",
     "spec/models/login",
     "spec/models/session",
 

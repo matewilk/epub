@@ -8,6 +8,10 @@ define(function(require){
 
         className: 'modal',
 
+        attributes: {
+            "data-easein": "bounceDownI"
+        },
+
         template: JST['app/scripts/templates/modal.hbs'],
 
         events: {
@@ -36,17 +40,16 @@ define(function(require){
                 self.height = dialog.height() + parseInt(dialog.css('margin-top'));
                 dialog.css({top: -self.height});
                 dialog.removeClass('invisible');
-                dialog.animate({top: 10}, {duration: 400, easing: 'easeOutElastic'});
+                dialog.velocity({top: 10}, 390, [500, 20]);
 
             });
 
             self.on('hide.bs.modal', function(){
-                //60 added to animation so that shadow is hiding as well
-                dialog.animate({top: -self.height - 80}, 400, 'easeInOutElastic', function(){
+                //80 added to animation so that shadow is hiding as well
+                dialog.velocity({top: -self.height - 80}, 400, [500, 20], function(){
                     $(self).addClass('invisible');
+                    self.remove();
                 });
-
-                _.delay(_.bind(self.remove, self), 1000);
             });
 
             //prevent hiding the dialog before hide animation ends

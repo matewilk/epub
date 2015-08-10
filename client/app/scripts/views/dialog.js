@@ -34,18 +34,16 @@ define(function(require){
 
             this.$alert.css({top: -this.height});
             this.$el.removeClass('invisible');
-            this.$alert.animate({top: 10}, {duration: 400, easing: 'easeOutElastic'});
+            this.$alert.velocity({top: 10}, 390, [500, 20]);
 
             _.delay(_.bind(this.hide, this), this.delay);
         },
 
         hide: function(){
-            this.$alert.animate({top: -this.height}, 400, 'easeInOutElastic', function(){
+            this.$alert.velocity({top: -this.height}, 400, [500, 20], function(){
                 this.$el.addClass('invisible');
+                this.remove();
             }.bind(this));
-
-            //view removes itself after 1000ms (in case any animation applies)
-            _.delay(_.bind(this.remove, this), 1000);
         }
     });
 });

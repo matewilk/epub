@@ -4,7 +4,7 @@
 require.config({
     shim: {
         bootstrap: {
-            deps: ["jquery", "jquery-easing"],
+            deps: ["jquery"],
             exports: 'jquery'
         },
         ripples : {
@@ -13,7 +13,7 @@ require.config({
         material: {
             deps: ["bootstrap", 'ripples']
         },
-        "jquery-easing": {
+        velocity: {
             deps: ["jquery"]
         }
     },
@@ -21,7 +21,6 @@ require.config({
         scripts: '../scripts',
         globals: './globals',
         jquery: '../bower_components/jquery/dist/jquery',
-        "jquery-easing": '../bower_components/jquery-easing-original/jquery.easing',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/lodash/dist/lodash',
         bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
@@ -33,7 +32,8 @@ require.config({
         "jquery-cookie": '../bower_components/jquery-cookie/jquery.cookie',
         epubjs: "../bower_components/epubjs/build/epub",
         jszip: "../bower_components/jszip/dist/jszip.min",
-        dropzone: "../bower_components/dropzone/dist/dropzone-amd-module"
+        dropzone: "../bower_components/dropzone/dist/dropzone-amd-module",
+        velocity: "../bower_components/velocity/velocity"
     }
 });
 
@@ -42,7 +42,8 @@ require([
     'app',
     'globals/session',
     'bootstrap',
-    'material'
+    'material',
+    'velocity'
 ], function (Backbone, Application, SessionModel) {
 
     $(document).ready( function() {

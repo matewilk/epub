@@ -2,7 +2,7 @@ define(function(require){
     'use strict';
 
     var Dialog = require('views/dialog'),
-        DialogModel = require('models/dialog'),
+        //DialogModel = require('models/dialog'),
         $ = require('jquery'),
         JST = require('templates');
 
