@@ -2,7 +2,8 @@ define(function(require){
     'use strict';
 
     var Dialog = require('views/dialog'),
-        JST = require('templates');
+        JST = require('templates'),
+        animations = require('helpers/animations');
 
     return Dialog.extend({
 
@@ -34,18 +35,14 @@ define(function(require){
             self.on('show.bs.modal', function(e){
                 self.css({display: 'block'});
                 self.height = dialog.height() + parseInt(dialog.css('margin-top'));
-                dialog.css({top: -self.height});
-                dialog.removeClass('invisible');
-                dialog.velocity({top: 10}, 390, [500, 20]);
+
+                animations.dialogShow(dialog, self.height);
 
             });
 
             self.on('hide.bs.modal', function(){
                 //80 added to animation so that shadow is hiding as well
-                dialog.velocity({top: -self.height - 80}, 400, [500, 20], function(){
-                    $(self).addClass('invisible');
-                    self.remove();
-                });
+                animations.dialogHide(dialog, self.height + 80, self);
             });
 
             //prevent hiding the dialog before hide animation ends

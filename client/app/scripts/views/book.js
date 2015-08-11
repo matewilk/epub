@@ -3,7 +3,8 @@ define(function(require){
 
     var Backbone = require('backbone'),
         JST = require('templates'),
-        Modal = require('views/modal');
+        Modal = require('views/modal'),
+        Dialog = require('views/dialog');
 
     var BookView = Backbone.View.extend({
 
@@ -50,6 +51,11 @@ define(function(require){
 
         deleteBookCallback: function() {
             Backbone.trigger('router:go', '/');
+            new Dialog({
+                type: 'info',
+                title: 'Book deleted!',
+                message: 'The book has been successfully deleted from the library'
+            });
         }
     });
 
