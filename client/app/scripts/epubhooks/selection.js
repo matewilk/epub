@@ -2,7 +2,7 @@ define(function(require){
     'use strict';
 
     var React = require('react'),
-        Selection = require('views/react/test');
+        Selection = require('views/react/dictionaryPopUp');
 
     require('epubjs');
 
