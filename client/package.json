@@ -13,7 +13,9 @@
     "grunt-contrib-watch": "^0.6.1",
     "jshint-stylish": "^1.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt-react": "^0.12.2"
+  },
   "engines": {
     "node": ">=0.10.0"
   }

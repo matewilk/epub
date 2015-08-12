@@ -1,6 +1,9 @@
 define(function(require){
     'use strict';
 
+    var React = require('react'),
+        Selection = require('views/react/test');
+
     require('epubjs');
 
     EPUBJS.Hooks.register("beforeChapterDisplay").transculsions = function(callback, renderer){
@@ -15,15 +18,17 @@ define(function(require){
 
             document.body.appendChild(element);
 
-            element.style.width = '50px';
-            element.style.height = '50px';
-            element.style.backgroundColor = 'red';
-            element.style.position = 'absolute';
+            element.className = 'dictionary-pop-up';
+            //element.innerHTML = selection;
 
-            element.style.top =(range.bottom - relative.top)+'px';
+            //added 50px to top as the content is moved 50px because of the header
+            //20px for the element to be above the selected word
+            element.style.top =(range.bottom - relative.top + 50 - 20)+'px';
+
+            //added 10% of relative.right - margins on the sides of the book
             element.style.right=-(range.right - relative.right + ((10 / 100)*relative.right))+'px';
 
-            console.log(selection);
+            React.render(React.createElement(Selection, {selection: selection}), element);
         });
 
         $(renderer.element).contents().find('body').bind('touchend', function(){

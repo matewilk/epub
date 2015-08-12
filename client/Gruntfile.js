@@ -71,6 +71,20 @@ module.exports = function(grunt){
                     }
                 ]
             }
+        },
+
+        react: {
+            dynamic_mappings: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'app/scripts/views/react',
+                        src: ['**/*.jsx'],
+                        dest: 'app/scripts/views/react',
+                        ext: '.js'
+                    }
+                ]
+            }
         }
     });
 
@@ -80,8 +94,9 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-react');
 
-    grunt.registerTask('default', ['handlebars', /*'jshint',*/ 'sass']);
+    grunt.registerTask('default', ['handlebars', /*'jshint',*/ 'sass', 'react']);
 
     grunt.registerTask('build', ['handlebars', 'sass','clean', 'copy']);
 };

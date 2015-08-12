@@ -33,7 +33,9 @@ require.config({
         epubjs: "../bower_components/epubjs/build/epub",
         jszip: "../bower_components/jszip/dist/jszip.min",
         dropzone: "../bower_components/dropzone/dist/dropzone-amd-module",
-        velocity: "../bower_components/velocity/velocity"
+        velocity: "../bower_components/velocity/velocity",
+        react: "../bower_components/react/react",
+        "backbone-react": "../bower_components/backbone-react-component/lib/component"
     }
 });
 
