@@ -29,6 +29,19 @@ module.exports = function(grunt){
                 }
             }
         },
+        react: {
+            dynamic_mappings: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'app/scripts/views/react',
+                        src: ['**/*.jsx'],
+                        dest: 'app/scripts/views/react',
+                        ext: '.js'
+                    }
+                ]
+            }
+        },
 
         watch: {
             handlebars: {
@@ -41,6 +54,13 @@ module.exports = function(grunt){
             sass: {
                 files: ['app/styles/**/*.scss'],
                 tasks: ['sass'],
+                options: {
+                    livereload: true
+                }
+            },
+            react: {
+                files: ['app/scripts/views/react/*.jsx'],
+                tasks: ['react'],
                 options: {
                     livereload: true
                 }
@@ -68,20 +88,6 @@ module.exports = function(grunt){
                         cwd: '.tmp',
                         src: ['**'],
                         dest: '../server/dist/'
-                    }
-                ]
-            }
-        },
-
-        react: {
-            dynamic_mappings: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: 'app/scripts/views/react',
-                        src: ['**/*.jsx'],
-                        dest: 'app/scripts/views/react',
-                        ext: '.js'
                     }
                 ]
             }

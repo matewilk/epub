@@ -1,14 +1,19 @@
 define(function(require){
     'use strict';
 
-    var React = require('react'),
-        Backbone = require('backbone');
+    var React = require('react');
 
     require('backbone-react');
 
     return React.createClass({
         render: function() {
-            return React.createElement("div", null, this.props.selection);
+            var divStyle = {
+                top: this.props.top,
+                right: this.props.right
+            };
+            return (
+                React.createElement("div", {className: "dictionary-pop-up", style: divStyle}, this.props.selection)
+            )
         }
     });
 });
