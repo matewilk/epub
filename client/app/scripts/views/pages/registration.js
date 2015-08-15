@@ -3,7 +3,7 @@ define(function(require){
 
     var JST = require('templates'),
         RegistrationModel = require('models/registration'),
-        FormView = require('views/form');
+        FormView = require('views/components/form');
 
     return FormView.extend({
 

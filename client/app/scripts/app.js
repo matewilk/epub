@@ -2,12 +2,12 @@ define(function(require){
     'use strict';
 
     var Backbone = require('backbone'),
-        Header = require('views/header'),
-        Login = require('views/login'),
-        Library = require('views/library'),
-        Footer = require('views/footer'),
-        MainPage = require('views/home'),
-        Reader = require('views/reader');
+        Header = require('views/components/header'),
+        Login = require('views/pages/login'),
+        Library = require('views/pages/library'),
+        Footer = require('views/components/footer'),
+        MainPage = require('views/pages/home'),
+        Reader = require('views/pages/reader');
 
     /**
      * TODO write tests for Router
@@ -48,13 +48,11 @@ define(function(require){
         showLibrary: function() {
             this.showView(new Library(), {requiresAuth: false});
             this.header.model.set('title', 'Library');
-            //this.navigate('library', true);
         },
 
         reader: function(id) {
             this.showView(new Reader(id), {requiresAuth: false});
             this.header.model.set('title', 'Book');
-            //this.navigate('reader/'+id, true);
         },
 
         showView: function(view, options) {

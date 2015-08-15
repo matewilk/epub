@@ -1,7 +1,7 @@
 define(function(require){
    'use strict';
 
-    var BookView = require('views/book'),
+    var BookView = require('views/components/book'),
         JST = require('templates');
 
     describe('Book View', function(){

@@ -1,7 +1,7 @@
 define(function(require){
     'use strict';
 
-    var FormView = require('views/form');
+    var FormView = require('views/components/form');
 
     describe('Form View', function(){
         beforeEach(function(){

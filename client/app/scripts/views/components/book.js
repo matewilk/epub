@@ -3,8 +3,8 @@ define(function(require){
 
     var Backbone = require('backbone'),
         JST = require('templates'),
-        Modal = require('views/modal'),
-        Dialog = require('views/dialog');
+        Modal = require('views/dialogs/modal'),
+        Dialog = require('views/dialogs/dialog');
 
     var BookView = Backbone.View.extend({
 

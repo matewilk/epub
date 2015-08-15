@@ -4,7 +4,7 @@ define(function(require){
     var Backbone = require('backbone'),
         JST = require('templates'),
         Dropzone = require('dropzone'),
-        Dialog = require('views/dialog');
+        Dialog = require('views/dialogs/dialog');
 
     return Backbone.View.extend({
         template: JST['app/scripts/templates/main.hbs'],

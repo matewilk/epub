@@ -6,7 +6,7 @@ define(function(require){
         Backbone = require('backbone'),
         template = require('templates'),
         LibraryCollection = require('collections/library'),
-        BookView = require('views/book');
+        BookView = require('views/components/book');
 
     var LibraryView = Backbone.View.extend({
 

@@ -1,7 +1,7 @@
 define(function(require){
     'use strict';
 
-    var Dialog = require('views/dialog'),
+    var Dialog = require('views/dialogs/dialog'),
         JST = require('templates'),
         animations = require('helpers/animations');
 

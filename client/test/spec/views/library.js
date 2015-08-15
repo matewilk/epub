@@ -1,7 +1,7 @@
 define(function(require) {
     'use strict';
 
-    var LibraryView = require('views/library'),
+    var LibraryView = require('views/pages/library'),
         BookModel = require('models/book'),
         Library = require('collections/library');
 

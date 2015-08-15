@@ -9,13 +9,15 @@ require.config({
         models: "../app/scripts/models",
         collections: '../app/scripts/collections',
         views: '../app/scripts/views',
+        helpers: '../app/scripts/helpers',
         jquery: "../app/bower_components/jquery/dist/jquery",
         backbone: "../app/bower_components/backbone/backbone",
         underscore: "../app/bower_components/underscore/underscore",
         handlebars: '../app/bower_components/handlebars/handlebars',
         templates: "../.tmp/scripts/templates",
         "jquery-cookie": '../app/bower_components/jquery-cookie/jquery.cookie',
-        dropzone: "../app/bower_components/dropzone/dist/dropzone-amd-module"
+        dropzone: "../app/bower_components/dropzone/dist/dropzone-amd-module",
+        velocity: "../app/bower_components/velocity/velocity"
     }
 });
 

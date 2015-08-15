@@ -6,8 +6,8 @@ define(function(require){
         Backbone = require('backbone'),
         JST = require('templates'),
         HeaderModel = require('models/header'),
-        LogoutView = require('views/logout'),
-        MainMenu = require('views/menu');
+        LogoutView = require('views/components/logout'),
+        MainMenu = require('views/components/menu');
 
     return Backbone.View.extend({
 

@@ -1,7 +1,7 @@
 define(function(require){
     'use strict';
 
-    var MainMenu = require('views/menu'),
+    var MainMenu = require('views/components/menu'),
         JST = require('templates'),
         $ = require('jquery'),
         Backbone = require('backbone');

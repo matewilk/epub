@@ -1,9 +1,9 @@
 define(function(require){
     'use strict';
 
-    var RegistrationView = require('views/registration'),
+    var RegistrationView = require('views/pages/registration'),
         RegistrationModel = require('models/registration'),
-        FormView = require('views/form'),
+        FormView = require('views/components/form'),
         JST = require('templates');
 
     describe('Registration View', function(){

@@ -1,7 +1,7 @@
 define(function(require) {
     'use strict';
 
-    var Home = require('views/home'),
+    var Home = require('views/pages/home'),
         JST = require('templates');
 
     describe("Home View", function() {

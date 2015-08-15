@@ -1,9 +1,9 @@
 define(function(require){
     'use strict';
 
-    var LoginForm = require('views/login'),
+    var LoginForm = require('views/pages/login'),
         LoginModel = require('models/login'),
-        FormView = require('views/form'),
+        FormView = require('views/components/form'),
         JST = require('templates'),
         $ = require('jquery');
 

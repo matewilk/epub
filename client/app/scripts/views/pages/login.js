@@ -1,9 +1,9 @@
 define(function(require){
     'use strict';
 
-    var FormView = require('views/form'),
+    var FormView = require('views/components/form'),
         LoginModel = require('models/login'),
-        JST = require('templates')
+        JST = require('templates');
 
     return FormView.extend({
         model: new LoginModel(),
