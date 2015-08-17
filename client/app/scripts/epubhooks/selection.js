@@ -2,28 +2,35 @@ define(function(require){
     'use strict';
 
     var React = require('react'),
-        Selection = require('views/react/dictionaryPopUp');
+        Selection = require('views/react/dictionaryPopUp'),
+        Mask = require('views/components/mask'),
+        Backbone = require('backbone'),
+        selectionHelper = require('helpers/selection');
 
     require('epubjs');
 
     EPUBJS.Hooks.register("beforeChapterDisplay").transculsions = function(callback, renderer){
         $(renderer.element).contents().find('body').bind('mouseup', function(){
 
-            var selection = $(renderer.element).contents()[0].getSelection().toString();
+            var selection = selectionHelper.getSelected($(renderer.element).contents()[0]);
 
-            var range = $(renderer.element).contents()[0].getSelection().getRangeAt(0).getBoundingClientRect();
-            var relative = document.body.parentNode.getBoundingClientRect();
+            if(selection){
+                var range = $(renderer.element).contents()[0].getSelection().getRangeAt(0).getBoundingClientRect();
+                var relative = document.body.parentNode.getBoundingClientRect();
 
-            var element = document.createElement('div');
-            document.body.appendChild(element);
+                var mask = new Mask();
+                Backbone.listenTo(Backbone, 'mask:hide', function(){
+                    selectionHelper.clearSelected($(renderer.element).contents()[0]);
+                });
 
-            //added 50px to top as the content is moved 50px because of the header
-            //20px for the element to be above the selected word
-            var top = (range.bottom - relative.top + 50 - 20)+'px';
-            //added 10% of relative.right - margins on the sides of the book
-            var right = -(range.right - relative.right + ((10 / 100)*relative.right))+'px';
+                //added 50px to top as the content is moved 50px because of the header
+                //20px for the element to be above the selected word
+                var top = (range.bottom - relative.top + 50 - 20)+'px';
+                //added 10% of relative.right - margins on the sides of the book
+                var right = -(range.right - relative.right + ((10 / 100)*relative.right))+'px';
 
-            React.render(React.createElement(Selection, {selection: selection, top: top, right: right}), element);
+                React.render(React.createElement(Selection, {selection: selection.toString(), top: top, right: right}), mask.$el[0]);
+            }
         });
 
         $(renderer.element).contents().find('body').bind('touchend', function(){
