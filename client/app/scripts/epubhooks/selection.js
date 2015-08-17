@@ -12,7 +12,8 @@ define(function(require){
     EPUBJS.Hooks.register("beforeChapterDisplay").transculsions = function(callback, renderer){
         $(renderer.element).contents().find('body').bind('mouseup', function(){
 
-            var selection = selectionHelper.getSelected($(renderer.element).contents()[0]);
+            var targetDocument = $(renderer.element).contents()[0];
+            var selection = selectionHelper.getSelected(targetDocument);
 
             if(selection){
                 var range = $(renderer.element).contents()[0].getSelection().getRangeAt(0).getBoundingClientRect();
@@ -20,7 +21,7 @@ define(function(require){
 
                 var mask = new Mask();
                 Backbone.listenTo(Backbone, 'mask:hide', function(){
-                    selectionHelper.clearSelected($(renderer.element).contents()[0]);
+                    selectionHelper.clearSelectedOnSelection(selection);
                 });
 
                 //added 50px to top as the content is moved 50px because of the header
