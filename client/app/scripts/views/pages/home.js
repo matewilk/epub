@@ -6,6 +6,8 @@ define(function(require){
         Dropzone = require('dropzone'),
         Dialog = require('views/dialogs/dialog');
 
+    Dropzone.autoDiscover = false;
+
     return Backbone.View.extend({
         template: JST['app/scripts/templates/main.hbs'],
 
@@ -13,11 +15,14 @@ define(function(require){
             'submit form': 'upload'
         },
 
-        render: function () {
+        initialize: function(){
             this.$el.html(this.template());
 
             this.dropzone = new Dropzone(this.$el.find('form')[0],{
                 url: "/api/upload",
+                acceptedFiles: 'application/epub+zip, application/epub, .epub',
+                maxFiles: 1,
+                maxFileSize: 10, //10MB
                 init: function() {
                     this.on("success", function(file, response) {
                         //maybe add timeout so the user can see
@@ -30,16 +35,20 @@ define(function(require){
                                 message: 'The book has been successfully uploaded',
                                 type: 'success'
                             });
-
                             Backbone.trigger('router:go', '/library');
                         } else {
-                            //TODO: show appropriate dialog
-                            alert('Sorry, guest users can upload only one book');
+                            new Dialog({
+                                title: 'Sorry, One book allowed',
+                                message: 'Guest users can keep only one book in the library',
+                                type: 'warning'
+                            });
                         }
                     });
                 }
             });
+        },
 
+        render: function () {
             return this;
         }
     });
