@@ -5,8 +5,9 @@ var state = {
 };
 
 exports.connect = function(url, done) {
-    if(state.db) return done();
-
+    if(state.db) {
+        return done()
+    };
     console.log("trying to connect to mongodb");
     console.log("url: "+url);
     MongoClient.connect(url, function(err, db){
