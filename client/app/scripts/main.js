@@ -7,6 +7,9 @@ require.config({
             deps: ["jquery"],
             exports: 'jquery'
         },
+        arrive: {
+            deps: ['jquery']
+        },
         ripples : {
             deps: ["jquery", 'arrive']
         },
