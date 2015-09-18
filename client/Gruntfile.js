@@ -42,6 +42,11 @@ module.exports = function(grunt){
                 ]
             }
         },
+        mocha: {
+          test: {
+            src: ['test/*.html']
+          }
+        },
 
         watch: {
             handlebars: {
@@ -101,6 +106,7 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-react');
+    grunt.loadNpmTasks('grunt-mocha');
 
     grunt.registerTask('default', ['handlebars', /*'jshint',*/ 'sass', 'react']);
 
