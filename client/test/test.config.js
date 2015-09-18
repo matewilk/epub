@@ -15,13 +15,22 @@ require.config({
         underscore: "../app/bower_components/underscore/underscore",
         handlebars: '../app/bower_components/handlebars/handlebars',
         templates: "../.tmp/scripts/templates",
+        bootstrap: '../app/bower_components/bootstrap/dist/js/bootstrap',
         "jquery-cookie": '../app/bower_components/jquery-cookie/jquery.cookie',
         dropzone: "../app/bower_components/dropzone/dist/dropzone-amd-module",
         velocity: "../app/bower_components/velocity/velocity"
+    },
+
+    shim: {
+        bootstrap: {
+            deps: ["jquery"],
+            exports: 'jquery'
+        }
     }
 });
 
 require([
+    "bootstrap",
     //models
     "spec/models/book",
     "spec/models/registration",

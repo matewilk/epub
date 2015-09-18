@@ -38,7 +38,7 @@ define(function(require){
         },
 
         hide: function(){
-            animations.dialogHide(this.$alert, this.height, this);
+            animations.dialogHide(this.$alert, this.height, _.bind(this.remove, this));
         }
     });
 });

@@ -31,6 +31,7 @@ define(function(require){
 
         onModalInit: function(){
             var self = $(this.$el);
+            var that = this;
             var dialog = self.find('.modal-dialog');
             self.on('show.bs.modal', function(e){
                 self.css({display: 'block'});
@@ -42,7 +43,7 @@ define(function(require){
 
             self.on('hide.bs.modal', function(){
                 //80 added to animation so that shadow is hiding as well
-                animations.dialogHide(dialog, self.height + 80, self);
+                animations.dialogHide(dialog, self.height + 80, _.bind(that.remove, that));
             });
 
             //prevent hiding the dialog before hide animation ends

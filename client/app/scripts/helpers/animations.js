@@ -1,5 +1,8 @@
-define(function(){
+define(function(require){
     'use strict';
+
+    //necessary for unit testing
+    require("velocity");
 
     return (function(){
         var dialogShow = function(element, height){
@@ -8,10 +11,10 @@ define(function(){
             .velocity({top: 10}, 390, [500, 20]);
         };
 
-        var dialogHide = function(element, height, view){
+        var dialogHide = function(element, height, callback){
             element.velocity({top: -height}, 400, [500, 20], function(){
                 element.addClass('invisible');
-                view.remove();
+                if(callback) callback();
             });
         };
 
