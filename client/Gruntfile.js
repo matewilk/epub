@@ -48,6 +48,17 @@ module.exports = function(grunt){
           }
         },
 
+        connect: {
+          test: {
+            options: {
+              port: 9001,
+              hostname: '*',
+              keepalive: true,
+              open: 'http://localhost:<%= connect.test.options.port %>/test/index.html'
+            }
+          }
+        },
+
         watch: {
             handlebars: {
                 files: 'app/scripts/templates/*.hbs',
@@ -107,8 +118,14 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-react');
     grunt.loadNpmTasks('grunt-mocha');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
     grunt.registerTask('default', ['handlebars', /*'jshint',*/ 'sass', 'react']);
 
     grunt.registerTask('build', ['handlebars', 'sass','clean', 'copy']);
+
+    grunt.registerTask('test:server', 'Launches a connect server for Mocha tests', function () {
+        grunt.task.run(['connect:test']);
+        grunt.log.writeln('Tests can be found at: http://localhost:9001/test/index.html');
+    });
 };
