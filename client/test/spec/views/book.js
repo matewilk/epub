@@ -2,6 +2,7 @@ define(function(require){
    'use strict';
 
     var BookView = require('views/components/book'),
+        Modal = require('views/dialogs/modal'),
         JST = require('templates');
 
     describe('Book View', function(){
@@ -57,9 +58,15 @@ define(function(require){
 
         describe('After render', function(){
             beforeEach(function(){
+                this.spyModalView = sinon.spy(Modal.prototype, 'initialize');
                 this.book.render();
                 this.book.$('a#open').click();
             });
+
+            afterEach(function(){
+                Modal.prototype.initialize.restore();
+            });
+
             describe('Open book event', function(){
                 it('should open a book on open button click', function(){
                     expect(this.book.openBook.called).to.be.true;
@@ -85,7 +92,17 @@ define(function(require){
                     expect(this.book.deleteBook.called).to.be.true;
                 });
 
+                it('should open modal window passing callback function', function(){
+                    sinon.assert.calledWith(this.spyModalView, {
+                      callback: sinon.match.func,
+                      message: "Are you sure you want to delete the book?",
+                      title: "Delete book"
+                    });
+                    expect(this.book.modal).is.an.instanceof(Modal);
+                });
+
                 it('should call model destroy method after book delete button click', function(){
+                    this.book.modal.$('button#accept').click();
                     expect(this.book.model.destroy.called).to.be.true;
                 });
 
@@ -95,6 +112,7 @@ define(function(require){
 
                         done();
                     }, this);
+                    this.book.modal.$('button#accept').click();
                 });
 
                 it('should redirect to home page after book delete success', function(done){
@@ -103,6 +121,7 @@ define(function(require){
 
                         done();
                     }, this);
+                    this.book.modal.$('button#accept').click();
                 });
             });
         });
