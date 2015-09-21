@@ -3,8 +3,9 @@ define(function(require){
 
     var Backbone = require('backbone'),
         JST = require('templates'),
-        ePub = require('epubjs'),
-        selection = require('epubhooks/selection');
+        ePub = require('epubjs');
+
+    require('epubhooks/selection');
 
     var Reader = Backbone.View.extend({
 
@@ -19,20 +20,12 @@ define(function(require){
 
         initialize: function (id) {
             this.area = $('<div id="iframe-placeholder"></div>');
-            this.book = ePub("/api/reader/"+id, { restore: true });
+            this.book = new ePub("/api/reader/"+id, { restore: true });
 
             //this.book.getCurrentLocationCfi();
             //this.book.gotoCfi("/6/6[the-worcesters-at-the-first-battle-of-ypres]!4/2[days-to-remember]/28/2/1:440");
 
             this.book.renderTo(this.area[0]);
-        },
-
-        success: function(){
-            this.render();
-        },
-
-        error: function(){
-            debugger;
         },
 
         render: function () {
@@ -46,7 +39,6 @@ define(function(require){
         nextPage: function(e){
             e.preventDefault();
             this.book.nextPage();
-            var xxx;
         },
 
         prevPage: function(e){

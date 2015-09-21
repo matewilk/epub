@@ -17,7 +17,11 @@ require.config({
         bootstrap: '../app/bower_components/bootstrap/dist/js/bootstrap',
         "jquery-cookie": '../app/bower_components/jquery-cookie/jquery.cookie',
         dropzone: "../app/bower_components/dropzone/dist/dropzone-amd-module",
-        velocity: "../app/bower_components/velocity/velocity"
+        velocity: "../app/bower_components/velocity/velocity",
+        epubjs: "../app/bower_components/epubjs/build/epub",
+        epubhooks: "../app/scripts/epubhooks",
+        react: "../app/bower_components/react/react",
+        "backbone-react": "../app/bower_components/backbone-react-component/lib/component"
     },
 
     shim: {
@@ -48,6 +52,7 @@ require([
     "spec/views/home",
     "spec/views/book",
     "spec/views/menu",
+    "spec/views/reader",
 
     //structure
     "spec/urls"
