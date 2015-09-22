@@ -1,13 +1,22 @@
 define('epubjsMock', function () {
-    return {
-        mock: 'mock'
+    //this is third-party (epubjs) mock
+    var ePubMock = function(options){
+        this.options = options;
+        return {
+            //these are epubjs functions, not reader view functions
+            renderTo: sinon.spy(),
+            nextPage: sinon.spy(),
+            prevChapter: function(){return true},
+            renderer: {
+                prevPage: sinon.spy()
+            }
+        }
     };
+    return sinon.spy(ePubMock);
 });
 
 define(function(require){
     'use strict';
-
-
 
     var ReaderView = require('views/pages/reader'),
         JST = require('templates'),
@@ -16,14 +25,18 @@ define(function(require){
 
     describe('Reader View', function(){
         beforeEach(function(){
-            ePub = sinon.stub();
-            ePub.renderTo = sinon.spy();
+            sinon.spy(ReaderView.prototype, 'nextPage');
+            sinon.spy(ReaderView.prototype, 'prevPage');
 
             this.template = JST['app/scripts/templates/reader.hbs'];
             this.iFramePlaceholder = $('<div id="iframe-placeholder"></div>');
 
-            var bookId = 'book-id';
-            this.reader = new ReaderView(bookId);
+            this.bookId = 'book-id';
+            this.reader = new ReaderView(this.bookId);
+        });
+        afterEach(function(){
+            ReaderView.prototype.nextPage.restore();
+            ReaderView.prototype.prevPage.restore();
         });
 
         it('should have an id attribute with "reader" value', function(){
@@ -40,11 +53,11 @@ define(function(require){
             });
 
             it('should call ePub constructor with params', function(){
-                sinon.assert.calledOnce(ePub);
+                sinon.assert.calledWithExactly(ePub, "/api/reader/"+this.bookId, {restore: true});
             });
 
-            xit('should render ePub view to ifrime placeholder', function(){
-                expect(ePub.renderTo.called).to.be.true;
+            it('should render ePub view to ifrime placeholder', function(){
+                expect(this.reader.book.renderTo.calledOnce).to.be.true;
             });
         });
 
@@ -70,12 +83,19 @@ define(function(require){
         });
 
         describe('Page turn', function(){
-            xit('should be able to turn to the next page', function(){
-
+            beforeEach(function(){
+                this.reader.render();
+            });
+            it('should be able to turn to the next page', function(){
+                this.reader.$('#next').click();
+                expect(this.reader.nextPage.calledOnce).to.be.true;
+                expect(this.reader.book.nextPage.calledOnce).to.be.true;
             });
 
-            xit('should be able to turn to the previous page', function(){
-
+            it('should be able to turn to the previous page', function(){
+                this.reader.$('#prev').click();
+                expect(this.reader.prevPage.calledOnce).to.be.true;
+                //expect(this.reader.book.nextPage.calledOnce).to.be.true;
             });
         });
     });

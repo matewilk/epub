@@ -20,7 +20,7 @@ define(function(require){
 
         initialize: function (id) {
             this.area = $('<div id="iframe-placeholder"></div>');
-            this.book = new ePub("/api/reader/"+id, { restore: true });
+            this.book = ePub("/api/reader/"+id, { restore: true });
 
             //this.book.getCurrentLocationCfi();
             //this.book.gotoCfi("/6/6[the-worcesters-at-the-first-battle-of-ypres]!4/2[days-to-remember]/28/2/1:440");

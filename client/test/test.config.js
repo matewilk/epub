@@ -31,10 +31,17 @@ require.config({
         }
     },
 
+    //map views for testing purposes
+    //in tests, the epubjsMock dependency is defined
+    //in scripts there is no epubjsMock dependency nor mapping in requirejs config file
+    //so it falls back to the original library
     map: {
-      'spec/views/reader': {
-          'epubjs': 'epubjsMock'
-      }
+        'views/pages/reader': {
+            'epubjs': 'epubjsMock'
+        },
+        'spec/views/reader': {
+            'epubjs': 'epubjsMock'
+        }
     }
 });
 
