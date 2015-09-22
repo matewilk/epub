@@ -29,6 +29,12 @@ require.config({
             deps: ["jquery"],
             exports: 'jquery'
         }
+    },
+
+    map: {
+      'spec/views/reader': {
+          'epubjs': 'epubjsMock'
+      }
     }
 });
 

@@ -1,5 +1,13 @@
+define('epubjsMock', function () {
+    return {
+        mock: 'mock'
+    };
+});
+
 define(function(require){
     'use strict';
+
+
 
     var ReaderView = require('views/pages/reader'),
         JST = require('templates'),
@@ -35,7 +43,7 @@ define(function(require){
                 sinon.assert.calledOnce(ePub);
             });
 
-            it('should render ePub view to ifrime placeholder', function(){
+            xit('should render ePub view to ifrime placeholder', function(){
                 expect(ePub.renderTo.called).to.be.true;
             });
         });
@@ -62,11 +70,11 @@ define(function(require){
         });
 
         describe('Page turn', function(){
-            it('should be able to turn to the next page', function(){
+            xit('should be able to turn to the next page', function(){
 
             });
 
-            it('should be able to turn to the previous page', function(){
+            xit('should be able to turn to the previous page', function(){
 
             });
         });
