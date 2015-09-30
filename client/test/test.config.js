@@ -66,6 +66,7 @@ require([
     "spec/views/book",
     "spec/views/menu",
     "spec/views/reader",
+    "spec/views/library",
 
     //structure
     "spec/urls"

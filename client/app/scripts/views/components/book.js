@@ -45,6 +45,7 @@ define(function(require){
         deleteSuccessCallback: function() {
             this.model.destroy({
                 success: this.deleteBookCallback,
+                //error: write error callback
                 wait: true
             });
         },
