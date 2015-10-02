@@ -4,7 +4,7 @@ define(function(require){
     var $ = require('jquery'),
         _ = require('underscore'),
         Backbone = require('backbone'),
-        template = require('templates'),
+        JST = require('templates'),
         LibraryCollection = require('collections/library'),
         BookView = require('views/components/book');
 

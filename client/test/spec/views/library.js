@@ -2,7 +2,7 @@ define(function(require) {
     'use strict';
 
     var LibraryView = require('views/pages/library'),
-        BookModel = require('models/book'),
+        BookView = require('views/components/book'),
         LibraryCollection = require('collections/library'),
         JST = require('templates');
 
@@ -21,6 +21,9 @@ define(function(require) {
             sinon.spy(LibraryView.prototype, 'render');
             sinon.spy(LibraryView.prototype, 'renderBook');
 
+            sinon.stub(BookView.prototype, 'initialize');
+            sinon.stub(BookView.prototype, 'render').returns({el: function(){}});
+
             this.libraryView = new LibraryView();
             this.collection = this.libraryView.collection;
         });
@@ -35,6 +38,9 @@ define(function(require) {
             LibraryView.prototype.onSuccess.restore();
             LibraryView.prototype.render.restore();
             LibraryView.prototype.renderBook.restore();
+
+            BookView.prototype.initialize.restore();
+            BookView.prototype.render.restore();
         });
 
         it("should have a proper template", function(){
@@ -46,7 +52,7 @@ define(function(require) {
                 this.server.respondWith("GET", "/api/library", [
                     200,
                     { "Content-Type": "application/json" },
-                    '[]'
+                    JSON.stringify({test: true})
                 ]);
             });
 
@@ -78,34 +84,38 @@ define(function(require) {
                 this.collection.fetch();
             });
 
-            it.skip("should render the template into el html", function(){
-                //this.collection.on('sync', function(){
-                //    expect(this.libraryView.$el.html.called).to.be.true;
-                //
-                //    done();
-                //}, this);
-                //
-                //this.collection.fetch();
+            it("should render the template into el html", function(done){
+                this.collection.on('sync', function(){
+                    expect(this.libraryView.$el.html.calledWith(
+                        this.libraryView.template({
+                            count: this.collection.length
+                        })
+                    )).to.be.true;
+
+                    done();
+                }, this);
+
+                this.collection.fetch();
             });
 
-            it.skip("should render book view on successful collection fetch", function(){
-                //this.collection.on('sync', function(){
-                //    expect(this.libraryView.renderBook.called).to.be.true;
-                //
-                //    done();
-                //}, this);
-                //
-                //this.collection.fetch();
+            it("should render book view on successful collection fetch", function(done){
+                this.collection.on('sync', function(){
+                    expect(this.libraryView.renderBook.called).to.be.true;
+
+                    done();
+                }, this);
+
+                this.collection.fetch();
             });
 
-            it.skip("should append book view to the element with .row class", function(){
-                //this.collection.on('sync', function(){
-                //    expect(this.libraryView.$.fn.append.called).to.be.false;
-                //
-                //    done();
-                //}, this);
-                //
-                //this.collection.fetch();
+            it("should append book view to the element with .row class", function(done){
+                this.collection.on('sync', function(){
+                    expect(this.libraryView.$el.append.called).to.be.true;
+
+                    done();
+                }, this);
+
+                this.collection.fetch();
             })
         });
 
