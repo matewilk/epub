@@ -3,6 +3,7 @@ require.config({
     baseUrl: '.',
 
     paths: {
+        app: "../app/scripts/app",
         globals: "../app/scripts/globals",
         scripts: "../app/scripts",
         models: "../app/scripts/models",
@@ -69,7 +70,10 @@ require([
     "spec/views/library",
 
     //structure
-    "spec/urls"
+    "spec/urls",
+
+    //app
+    "spec/router"
 ], function() {
     if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
     else { mocha.run(); }
