@@ -16,18 +16,11 @@ define(function(require){
 
         initialize: function() {
             this.collection = new LibraryCollection();
-            this.collection.on("fetch", this.onFetch, this);
-
-            this.collection.on("reset", function(){console.log('reset');});//do I really need it ?
 
             this.collection.fetch({
                 success: this.onSuccess.bind(this),
                 reset: true
             });
-        },
-
-        onFetch: function() {
-            //debugger;
         },
 
         onSuccess: function() {

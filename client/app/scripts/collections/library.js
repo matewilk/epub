@@ -9,17 +9,12 @@ define(function(require){
 
         url: apiUrls.getUrl("library"),
 
-        model: new BookModel(),
+        model: BookModel,
 
         fetch: function(options) {
             this.trigger("fetch", this, options);
 
             return Backbone.Collection.prototype.fetch.call(this, options);
-        },
-
-        parse: function(response/*, xhr*/) {
-            //debugger;
-            return response;
         }
     });
 

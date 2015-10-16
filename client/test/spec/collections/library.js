@@ -49,23 +49,16 @@ define(function(require) {
         });
 
         it("should have a book model", function() {
-            expect(this.libraryCollection.model).to.be.instanceOf(BookModel);
+            expect(this.libraryCollection.model).to.be.deep.equal(BookModel);
         });
 
         it("should fetch the data", function() {
+            this.libraryCollection.fetch();
             expect(this.libraryCollection.trigger.called).to.be.true;
         });
 
         it("should trigger fetch event", function() {
             //http://tbranyen.com/post/how-to-indicate-backbone-fetch-progress - spinner on load please
-        });
-
-        it("should instantiate book model", function() {
-
-        });
-
-        it("should contain book model collection", function() {
-
         });
     });
 });
