@@ -2,18 +2,22 @@ define(function(require) {
    'use strict';
 
     var BookModel = require('models/book'),
-        Library = require('collections/library');
+        Library = require('collections/library'),
+        Backbone = require('backbone');
 
     describe("Library Collection", function() {
         beforeEach(function(){
             this.server = sinon.fakeServer.create();
             this.server.autoRespond = true;
 
+            sinon.spy(Library.prototype, 'trigger');
+
             this.libraryCollection = new Library();
         });
 
         afterEach(function(){
             this.server.restore();
+            Library.prototype.trigger.restore();
         });
 
         describe("creation", function() {
@@ -45,11 +49,11 @@ define(function(require) {
         });
 
         it("should have a book model", function() {
-            //expect(this.libraryCollection.model).to.deep.equal(BookModel);
+            expect(this.libraryCollection.model).to.be.instanceOf(BookModel);
         });
 
         it("should fetch the data", function() {
-
+            expect(this.libraryCollection.trigger.called).to.be.true;
         });
 
         it("should trigger fetch event", function() {

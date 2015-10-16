@@ -9,7 +9,7 @@ define(function(require){
 
         url: apiUrls.getUrl("library"),
 
-        model: BookModel,
+        model: new BookModel(),
 
         fetch: function(options) {
             this.trigger("fetch", this, options);
