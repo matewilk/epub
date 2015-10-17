@@ -31,7 +31,6 @@ define(function(require){
         routes: {
             'login': 'showLogin',
             'library': 'showLibrary',
-            'books/:id': 'showBook',
             'reader/:id': 'reader',
             '*path': 'defaultRoute'
         },

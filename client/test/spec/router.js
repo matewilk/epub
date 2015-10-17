@@ -24,6 +24,9 @@ define(function(require) {
             sinon.spy(Router.prototype, 'navigate');
             sinon.spy(Router.prototype, 'defaultRoute');
             sinon.spy(Router.prototype, 'showView');
+            sinon.spy(Router.prototype, 'showLogin');
+            sinon.spy(Router.prototype, 'showLibrary');
+            sinon.spy(Router.prototype, 'reader');
 
             this.router = new Router();
             Backbone.history.start();
@@ -42,6 +45,9 @@ define(function(require) {
             Router.prototype.navigate.restore();
             Router.prototype.defaultRoute.restore();
             Router.prototype.showView.restore();
+            Router.prototype.showLogin.restore();
+            Router.prototype.showLibrary.restore();
+            Router.prototype.reader.restore();
 
             Backbone.history.stop();
         });
@@ -83,7 +89,6 @@ define(function(require) {
                 {
                     'login': 'showLogin',
                     'library': 'showLibrary',
-                    'books/:id': 'showBook',
                     'reader/:id': 'reader',
                     '*path': 'defaultRoute'
                 }
@@ -92,31 +97,83 @@ define(function(require) {
 
         describe('Routes', function(){
             beforeEach(function(){
-                sinon.spy(this.router, 'showLogin');
-                sinon.spy(Router.prototype, 'showLibrary');
-                sinon.spy(Router.prototype, 'reader');
+                sinon.spy(Login.prototype, 'initialize');
+                sinon.spy(Library.prototype, 'initialize');
+                sinon.spy(Reader.prototype, 'initialize');
 
                 sinon.spy(this.router.header.model, 'set');
             });
 
             afterEach(function(){
-                Router.prototype.showLogin.restore();
-                Router.prototype.showLibrary.restore();
-                Router.prototype.reader.restore();
+                Login.prototype.initialize.restore();
+                Library.prototype.initialize.restore();
+                Reader.prototype.initialize.restore();
+
+                this.router.navigate('/');
             });
 
             it('login route should initialize login view', function(done){
-
                 this.router.on('route:showLogin', function(){
-                  expect(Router.prototype.showLogin.calledOnce).to.be.true;
-                  expect(Login.prototype.initialize.calledOnce).to.be.true;
-                  expect(this.router.header.mode.set.calledWith('title', 'Login')).to.be.true;
+                    expect(Router.prototype.showLogin.calledOnce).to.be.true;
+                    expect(Login.prototype.initialize.calledOnce).to.be.true;
+                    expect(this.router.header.model.set.calledWith('title', 'Login')).to.be.true;
 
-                  done();
+                    done();
                 }, this);
 
                 this.router.navigate('login', {trigger:true});
             });
+
+            it('library route should initialize library view', function(done){
+                this.router.on('route:showLibrary', function(){
+                    expect(Router.prototype.showLibrary.calledOnce).to.be.true;
+                    expect(Library.prototype.initialize.calledOnce).to.be.true;
+                    expect(this.router.header.model.set.calledWith('title', 'Library')).to.be.true;
+
+                    done();
+                }, this);
+
+                this.router.navigate('library', {trigger: true});
+            });
+
+            it('reader route should initialize reader view', function(done){
+                this.router.on('route:reader', function(){
+                    expect(Router.prototype.reader.calledOnce).to.be.true;
+                    expect(Reader.prototype.initialize.calledWith('123')).to.be.true;
+                    expect(this.router.header.model.set.calledWith('title', 'Book')).to.be.true;
+
+                    done();
+                }, this);
+
+                this.router.navigate('reader/123', {trigger: true});
+            });
         });
+
+        describe('#showView', function(){
+            beforeEach(function(){
+                //mocks global App obj
+                window.App = {
+                  session: {
+                    check: function(){return true;}
+                  }
+                }
+                sinon.spy(App.session, 'check');
+                sinon.spy(Backbone.View.prototype, 'render');
+            });
+            afterEach(function(){
+                App.session.check.restore();
+                Backbone.View.prototype.render.restore();
+            })
+
+            it('should call session check if view requires authentication', function(){
+                this.router.showView(new Backbone.View(), {requiresAuth: true});
+                expect(App.session.check.calledOnce).to.be.true;
+            });
+
+            it('should display a view straigh away if authentication is not required', function(){
+                this.router.showView(new Backbone.View(), {requiresAuth: false});
+                expect(Backbone.View.prototype.render.calledOnce).to.be.true;
+            })
+        })
     });
 });
