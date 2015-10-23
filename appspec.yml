@@ -28,4 +28,4 @@ files:
 
 hooks:
   AfterInstall:
-    - location: /server/bin/install-packages
+    - location: /server/bin/install-packages.sh
