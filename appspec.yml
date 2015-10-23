@@ -28,4 +28,4 @@ files:
 
 hooks:
   AfterInstall:
-    - location: /tmp/epub/server/install-packages.sh
+    - location: /server/install-packages.sh
