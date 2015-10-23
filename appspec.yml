@@ -29,4 +29,3 @@ files:
 hooks:
   AfterInstall:
     - location: /server/install-packages.sh
-      runas: ec2-user
