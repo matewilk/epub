@@ -28,5 +28,5 @@ files:
 
 hooks:
   AfterInstall:
-    - location: server/install-packages.sh
+    - location: server/codedeploy-scripts/install-packages.sh
       runas: root
