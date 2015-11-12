@@ -17,3 +17,5 @@ hooks:
   AfterInstall:
     - location: server/codedeploy-scripts/install-packages.sh
       runas: root
+  ApplicationStart:
+    - location: server/codedeploy-scripts/start.sh
