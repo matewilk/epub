@@ -1,3 +1,3 @@
-#!/usr/bin/env bash
+#!/bin/bash
 cd /tmp/epub/server/
 npm run-script dev
