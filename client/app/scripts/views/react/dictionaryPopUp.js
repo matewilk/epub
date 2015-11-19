@@ -1,9 +1,9 @@
 define(function(require){
     'use strict';
 
-    var React = require('react');
-
-    require('backbone-react');
+    var React = require('react'),
+        Translation = require('views/react/translation'),
+        apiUrls = require('globals/urls');
 
     return React.createClass({
         render: function() {
@@ -12,7 +12,10 @@ define(function(require){
                 right: this.props.right
             };
             return (
-                React.createElement("div", {className: "dictionary-pop-up", style: divStyle}, this.props.selection)
+                React.createElement("div", {className: "dictionary-pop-up", style: divStyle}, 
+                    this.props.selection, 
+                    React.createElement(Translation, {url: apiUrls.getUrl("translate")})
+                )
             )
         }
     });
