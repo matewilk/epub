@@ -24,11 +24,12 @@ define(function(require){
                     selectionHelper.clearSelectedOnSelection(selection);
                 });
 
+                //padding to calculate additional space between widow width and epub document
+                var padding = ($(window).width() - $(renderer.element).width())/2;
                 //added 50px to top as the content is moved 50px because of the header
                 //20px for the element to be above the selected word
                 var top = (range.bottom - relative.top + 50 - 20)+'px';
-                //added 10% of relative.right - margins on the sides of the book
-                var right = -(range.right - relative.right + ((10 / 100)*relative.right))+'px';
+                var right = -(range.right - relative.right + padding) + 'px';
 
                 React.render(React.createElement(Selection, {selection: selection.toString(), top: top, right: right}), mask.$el[0]);
             }
