@@ -13,8 +13,7 @@ define(function(require){
             };
             return (
                 React.createElement("div", {className: "dictionary-pop-up", style: divStyle}, 
-                    this.props.selection, 
-                    React.createElement(Translation, {url: apiUrls.getUrl("translate")})
+                    React.createElement(Translation, {url: apiUrls.getUrl("translate"), word: this.props.selection})
                 )
             )
         }

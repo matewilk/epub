@@ -38,6 +38,13 @@ module.exports = function(grunt){
                         src: ['**/*.jsx'],
                         dest: 'app/scripts/views/react',
                         ext: '.js'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'test/spec/views/react',
+                        src: ['**/*.jsx'],
+                        dest: 'test/spec/views/react',
+                        ext: '.js'
                     }
                 ]
             }
@@ -75,7 +82,7 @@ module.exports = function(grunt){
                 }
             },
             react: {
-                files: ['app/scripts/views/react/*.jsx'],
+                files: ['app/scripts/views/react/*.jsx', 'test/spec/views/react/*.jsx'],
                 tasks: ['react'],
                 options: {
                     livereload: true

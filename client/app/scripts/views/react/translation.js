@@ -8,7 +8,8 @@ define(function(require){
             return {
                 word: '',
                 translation: '',
-                pronunciation: ''
+                pronunciation: '',
+                error: false
             }
         },
 
@@ -20,18 +21,21 @@ define(function(require){
                 method: 'POST',
                 data: {word: this.props.word},
                 success: function(data){
-                    this.setState({data: data})
+                    this.setState({data: data});
                 }.bind(this),
                 error: function(xhr, status, error){
-                    console.log(this.props.url, status, error.toString())
+                    console.log(this.props.url, status, error.toString());
+                    this.setState({error: true});
                 }.bind(this)
             });
         },
 
         render: function(){
             return (
-                React.createElement("div", {class: "translation"}, 
-                    this.state.data
+                React.createElement("div", {className: "translation"}, 
+                    this.props.word, 
+                    this.state.data, 
+                    this.state.error ? React.createElement("div", null, "Server Error") : null
                 )
             )
         }
