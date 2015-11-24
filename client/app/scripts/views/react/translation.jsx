@@ -1,7 +1,9 @@
 define(function(require){
+    'use strict';
 
     var React = require('react'),
-        $ = require('jquery');
+        $ = require('jquery'),
+        ServerError = require('views/react/ServerError');
 
     return React.createClass({
         getInitialState: function(){
@@ -14,6 +16,10 @@ define(function(require){
         },
 
         componentDidMount: function(){
+            this.callAjax();
+        },
+
+        callAjax: function(){
             $.ajax({
                 url: this.props.url,
                 dataType: 'json',
@@ -35,7 +41,7 @@ define(function(require){
                 <div className="translation">
                     {this.props.word}
                     {this.state.data}
-                    {this.state.error ? <div>Server Error</div> : null}
+                    {this.state.error ? <ServerError onClick={this.callAjax}/> : null}
                 </div>
             )
         }

@@ -20,7 +20,7 @@ define(function(require){
 
                 it('should have proper initial state values', function(){
                     var initialState = component.getInitialState();
-                    expect(initialState).to.deep.equal({word: '', translation: '', pronunciation: ''});
+                    expect(initialState).to.deep.equal({word: '', translation: '', pronunciation: '', error: false});
                 });
 
                 it('should have proper initial properties', function(){
@@ -70,7 +70,7 @@ define(function(require){
                 });
             });
 
-            describe('unsuccessfull API call', function(){
+            describe('Unsuccessfull API call', function(){
                 beforeEach(function(){
                     server.respondWith("POST", "/api/translate", [
                         500,
@@ -85,7 +85,8 @@ define(function(require){
 
                 it('should display an error message if API call wass unsuccessfull', function(){
                     server.respond();
-                    expect($(component.getDOMNode())).to.have.text('Server Error');
+                    let error = TestUtils.findRenderedDOMComponentWithClass(component, 'error').getDOMNode();
+                    expect(error.textContent).equal('Server Error');
                 });
 
                 it('should show "try again" button on unsuccessfull API call', function(){
