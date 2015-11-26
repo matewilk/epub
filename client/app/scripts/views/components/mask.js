@@ -20,9 +20,13 @@ define(function(require){
             return this;
         },
 
-        hide: function(){
-            Backbone.trigger('mask:hide');
-            this.remove();
+        hide: function(e){
+            //remove only if target is the mask itself
+            if(e.target === this.$el[0]){
+                //triggers event to clear selection
+                Backbone.trigger('mask:hide');
+                this.remove();
+            }
         }
     });
 });

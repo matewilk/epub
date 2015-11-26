@@ -4,4 +4,5 @@ module.exports = function (app) {
     app.use('/api/session', require('./routes/session'));
     app.use('/api/upload', require('./routes/upload'));
     app.use('/api/reader', require('./routes/reader'));
+    app.use('/api/translate', require('./routes/translate'))
 };

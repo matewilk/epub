@@ -21,7 +21,7 @@ require.config({
         velocity: "../app/bower_components/velocity/velocity",
         epubjs: "../app/bower_components/epubjs/build/epub",
         epubhooks: "../app/scripts/epubhooks",
-        react: "../app/bower_components/react/react",
+        react: "../app/bower_components/react/react-with-addons",
         "backbone-react": "../app/bower_components/backbone-react-component/lib/component"
     },
 
@@ -68,6 +68,9 @@ require([
     "spec/views/menu",
     "spec/views/reader",
     "spec/views/library",
+    //reac views
+    "spec/views/react/translation",
+    "spec/views/react/serverError",
 
     //structure
     "spec/urls",
