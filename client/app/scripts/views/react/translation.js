@@ -27,7 +27,8 @@ define(function (require) {
                 word: '',
                 translation: '',
                 pronunciation: '',
-                error: false
+                error: false,
+                nodata: false
             };
             //this.callAjax = this.callAjax.bind(this);
             return _this;
@@ -48,7 +49,11 @@ define(function (require) {
                     method: 'POST',
                     data: { word: this.props.word },
                     success: (function (data) {
-                        this.setState({ data: data });
+                        if (!data) {
+                            this.setState({ nodata: true });
+                        } else {
+                            this.setState({ data: data });
+                        }
                     }).bind(this),
                     error: (function (xhr, status, error) {
                         console.log(this.props.url, status, error.toString());
@@ -59,12 +64,32 @@ define(function (require) {
         }, {
             key: 'render',
             value: function render() {
+                var body = undefined,
+                    error = this.state.error;
+
+                body = this.state.nodata ? React.createElement(
+                    'div',
+                    null,
+                    'No definition found'
+                ) : React.createElement(
+                    'div',
+                    null,
+                    React.createElement(
+                        'p',
+                        null,
+                        this.props.word
+                    ),
+                    React.createElement(
+                        'p',
+                        null,
+                        this.state.data
+                    )
+                );
                 return React.createElement(
                     'div',
                     { className: 'translation' },
-                    this.props.word,
-                    this.state.data,
-                    this.state.error ? React.createElement(ServerError, { onClick: this.callAjax }) : null
+                    body,
+                    error ? React.createElement(ServerError, { onClick: this.callAjax }) : null
                 );
             }
         }]);

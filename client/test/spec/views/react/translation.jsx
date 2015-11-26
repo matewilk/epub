@@ -27,7 +27,7 @@ define(function(require){
 
                 it('should have proper initial state values', function(){
                     var initialState = component.state;
-                    expect(initialState).to.deep.equal({word: '', translation: '', pronunciation: '', error: false});
+                    expect(initialState).to.deep.equal({word: '', translation: '', pronunciation: '', error: false, nodata: false});
                 });
 
                 it('should have proper initial properties', function(){
@@ -69,11 +69,18 @@ define(function(require){
 
                 it('should show dictionary data after successfull API call', function(){
                     server.respond();
-                    //expect($(component.getDOMNode())).to.have.text('translation for the testword');
+                    expect($(React.findDOMNode(component))).to.have.text('translation for the testword');
                 });
 
                 it('should show appriopriate message if no data was returned after successfull API call', function(){
-
+                    server.respondWith("POST", "/api/translate", [
+                        200,
+                        { "Content-Type": "application/json" },
+                        JSON.stringify(false)
+                    ]);
+                    server.respond();
+                    let noData = TestUtils.findRenderedDOMComponentWithClass(component, 'translation').getDOMNode();
+                    expect(noData.textContent).equal('No definition found');
                 });
             });
 

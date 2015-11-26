@@ -13,7 +13,8 @@ define(function(require){
                 word: '',
                 translation: '',
                 pronunciation: '',
-                error: false
+                error: false,
+                nodata: false
             }
             //this.callAjax = this.callAjax.bind(this);
         }
@@ -30,7 +31,11 @@ define(function(require){
                 method: 'POST',
                 data: {word: this.props.word},
                 success: function(data){
-                    this.setState({data: data});
+                    if(!data){
+                        this.setState({nodata: true});
+                    } else {
+                        this.setState({data: data});
+                    }
                 }.bind(this),
                 error: function(xhr, status, error){
                     console.log(this.props.url, status, error.toString());
@@ -40,11 +45,14 @@ define(function(require){
         }
 
         render(){
+            let body,
+                error = this.state.error;
+
+            body = this.state.nodata ? <div>No definition found</div> : <div><p>{this.props.word}</p><p>{this.state.data}</p></div>;
             return (
                 <div className="translation">
-                    {this.props.word}
-                    {this.state.data}
-                    {this.state.error ? <ServerError onClick={this.callAjax}/> : null}
+                    {body}
+                    {error ? <ServerError onClick={this.callAjax}/> : null}
                 </div>
             )
         }
