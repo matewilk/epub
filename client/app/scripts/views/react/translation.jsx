@@ -3,23 +3,26 @@ define(function(require){
 
     var React = require('react'),
         $ = require('jquery'),
-        ServerError = require('views/react/ServerError');
+        ServerError = require('views/react/serverError');
 
-    return React.createClass({
-        getInitialState: function(){
-            return {
+    return class Translation extends React.Component {
+
+        constructor(props){
+            super();
+            this.state = {
                 word: '',
                 translation: '',
                 pronunciation: '',
                 error: false
             }
-        },
+            //this.callAjax = this.callAjax.bind(this);
+        }
 
-        componentDidMount: function(){
+        componentDidMount(){
             this.callAjax();
-        },
+        }
 
-        callAjax: function(){
+        callAjax(){
             $.ajax({
                 url: this.props.url,
                 dataType: 'json',
@@ -34,9 +37,9 @@ define(function(require){
                     this.setState({error: true});
                 }.bind(this)
             });
-        },
+        }
 
-        render: function(){
+        render(){
             return (
                 <div className="translation">
                     {this.props.word}
@@ -45,5 +48,5 @@ define(function(require){
                 </div>
             )
         }
-    });
+    };
 });

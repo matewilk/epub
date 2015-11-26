@@ -29,8 +29,11 @@ module.exports = function(grunt){
                 }
             }
         },
-        react: {
-            dynamic_mappings: {
+        babel: {
+            options: {
+                presets: ['es2015', 'react']
+            },
+            jsx2js: {
                 files: [
                     {
                         expand: true,
@@ -83,7 +86,7 @@ module.exports = function(grunt){
             },
             react: {
                 files: ['app/scripts/views/react/*.jsx', 'test/spec/views/react/*.jsx'],
-                tasks: ['react'],
+                tasks: ['babel'],
                 options: {
                     livereload: true
                 }
@@ -123,7 +126,8 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-react');
+    //grunt.loadNpmTasks('grunt-react'); changed to grunt-babel
+    grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-mocha');
     grunt.loadNpmTasks('grunt-contrib-connect');
 

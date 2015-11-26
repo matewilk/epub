@@ -11,10 +11,10 @@ define(function(require){
         **/
         render: function(){
             return (
-                React.createElement("div", {className: "error"}, 
-                    React.createElement("span", null, "Server Error"), 
-                    React.createElement("p", null, React.createElement("a", {onClick: this.props.onClick}, "Try Again"))
-                )
+                <div className='server-error'>
+                    <span className="error-text">Server Error</span>
+                    <p><a className="error-button" onClick={this.props.onClick}>Try Again</a></p>
+                </div>
             )
         }
     });

@@ -7,11 +7,11 @@ define(function(require){
 
     return React.createClass({
         render: function() {
-            var divStyle = {
+            let divStyle = {
                 top: this.props.top,
                 right: this.props.right
             };
-            return (
+            return(
                 <div className="dictionary-pop-up" style={divStyle}>
                     <Translation url={apiUrls.getUrl("translate")} word={this.props.selection}/>
                 </div>

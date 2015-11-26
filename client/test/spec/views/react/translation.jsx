@@ -13,13 +13,20 @@ define(function(require){
             server.autoRespond = true;
             describe('Initialize component', function(){
                 beforeEach(function(){
+
+                    sinon.spy(Translation.prototype, 'callAjax');
+
                     component = TestUtils.renderIntoDocument(
                         <Translation word="testword" url={apiUrls.getUrl("translate")} />
                     );
                 });
 
+                afterEach(function(){
+                    Translation.prototype.callAjax.restore();
+                })
+
                 it('should have proper initial state values', function(){
-                    var initialState = component.getInitialState();
+                    var initialState = component.state;
                     expect(initialState).to.deep.equal({word: '', translation: '', pronunciation: '', error: false});
                 });
 
@@ -29,15 +36,15 @@ define(function(require){
                 });
 
                 it("should call appriopriate API endpoint on mount", function(){
-                    //already tested above ?
+                    expect(component.callAjax.calledOnce).to.be.true;
                 });
 
                 it("should have proper css classes", function(){
-                    expect(component.getDOMNode().className).to.equal('translation');
+                    expect(React.findDOMNode(component).className).to.equal('translation');
                 });
 
-                it('should show the word to translate on render', function(){
-                    expect($(component.getDOMNode())).to.have.text('testword');
+                it('should show the phrase to translate on render', function(){
+                    expect($(React.findDOMNode(component))).to.have.text('testword');
                 });
             })
 
@@ -75,7 +82,7 @@ define(function(require){
                     server.respondWith("POST", "/api/translate", [
                         500,
                         { "Content-Type": "application/json" },
-                        JSON.stringify({word: 'testword', translation: 'translation for the testword'})
+                        ''
                     ]);
 
                     component = TestUtils.renderIntoDocument(
@@ -85,16 +92,14 @@ define(function(require){
 
                 it('should display an error message if API call wass unsuccessfull', function(){
                     server.respond();
-                    let error = TestUtils.findRenderedDOMComponentWithClass(component, 'error').getDOMNode();
+                    let error = TestUtils.findRenderedDOMComponentWithClass(component, 'error-text').getDOMNode();
                     expect(error.textContent).equal('Server Error');
                 });
 
                 it('should show "try again" button on unsuccessfull API call', function(){
-
-                });
-
-                it('should trigger API request on "try again" click', function(){
-
+                    server.respond();
+                    let error = TestUtils.findRenderedDOMComponentWithClass(component, 'error-button').getDOMNode();
+                    expect(error.textContent).equal('Try Again');
                 });
             });
         });
