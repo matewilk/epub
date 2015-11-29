@@ -69,7 +69,7 @@ require([
     "spec/views/reader",
     "spec/views/library",
     //reac views
-    "spec/views/react/translation",
+    "spec/views/react/dictionaryCall",
     "spec/views/react/serverError",
 
     //structure

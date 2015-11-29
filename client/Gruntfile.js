@@ -131,7 +131,7 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-mocha');
     grunt.loadNpmTasks('grunt-contrib-connect');
 
-    grunt.registerTask('default', ['handlebars', /*'jshint',*/ 'sass', 'react']);
+    grunt.registerTask('default', ['handlebars', /*'jshint',*/ 'sass', 'babel']);
 
     grunt.registerTask('build', ['handlebars', 'sass','clean', 'copy']);
 

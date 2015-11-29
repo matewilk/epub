@@ -1,7 +1,41 @@
 .dictionary-pop-up {
   border: 1px solid grey;
   position: absolute;
-  box-shadow: rgb(136, 136, 137) 5px 5px 5px;
+  //box-shadow: rgb(136, 136, 137) 5px 5px 5px;
   border-radius: 3px;
   background-color: white;
+
+  .arrow {
+      position: absolute;
+      height: 100%;
+  }
+
+  .content-after {
+      content: '';
+      position: absolute;
+
+      width: 0;
+      height: 0;
+
+      border: 10px solid;
+  }
+
+  .bottom-arrow {
+      @extend .arrow;
+      &:after {
+          @extend .content-after;
+          border-color: red transparent transparent transparent;
+          top: 100%;
+      }
+  }
+
+  .top-arrow {
+      @extend .arrow;
+      &:after {
+          @extend .content-after;
+          border-color: transparent transparent red transparent;
+
+          top: -20px;
+      }
+  }
 }

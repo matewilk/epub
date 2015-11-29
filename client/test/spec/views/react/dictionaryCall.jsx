@@ -3,19 +3,25 @@ define(function(require){
 
     var React = require('react'),
         TestUtils = React.addons.TestUtils,
-        Translation = require('views/react/translation'),
+        Translation = require('views/react/dictionaryCall'),
         apiUrls = require('globals/urls');
 
     describe('React', function(){
         describe('Translation', function(){
             let component = null;
-            let server = sinon.fakeServer.create();
-            server.autoRespond = true;
+            let server = null;
+            beforeEach(function(){
+                server = sinon.fakeServer.create();
+                server.autoRespond = true;
+            });
+
+            afterEach(function(){
+                server.restore();
+            })
+
             describe('Initialize component', function(){
                 beforeEach(function(){
-
                     sinon.spy(Translation.prototype, 'callAjax');
-
                     component = TestUtils.renderIntoDocument(
                         <Translation word="testword" url={apiUrls.getUrl("translate")} />
                     );
@@ -69,7 +75,7 @@ define(function(require){
 
                 it('should show dictionary data after successfull API call', function(){
                     server.respond();
-                    expect($(React.findDOMNode(component))).to.have.text('translation for the testword');
+                    expect($(React.findDOMNode(component))).should.contain('translation for the testword');
                 });
 
                 it('should show appriopriate message if no data was returned after successfull API call', function(){

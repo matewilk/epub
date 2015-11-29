@@ -67,24 +67,29 @@ define(function (require) {
                 var body = undefined,
                     error = this.state.error;
 
-                body = this.state.nodata ? React.createElement(
-                    'div',
-                    null,
-                    'No definition found'
-                ) : React.createElement(
-                    'div',
-                    null,
-                    React.createElement(
-                        'p',
+                if (this.state.nodata) {
+                    body = React.createElement(
+                        'div',
                         null,
-                        this.props.word
-                    ),
-                    React.createElement(
-                        'p',
+                        'No definition found'
+                    );
+                } else {
+                    body = React.createElement(
+                        'div',
                         null,
-                        this.state.data
-                    )
-                );
+                        React.createElement(
+                            'p',
+                            null,
+                            this.props.word
+                        ),
+                        React.createElement(
+                            'p',
+                            null,
+                            this.state.data
+                        )
+                    );
+                }
+
                 return React.createElement(
                     'div',
                     { className: 'translation' },
