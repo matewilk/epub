@@ -21,10 +21,8 @@ define(function(require){
             Backbone.listenTo(Backbone, 'mask:hide', function(){
                 selectionHelper.clearSelectedOnSelection(selection);
             });
-
             //calculate if pop-up should be shown on top or bottom
             var extendToBottom = ($(renderer.element).height() / 2) - ((range.top + range.bottom) / 2) > 0;
-
             //padding to calculate additional space between widow width and epub document
             var padding = ($(window).width() - $(renderer.element).width())/2;
 
@@ -38,12 +36,12 @@ define(function(require){
                 top = 50+'px';
                 bottom = $(renderer.element).height() - range.bottom + 50 + 35 +'px';
             }
-
             //indicator position - right edge of the selected phrase - relative to the body
             var right = -(range.right - relative.right + padding) + 'px';
-
             //indicator position relative to the edge of the epub iframe
-            var indicator = range.right + 'px';
+            var indicator = range.right;
+            //indicatior position in the middle of the selected phrase
+            var indicator = indicator - range.width/2 - 10 + 'px';
 
             React.render(React.createElement(
                 DictionaryPopUp,

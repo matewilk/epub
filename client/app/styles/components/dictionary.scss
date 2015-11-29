@@ -1,7 +1,6 @@
 .dictionary-pop-up {
   border: 1px solid grey;
   position: absolute;
-  //box-shadow: rgb(136, 136, 137) 5px 5px 5px;
   border-radius: 3px;
   background-color: white;
 
@@ -24,7 +23,7 @@
       @extend .arrow;
       &:after {
           @extend .content-after;
-          border-color: red transparent transparent transparent;
+          border-color: white transparent transparent transparent;
           top: 100%;
       }
   }
@@ -33,7 +32,7 @@
       @extend .arrow;
       &:after {
           @extend .content-after;
-          border-color: transparent transparent red transparent;
+          border-color: transparent transparent white transparent;
 
           top: -20px;
       }
