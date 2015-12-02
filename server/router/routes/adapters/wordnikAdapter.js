@@ -15,8 +15,8 @@ var wordnikAdapter = {
                 body += data;
             });
             response.on('end', function(){
-                return callback(wordnikAdapter._parseData(body));
-            })
+                callback(wordnikAdapter._parseData(body));
+            });
         });
         request.on('error', function(e) {
             console.log('Problem with request: ' + e.message);
@@ -25,7 +25,23 @@ var wordnikAdapter = {
     },
 
     _parseData: function(body){
-        return body;
+        var responseJson = JSON.parse(body),
+            response;
+
+        if(responseJson.type === 'error') return JSON.stringify(responseJson);
+
+        var response = responseJson.map(function(obj){
+            var responseObj = {};
+            responseObj['source'] = obj.attributionText;
+            responseObj['partOfSpeech'] = obj.partOfSpeech;
+            responseObj['definition'] = obj.text;
+            responseObj['sequence'] = obj.sequence;
+            responseObj['word'] = obj.word;
+
+            return responseObj;
+        });
+
+        return JSON.stringify(response);
     }
 }
 
