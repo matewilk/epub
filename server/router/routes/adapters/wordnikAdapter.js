@@ -28,7 +28,17 @@ var wordnikAdapter = {
         var responseJson = JSON.parse(body),
             response;
 
-        if(responseJson.type === 'error') return JSON.stringify(responseJson);
+        if(responseJson.type === 'error')
+        {
+            //return error returned by wornik
+            return JSON.stringify(responseJson);
+        }
+        //if response is not a array
+        else if(!responseJson.map)
+        {
+            //return custom error
+            return {error : 'malformed response'};
+        }
 
         var response = responseJson.map(function(obj){
             var responseObj = {};
