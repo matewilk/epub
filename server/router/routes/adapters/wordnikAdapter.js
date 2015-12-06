@@ -37,7 +37,7 @@ var wordnikAdapter = {
         else if(!responseJson.map)
         {
             //return custom error
-            return {error : 'malformed response'};
+            return {type: 'error', error : 'malformed response'};
         }
 
         var response = responseJson.map(function(obj){
