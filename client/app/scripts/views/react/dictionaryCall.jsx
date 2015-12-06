@@ -48,7 +48,12 @@ define(function(require){
             let body,
                 error = this.state.error;
 
-            body = this.state.nodata ? <div>No definition found</div> : <div><p>{this.props.word}</p><p>{this.state.data}</p></div>;
+            if(this.state.nodata){
+                body = <div>No definition found</div>
+            } else {
+                body = <div><p>{this.props.word}</p><p>{this.state.data}</p></div>
+            }
+            
             return (
                 <div className="translation">
                     {body}

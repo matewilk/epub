@@ -1,5 +1,5 @@
 var sinon = require('sinon'),
-    login = require('../router/routes/functions/files'),
+    login = require('../../router/routes/functions/files'),
     should = require('should');
 
 describe('File Spec', function(){
