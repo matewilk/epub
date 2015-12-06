@@ -38,7 +38,7 @@ define(function(require){
 
                 it('should have proper initial properties', function(){
                     var props = component.props;
-                    expect(props).to.deep.equal({url: '/api/translate', word: 'testword'});
+                    expect(props).to.deep.equal({url: '/api/dictionary', word: 'testword'});
                 });
 
                 it("should call appriopriate API endpoint on mount", function(){
@@ -57,7 +57,7 @@ define(function(require){
 
             describe('Successfull API call', function(){
                 beforeEach(function(){
-                    server.respondWith("POST", "/api/translate", [
+                    server.respondWith("POST", "/api/dictionary", [
                         200,
                         { "Content-Type": "application/json" },
                         JSON.stringify({word: 'testword', translation: 'translation for the testword'})
@@ -79,7 +79,7 @@ define(function(require){
                 });
 
                 it('should show appriopriate message if no data was returned after successfull API call', function(){
-                    server.respondWith("POST", "/api/translate", [
+                    server.respondWith("POST", "/api/dictionary", [
                         200,
                         { "Content-Type": "application/json" },
                         JSON.stringify(false)
@@ -92,7 +92,7 @@ define(function(require){
 
             describe('Unsuccessfull API call', function(){
                 beforeEach(function(){
-                    server.respondWith("POST", "/api/translate", [
+                    server.respondWith("POST", "/api/dictionary", [
                         500,
                         { "Content-Type": "application/json" },
                         ''
