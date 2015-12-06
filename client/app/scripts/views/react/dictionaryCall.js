@@ -13,6 +13,7 @@ define(function (require) {
 
     var React = require('react'),
         $ = require('jquery'),
+        DataTab = require('views/react/DataTab'),
         ServerError = require('views/react/serverError');
 
     return (function (_React$Component) {
@@ -25,12 +26,11 @@ define(function (require) {
 
             _this.state = {
                 word: '',
-                translation: '',
+                definitions: [],
                 pronunciation: '',
                 error: false,
                 nodata: false
             };
-            //this.callAjax = this.callAjax.bind(this);
             return _this;
         }
 
@@ -52,7 +52,7 @@ define(function (require) {
                         if (!data) {
                             this.setState({ nodata: true });
                         } else {
-                            this.setState({ data: data });
+                            this.setState({ definitions: data });
                         }
                     }).bind(this),
                     error: (function (xhr, status, error) {
@@ -74,20 +74,7 @@ define(function (require) {
                         'No definition found'
                     );
                 } else {
-                    body = React.createElement(
-                        'div',
-                        null,
-                        React.createElement(
-                            'p',
-                            null,
-                            this.props.word
-                        ),
-                        React.createElement(
-                            'p',
-                            null,
-                            this.state.data
-                        )
-                    );
+                    body = React.createElement(DataTab, { definitions: this.state.definitions, title: this.props.word });
                 }
 
                 return React.createElement(

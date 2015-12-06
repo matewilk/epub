@@ -68,7 +68,7 @@ define(function (require) {
 
                 it('should show dictionary data after successfull API call', function () {
                     server.respond();
-                    expect($(React.findDOMNode(component))).to.contain('translation for the testword');
+                    expect($(React.findDOMNode(component))).should.contain('translation for the testword');
                 });
 
                 it('should show appriopriate message if no data was returned after successfull API call', function () {

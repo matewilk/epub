@@ -35,7 +35,7 @@ describe('Dictionary Spec', function(){
         });
 
         it("should send response in callback after getting the data from wordnikAdapter", function(done){
-            WordnikAdapter.getDefinitions(this.phrase, function(resp) {
+            WordnikAdapter.getDefinitions('test', function(resp) {
                 this.res.send(resp);
                 assert(this.res.send.calledWith('abc'));
                 done();

@@ -3,6 +3,7 @@ define(function(require){
 
     var React = require('react'),
         $ = require('jquery'),
+        DataTab = require('views/react/DataTab'),
         ServerError = require('views/react/serverError');
 
     return class Translation extends React.Component {
@@ -11,12 +12,11 @@ define(function(require){
             super();
             this.state = {
                 word: '',
-                translation: '',
+                definitions: [],
                 pronunciation: '',
                 error: false,
                 nodata: false
             }
-            //this.callAjax = this.callAjax.bind(this);
         }
 
         componentDidMount(){
@@ -34,7 +34,7 @@ define(function(require){
                     if(!data){
                         this.setState({nodata: true});
                     } else {
-                        this.setState({data: data});
+                        this.setState({definitions: data});
                     }
                 }.bind(this),
                 error: function(xhr, status, error){
@@ -51,7 +51,7 @@ define(function(require){
             if(this.state.nodata){
                 body = <div>No definition found</div>
             } else {
-                body = <div><p>{this.props.word}</p><p>{this.state.data}</p></div>
+                body = <DataTab definitions={this.state.definitions} title={this.props.word} />
             }
 
             return (
