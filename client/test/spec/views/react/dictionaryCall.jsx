@@ -23,7 +23,7 @@ define(function(require){
                 beforeEach(function(){
                     sinon.spy(Translation.prototype, 'callAjax');
                     component = TestUtils.renderIntoDocument(
-                        <Translation word="testword" url={apiUrls.getUrl("translate")} />
+                        <Translation word="testword" url={apiUrls.getUrl("dictionary")} />
                     );
                 });
 
@@ -64,7 +64,7 @@ define(function(require){
                     ]);
 
                     component = TestUtils.renderIntoDocument(
-                        <Translation word="testword" url={apiUrls.getUrl("translate")} />
+                        <Translation word="testword" url={apiUrls.getUrl("dictionary")} />
                     );
                 });
 
@@ -99,7 +99,7 @@ define(function(require){
                     ]);
 
                     component = TestUtils.renderIntoDocument(
-                        <Translation word="testword" url={apiUrls.getUrl("translate")} />
+                        <Translation word="testword" url={apiUrls.getUrl("dictionary")} />
                     );
                 });
 

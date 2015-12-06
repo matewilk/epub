@@ -1,6 +1,6 @@
 var wordnikAdapter = require('../adapters/wordnikAdapter');
 
-var translate = {
+var dictionary = {
     'post': function(req, res){
         var phrase = req.body.word ? req.body.word.toLowerCase() : '';
         var response = wordnikAdapter.getDefinitions(phrase, function(resp){
@@ -9,4 +9,4 @@ var translate = {
     }
 };
 
-module.exports = translate;
+module.exports = dictionary;

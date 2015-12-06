@@ -17,7 +17,7 @@ define(function(require){
             return(
                 <div className="dictionary-pop-up" style={divStyle}>
                     <div className={arrow} style={{left: this.props.indicator.vertical}}/>
-                    <Translation url={apiUrls.getUrl("translate")} word={this.props.selection}/>
+                    <Translation url={apiUrls.getUrl("dictionary")} word={this.props.selection}/>
                 </div>
             )
         }

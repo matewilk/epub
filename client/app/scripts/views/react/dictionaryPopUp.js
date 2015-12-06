@@ -20,7 +20,7 @@ define(function (require) {
                 'div',
                 { className: 'dictionary-pop-up', style: divStyle },
                 React.createElement('div', { className: arrow, style: { left: this.props.indicator.vertical } }),
-                React.createElement(Translation, { url: apiUrls.getUrl("translate"), word: this.props.selection })
+                React.createElement(Translation, { url: apiUrls.getUrl("dictionary"), word: this.props.selection })
             );
         }
     });

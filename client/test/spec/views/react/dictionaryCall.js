@@ -24,7 +24,7 @@ define(function (require) {
             describe('Initialize component', function () {
                 beforeEach(function () {
                     sinon.spy(Translation.prototype, 'callAjax');
-                    component = TestUtils.renderIntoDocument(React.createElement(Translation, { word: 'testword', url: apiUrls.getUrl("translate") }));
+                    component = TestUtils.renderIntoDocument(React.createElement(Translation, { word: 'testword', url: apiUrls.getUrl("dictionary") }));
                 });
 
                 afterEach(function () {
@@ -58,7 +58,7 @@ define(function (require) {
                 beforeEach(function () {
                     server.respondWith("POST", "/api/translate", [200, { "Content-Type": "application/json" }, JSON.stringify({ word: 'testword', translation: 'translation for the testword' })]);
 
-                    component = TestUtils.renderIntoDocument(React.createElement(Translation, { word: 'testword', url: apiUrls.getUrl("translate") }));
+                    component = TestUtils.renderIntoDocument(React.createElement(Translation, { word: 'testword', url: apiUrls.getUrl("dictionary") }));
                 });
 
                 it('should fill in properties after successfull API call', function () {
@@ -83,7 +83,7 @@ define(function (require) {
                 beforeEach(function () {
                     server.respondWith("POST", "/api/translate", [500, { "Content-Type": "application/json" }, '']);
 
-                    component = TestUtils.renderIntoDocument(React.createElement(Translation, { word: 'testword', url: apiUrls.getUrl("translate") }));
+                    component = TestUtils.renderIntoDocument(React.createElement(Translation, { word: 'testword', url: apiUrls.getUrl("dictionary") }));
                 });
 
                 it('should display an error message if API call wass unsuccessfull', function () {

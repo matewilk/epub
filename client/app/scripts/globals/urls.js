@@ -18,8 +18,8 @@ define(function() {
             reader: function(id) {
                 return '/api/reader/' + id;
             },
-            translate: function() {
-                return '/api/translate'
+            dictionary: function() {
+                return '/api/dictionary'
             }
         };
 

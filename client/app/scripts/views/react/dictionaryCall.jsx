@@ -53,7 +53,7 @@ define(function(require){
             } else {
                 body = <div><p>{this.props.word}</p><p>{this.state.data}</p></div>
             }
-            
+
             return (
                 <div className="translation">
                     {body}
