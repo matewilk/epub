@@ -3,7 +3,7 @@ define(function(require){
 
     var React = require('react'),
         TestUtils = React.addons.TestUtils,
-        ServerError = require('views/react/serverError');
+        ServerError = require('views/react/ServerError');
 
     describe('React', function(){
         describe('Server Error', function(){

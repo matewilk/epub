@@ -69,8 +69,9 @@ require([
     "spec/views/reader",
     "spec/views/library",
     //reac views
-    "spec/views/react/dictionaryCall",
-    "spec/views/react/serverError",
+    "spec/views/react/DictionaryPopUp",
+    "spec/views/react/DictionaryCall",
+    "spec/views/react/ServerError",
 
     //structure
     "spec/urls",

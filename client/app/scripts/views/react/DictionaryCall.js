@@ -14,7 +14,7 @@ define(function (require) {
     var React = require('react'),
         $ = require('jquery'),
         DataTab = require('views/react/DataTab'),
-        ServerError = require('views/react/serverError');
+        ServerError = require('views/react/ServerError');
 
     return (function (_React$Component) {
         _inherits(Translation, _React$Component);
@@ -81,7 +81,7 @@ define(function (require) {
                     'div',
                     { className: 'translation' },
                     body,
-                    error ? React.createElement(ServerError, { onClick: this.callAjax }) : null
+                    error ? React.createElement(ServerError, { onClick: this.callAjax.bind(this) }) : null
                 );
             }
         }]);

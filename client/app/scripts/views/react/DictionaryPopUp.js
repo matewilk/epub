@@ -4,10 +4,11 @@ define(function (require) {
     'use strict';
 
     var React = require('react'),
-        Translation = require('views/react/dictionaryCall'),
+        Translation = require('views/react/DictionaryCall'),
         apiUrls = require('globals/urls');
 
     return React.createClass({
+        displayName: 'DictionaryCall',
         render: function render() {
             var divStyle = {
                 top: this.props.top,

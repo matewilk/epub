@@ -4,10 +4,6 @@ define(function(require){
     var React = require('react');
 
     return class DataBody extends React.Component {
-        constructor(props){
-            super(props);
-        }
-
         render(){
             var items = this.props.definitions.map(function(item, index){
                 return (

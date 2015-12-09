@@ -4,7 +4,7 @@ define(function(require){
     var React = require('react'),
         $ = require('jquery'),
         DataTab = require('views/react/DataTab'),
-        ServerError = require('views/react/serverError');
+        ServerError = require('views/react/ServerError');
 
     return class Translation extends React.Component {
 
@@ -57,7 +57,7 @@ define(function(require){
             return (
                 <div className="translation">
                     {body}
-                    {error ? <ServerError onClick={this.callAjax}/> : null}
+                    {error ? <ServerError onClick={this.callAjax.bind(this)}/> : null}
                 </div>
             )
         }

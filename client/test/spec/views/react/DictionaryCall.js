@@ -5,11 +5,11 @@ define(function (require) {
 
     var React = require('react'),
         TestUtils = React.addons.TestUtils,
-        Translation = require('views/react/dictionaryCall'),
+        Translation = require('views/react/DictionaryCall'),
         apiUrls = require('globals/urls');
 
     describe('React', function () {
-        describe('Translation', function () {
+        describe('Dictionary Call', function () {
             var component = null;
             var server = null;
             beforeEach(function () {
@@ -33,7 +33,7 @@ define(function (require) {
 
                 it('should have proper initial state values', function () {
                     var initialState = component.state;
-                    expect(initialState).to.deep.equal({ word: '', translation: '', pronunciation: '', error: false, nodata: false });
+                    expect(initialState).to.deep.equal({ word: '', definitions: [], pronunciation: '', error: false, nodata: false });
                 });
 
                 it('should have proper initial properties', function () {
@@ -56,14 +56,20 @@ define(function (require) {
 
             describe('Successfull API call', function () {
                 beforeEach(function () {
-                    server.respondWith("POST", "/api/dictionary", [200, { "Content-Type": "application/json" }, JSON.stringify({ word: 'testword', translation: 'translation for the testword' })]);
+                    this.testResponseData = {
+                        definition: "In a generous manner, in a way that is giving or ample.",
+                        partOfSpeech: "adverb",
+                        source: "from Wiktionary, Creative Commons Attribution/Share-Alike License",
+                        word: "generously"
+                    };
+                    server.respondWith("POST", "/api/dictionary", [200, { "Content-Type": "application/json" }, JSON.stringify(this.testResponseData)]);
 
                     component = TestUtils.renderIntoDocument(React.createElement(Translation, { word: 'testword', url: apiUrls.getUrl("dictionary") }));
                 });
 
                 it('should fill in properties after successfull API call', function () {
                     server.respond();
-                    expect(component.state.data).to.deep.equal({ word: 'testword', translation: 'translation for the testword' });
+                    expect(component.state.definitions).to.deep.equal(this.testResponseData);
                 });
 
                 it('should show dictionary data after successfull API call', function () {

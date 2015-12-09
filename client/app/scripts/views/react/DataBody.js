@@ -16,10 +16,10 @@ define(function (require) {
     return (function (_React$Component) {
         _inherits(DataBody, _React$Component);
 
-        function DataBody(props) {
+        function DataBody() {
             _classCallCheck(this, DataBody);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(DataBody).call(this, props));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(DataBody).apply(this, arguments));
         }
 
         _createClass(DataBody, [{

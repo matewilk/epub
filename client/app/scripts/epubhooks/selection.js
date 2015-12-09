@@ -2,7 +2,7 @@ define(function(require){
     'use strict';
 
     var React = require('react'),
-        DictionaryPopUp = require('views/react/dictionaryPopUp'),
+        DictionaryPopUp = require('views/react/DictionaryPopUp'),
         Mask = require('views/components/mask'),
         Backbone = require('backbone'),
         selectionHelper = require('helpers/selection');
@@ -53,8 +53,7 @@ define(function(require){
                     indicator: {
                         vertical: indicator,
                         horizontal: extendToBottom
-                    },
-                    extendToBottom: extendToBottom
+                    }
                 }
             ), mask.$el[0]);
         }
