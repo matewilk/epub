@@ -54,7 +54,7 @@ define(function(require){
                 expect($(React.findDOMNode(component)).find('.translation')).to.have.text('testword')
                 var tmpComponent = component.render()
                 var dictionaryCallProps = tmpComponent.props.children[1].props;
-                expect(dictionaryCallProps).to.deep.equal({url: "/api/dictionary", word: "testword"})
+                expect(dictionaryCallProps).to.deep.equal({url: "/api/dictionary", word: "testword"});
             });
         });
     });

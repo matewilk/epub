@@ -71,6 +71,8 @@ require([
     //reac views
     "spec/views/react/DictionaryPopUp",
     "spec/views/react/DictionaryCall",
+    "spec/views/react/DataTab",
+    "spec/views/react/DataBody",
     "spec/views/react/ServerError",
 
     //structure
