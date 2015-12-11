@@ -23,12 +23,23 @@ define(function (require) {
         }
 
         _createClass(DataBody, [{
-            key: 'render',
-            value: function render() {
-                var items = this.props.definitions.map(function (item, index) {
-                    return React.createElement(
+            key: 'createItem',
+            value: function createItem(item, index, list) {
+                var header;
+                if (index == 0 || item.partOfSpeech !== list[index - 1].partOfSpeech) {
+                    header = React.createElement(
                         'div',
-                        { key: index },
+                        null,
+                        item.partOfSpeech
+                    );
+                }
+                return React.createElement(
+                    'div',
+                    { key: index },
+                    header,
+                    React.createElement(
+                        'div',
+                        null,
                         React.createElement(
                             'div',
                             null,
@@ -48,11 +59,16 @@ define(function (require) {
                             null,
                             item.definition
                         )
-                    );
-                });
+                    )
+                );
+            }
+        }, {
+            key: 'render',
+            value: function render() {
+                var items = this.props.definitions.map(this.createItem);
                 return React.createElement(
                     'div',
-                    null,
+                    { className: 'tab-body' },
                     items
                 );
             }

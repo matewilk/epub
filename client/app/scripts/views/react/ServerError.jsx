@@ -4,6 +4,7 @@ define(function(require){
     var React = require('react');
 
     return React.createClass({
+        displayName: 'ServerError',
         /**
         *
         * Add a spinner to the component on click ?

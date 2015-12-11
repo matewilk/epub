@@ -16,7 +16,12 @@
 @import 'components/reader';
 @import 'components/menu';
 @import 'components/dialog';
-@import 'components/dictionary';
+
+//react components
+@import 'components/react/dictionarypopup';
+@import 'components/react/dictionarycall';
+@import 'components/react/datatab';
+@import 'components/react/tabbody';
 
 .header-wrapper {
   position: fixed;

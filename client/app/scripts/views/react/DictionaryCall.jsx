@@ -6,7 +6,7 @@ define(function(require){
         DataTab = require('views/react/DataTab'),
         ServerError = require('views/react/ServerError');
 
-    return class Translation extends React.Component {
+    return class DictionaryCall extends React.Component {
 
         constructor(props){
             super();
@@ -51,11 +51,11 @@ define(function(require){
             if(this.state.nodata){
                 body = <div>No definition found</div>
             } else {
-                body = <DataTab definitions={this.state.definitions} title={this.props.word} />
+                body = <DataTab definitions={this.state.definitions} title={this.props.word} headerStyles={this.props.headerStyles}/>
             }
 
             return (
-                <div className="translation">
+                <div className="dictionary-call">
                     {body}
                     {error ? <ServerError onClick={this.callAjax.bind(this)}/> : null}
                 </div>

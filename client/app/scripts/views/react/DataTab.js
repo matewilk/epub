@@ -31,7 +31,7 @@ define(function (require) {
                     null,
                     React.createElement(
                         'div',
-                        { className: 'tab-title' },
+                        { className: 'tab-title', style: this.props.headerStyles },
                         this.props.title
                     ),
                     React.createElement(DataBody, { definitions: this.props.definitions })

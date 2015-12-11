@@ -17,12 +17,12 @@ define(function (require) {
         ServerError = require('views/react/ServerError');
 
     return (function (_React$Component) {
-        _inherits(Translation, _React$Component);
+        _inherits(DictionaryCall, _React$Component);
 
-        function Translation(props) {
-            _classCallCheck(this, Translation);
+        function DictionaryCall(props) {
+            _classCallCheck(this, DictionaryCall);
 
-            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Translation).call(this));
+            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DictionaryCall).call(this));
 
             _this.state = {
                 word: '',
@@ -34,7 +34,7 @@ define(function (require) {
             return _this;
         }
 
-        _createClass(Translation, [{
+        _createClass(DictionaryCall, [{
             key: 'componentDidMount',
             value: function componentDidMount() {
                 this.callAjax();
@@ -74,18 +74,18 @@ define(function (require) {
                         'No definition found'
                     );
                 } else {
-                    body = React.createElement(DataTab, { definitions: this.state.definitions, title: this.props.word });
+                    body = React.createElement(DataTab, { definitions: this.state.definitions, title: this.props.word, headerStyles: this.props.headerStyles });
                 }
 
                 return React.createElement(
                     'div',
-                    { className: 'translation' },
+                    { className: 'dictionary-call' },
                     body,
                     error ? React.createElement(ServerError, { onClick: this.callAjax.bind(this) }) : null
                 );
             }
         }]);
 
-        return Translation;
+        return DictionaryCall;
     })(React.Component);
 });
