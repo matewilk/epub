@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=production nodemon ./bin/www", //use auto restart for example forever.js
+    "start": "NODE_ENV=production nodemon ./bin/www",
     "dev": "NODE_ENV=development nodemon ./bin/www",
     "debug": "NODE_ENV=development nodemon --debug ./bin/www",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive -R spec -r should",
