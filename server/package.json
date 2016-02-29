@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=production nodemon ./bin/www",
+    "start": "NODE_ENV=production nodemon ./bin/www", //use auto restart for example forever.js
     "dev": "NODE_ENV=development nodemon ./bin/www",
     "debug": "NODE_ENV=development nodemon --debug ./bin/www",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive -R spec -r should",
@@ -25,6 +25,7 @@
     "mongodb": "^2.0.31",
     "morgan": "~1.3.0",
     "multer": "^0.1.8",
+    "nodemon": "^1.8.1",
     "serve-favicon": "~2.1.3",
     "should": "^6.0.1",
     "sinon": "^1.14.1"
