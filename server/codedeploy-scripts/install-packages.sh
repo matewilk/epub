@@ -17,6 +17,6 @@ npm start
 
 cd /tmp/epub/client
 npm install
-bower install
+bower install --allow-root
 
 
