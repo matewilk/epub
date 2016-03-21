@@ -12,11 +12,14 @@ sudo apt-get install -y mongodb-org
 sudo service mongod start
 
 ln -s /usr/bin/nodejs /usr/bin/node
-npm start
 
 
 cd /tmp/epub/client
 npm install
 bower install --allow-root
+
+#grunt handlebars and similar
+export MONGOLAB_URI="mongodb://localhost:27017/test"
+npm start
 
 
