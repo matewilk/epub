@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /tmp/epub/server/
+cd /home/ubuntu/epub/server/
 npm install
 
 #install nodemon on (part of the package.json)
@@ -14,7 +14,7 @@ sudo service mongod start
 ln -s /usr/bin/nodejs /usr/bin/node
 
 
-cd /tmp/epub/client
+cd /home/ubuntu/epub/client
 npm install
 bower install --allow-root
 
