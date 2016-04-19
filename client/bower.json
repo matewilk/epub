@@ -18,7 +18,8 @@
     "arrive": "~2.2.0",
     "react": "~0.13.3",
     "backbone-react-component": "~0.9.0",
-    "velocity": "~1.2.2"
+    "velocity": "~1.2.2",
+    "react-loader": "^2.4.0"
   },
   "devDependencies": {}
 }

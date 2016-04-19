@@ -26,5 +26,3 @@ export MONGOLAB_URI="mongodb://localhost:27017/test"
 #npm start
 #use npm run dev for now
 npm run dev
-
-

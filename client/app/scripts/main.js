@@ -38,7 +38,8 @@ require.config({
         dropzone: "../bower_components/dropzone/dist/dropzone-amd-module",
         velocity: "../bower_components/velocity/velocity",
         react: "../bower_components/react/react",
-        "backbone-react": "../bower_components/backbone-react-component/lib/component"
+        "backbone-react": "../bower_components/backbone-react-component/lib/component",
+        "react-loader": "../bower_components/react-loader/react-loader"
     }
 });
 

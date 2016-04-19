@@ -1,6 +1,6 @@
 'use strict';
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -16,7 +16,7 @@ define(function (require) {
         DataTab = require('views/react/DataTab'),
         ServerError = require('views/react/ServerError');
 
-    return (function (_React$Component) {
+    return function (_React$Component) {
         _inherits(DictionaryCall, _React$Component);
 
         function DictionaryCall(props) {
@@ -48,23 +48,23 @@ define(function (require) {
                     catche: false,
                     method: 'POST',
                     data: { word: this.props.word },
-                    success: (function (data) {
+                    success: function (data) {
                         if (!data) {
                             this.setState({ nodata: true });
                         } else {
                             this.setState({ definitions: data });
                         }
-                    }).bind(this),
-                    error: (function (xhr, status, error) {
+                    }.bind(this),
+                    error: function (xhr, status, error) {
                         console.log(this.props.url, status, error.toString());
                         this.setState({ error: true });
-                    }).bind(this)
+                    }.bind(this)
                 });
             }
         }, {
             key: 'render',
             value: function render() {
-                var body = undefined,
+                var body = void 0,
                     error = this.state.error;
 
                 if (this.state.nodata) {
@@ -87,5 +87,5 @@ define(function (require) {
         }]);
 
         return DictionaryCall;
-    })(React.Component);
+    }(React.Component);
 });
