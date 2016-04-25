@@ -2,8 +2,7 @@ define(function(require){
     'use strict';
 
     var React = require('react'),
-        DictionaryCall = require('views/react/DictionaryCall'),
-        apiUrls = require('globals/urls');
+        Accordion = require('views/react/accordion/Accordion');
 
     return React.createClass({
         displayName: 'DictionaryPopUp',
@@ -20,7 +19,7 @@ define(function(require){
             return(
                 <div className="dictionary-pop-up" style={divSize}>
                     <div className={arrow} style={{left: this.props.indicator.vertical}}/>
-                    <DictionaryCall url={apiUrls.getUrl("dictionary")} word={this.props.selection} headerStyles={headerStyles}/>
+                    <Accordion word={this.props.selection} />
                 </div>
             )
         }

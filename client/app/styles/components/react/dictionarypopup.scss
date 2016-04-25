@@ -4,6 +4,10 @@
   border-radius: 3px;
   background-color: white;
 
+  //styles for accordion inside the popup
+  @import 'accordion';
+
+  //arrow selected word/phrase indicator
   .arrow {
       position: absolute;
       height: 100%;

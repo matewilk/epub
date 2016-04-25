@@ -3,9 +3,11 @@ define(function(require){
 
     let React = require('react'),
         classNames = require('classnames'),
+        DictionaryCall = require('views/react/DictionaryCall'),
         Loader = require('react-loader');
 
-    return AccordionContent = React.createClass({
+    return React.createClass({
+        displayName: 'AccordionContent',
         getInitialState: function(){
             return {
                 loaded: false
@@ -24,9 +26,7 @@ define(function(require){
             return (
                 <div className={classNames("panel-body", classes)}>
                     <Loader loaded={this.state.loaded}>
-                        <p>
-                            Lorem Ipsum is simply dummy text
-                        </p>
+                        <DictionaryCall url={this.props.url} word={this.props.word}/>
                     </Loader>
                 </div>
             );

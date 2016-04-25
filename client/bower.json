@@ -19,7 +19,8 @@
     "react": "~0.13.3",
     "backbone-react-component": "~0.9.0",
     "velocity": "~1.2.2",
-    "react-loader": "^2.4.0"
+    "react-loader": "^2.4.0",
+    "classnames": "^2.2.3"
   },
   "devDependencies": {}
 }

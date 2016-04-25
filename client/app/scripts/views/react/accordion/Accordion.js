@@ -4,11 +4,11 @@ define(function (require) {
     'use strict';
 
     var React = require('react'),
+        apiUrls = require('globals/urls'),
         AccordionTab = require('views/react/accordion/AccordionTab');
 
-    return Accordion = React.createClass({
+    return React.createClass({
         displayName: 'Accordion',
-
         getInitialState: function getInitialState() {
             return {
                 activeTab: 1,
@@ -27,9 +27,11 @@ define(function (require) {
         getTabs: function getTabs() {
             return this.state.tabs.map(function (tab, index) {
                 return React.createElement(AccordionTab, {
+                    word: this.props.word,
                     key: tab.tabNo,
                     tabNo: tab.tabNo,
                     open: tab.tabNo === this.state.activeTab,
+                    url: apiUrls.getUrl("dictionary"),
                     title: tab.title });
             }.bind(this));
         },

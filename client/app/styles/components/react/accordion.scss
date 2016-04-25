@@ -1,0 +1,43 @@
+.panel {
+    margin-bottom: 1px;
+}
+
+.panel-body {
+    overflow: hidden;
+    min-height: 0;
+    max-height: 0;
+    opacity: 0;
+    transition: 0.6s ease-in-out;
+    padding: 0 15px;
+    position: relative;
+}
+
+.panel-body.accordion-open {
+    opacity: 1;
+    min-height: 100px;
+    max-height: 100px;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.panel-heading {
+    cursor: pointer;
+    transition: 0.4s;
+    background-color: #337ab7;
+}
+
+.panel-heading.accordion-active, .panel-heading:hover {
+    background-color: darken(#337ab7, 20%);
+}
+
+.panel-heading:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+
+.panel-heading.accordion-active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}

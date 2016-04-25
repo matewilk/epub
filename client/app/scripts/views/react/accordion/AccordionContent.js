@@ -5,11 +5,11 @@ define(function (require) {
 
     var React = require('react'),
         classNames = require('classnames'),
+        DictionaryCall = require('views/react/DictionaryCall'),
         Loader = require('react-loader');
 
-    return AccordionContent = React.createClass({
+    return React.createClass({
         displayName: 'AccordionContent',
-
         getInitialState: function getInitialState() {
             return {
                 loaded: false
@@ -31,11 +31,7 @@ define(function (require) {
                 React.createElement(
                     Loader,
                     { loaded: this.state.loaded },
-                    React.createElement(
-                        'p',
-                        null,
-                        'Lorem Ipsum is simply dummy text'
-                    )
+                    React.createElement(DictionaryCall, { url: this.props.url, word: this.props.word })
                 )
             );
         }

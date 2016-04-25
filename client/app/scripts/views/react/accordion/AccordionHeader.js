@@ -6,9 +6,8 @@ define(function (require) {
     var React = require('react'),
         classNames = require('classnames');
 
-    return AccordionHeader = React.createClass({
+    return React.createClass({
         displayName: 'AccordionHeader',
-
         handleClick: function handleClick(event) {
             var customEvent = new CustomEvent('click-accordion-header', {
                 detail: { tab: this.props.tabNo },
