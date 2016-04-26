@@ -39,7 +39,7 @@ define(function(require){
         },
         render: function(){
             return (
-                <div>
+                <div className="accordion">
                     {this.getTabs()}
                 </div>
             );

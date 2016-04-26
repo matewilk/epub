@@ -8,7 +8,7 @@ define(function(require){
         render(){
             return (
                 <div>
-                    <div className="tab-title" style={this.props.headerStyles}>{this.props.title}</div>
+                    <div className="tab-title">{this.props.title}</div>
                     <DataBody definitions={this.props.definitions} />
                 </div>
             )

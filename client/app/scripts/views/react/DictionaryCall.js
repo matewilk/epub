@@ -49,7 +49,7 @@ define(function (require) {
                     method: 'POST',
                     data: { word: this.props.word },
                     success: function (data) {
-                        if (!data) {
+                        if (!data.length) {
                             this.setState({ nodata: true });
                         } else {
                             this.setState({ definitions: data });
@@ -74,7 +74,7 @@ define(function (require) {
                         'No definition found'
                     );
                 } else {
-                    body = React.createElement(DataTab, { definitions: this.state.definitions, title: this.props.word, headerStyles: this.props.headerStyles });
+                    body = React.createElement(DataTab, { definitions: this.state.definitions, title: this.props.word });
                 }
 
                 return React.createElement(

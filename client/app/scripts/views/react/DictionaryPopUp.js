@@ -15,8 +15,7 @@ define(function (require) {
                 right: this.props.padding,
                 left: this.props.padding
             };
-            var arrow = this.props.indicator.horizontal ? 'top-arrow' : 'bottom-arrow',
-                headerStyles = { right: this.props.padding, left: this.props.padding };
+            var arrow = this.props.indicator.horizontal ? 'top-arrow' : 'bottom-arrow';
 
             return React.createElement(
                 'div',

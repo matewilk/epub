@@ -13,8 +13,7 @@ define(function(require){
                 right: this.props.padding,
                 left: this.props.padding
             };
-            let arrow = this.props.indicator.horizontal ? 'top-arrow' : 'bottom-arrow',
-                headerStyles = { right: this.props.padding, left: this.props.padding };
+            let arrow = this.props.indicator.horizontal ? 'top-arrow' : 'bottom-arrow';
 
             return(
                 <div className="dictionary-pop-up" style={divSize}>

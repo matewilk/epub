@@ -31,7 +31,7 @@ define(function(require){
                 method: 'POST',
                 data: {word: this.props.word},
                 success: function(data){
-                    if(!data){
+                    if(!data.length){
                         this.setState({nodata: true});
                     } else {
                         this.setState({definitions: data});
@@ -51,7 +51,7 @@ define(function(require){
             if(this.state.nodata){
                 body = <div>No definition found</div>
             } else {
-                body = <DataTab definitions={this.state.definitions} title={this.props.word} headerStyles={this.props.headerStyles}/>
+                body = <DataTab definitions={this.state.definitions} title={this.props.word}/>
             }
 
             return (

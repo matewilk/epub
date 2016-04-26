@@ -38,7 +38,7 @@ define(function (require) {
         render: function render() {
             return React.createElement(
                 'div',
-                null,
+                { className: 'accordion' },
                 this.getTabs()
             );
         }
