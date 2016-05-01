@@ -22,7 +22,8 @@ require.config({
         epubjs: "../app/bower_components/epubjs/build/epub",
         epubhooks: "../app/scripts/epubhooks",
         react: "../app/bower_components/react/react-with-addons",
-        "backbone-react": "../app/bower_components/backbone-react-component/lib/component"
+        "backbone-react": "../app/bower_components/backbone-react-component/lib/component",
+        "classnames": "../app/bower_components/classnames/index"
     },
 
     shim: {

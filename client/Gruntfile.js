@@ -85,7 +85,7 @@ module.exports = function(grunt){
                 }
             },
             react: {
-                files: ['app/scripts/views/react/*.jsx', 'test/spec/views/react/*.jsx'],
+                files: ['app/scripts/views/react/**/*.jsx', 'test/spec/views/react/**/*.jsx'],
                 tasks: ['babel'],
                 options: {
                     livereload: true

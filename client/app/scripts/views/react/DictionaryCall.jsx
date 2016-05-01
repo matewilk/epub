@@ -8,50 +8,64 @@ define(function(require){
 
     return class DictionaryCall extends React.Component {
 
-        constructor(props){
+        constructor (props) {
             super();
             this.state = {
                 word: '',
-                definitions: [],
-                pronunciation: '',
+                data: [],
                 error: false,
-                nodata: false
+                nodata: false,
+                initialLoaded: props.load
             }
         }
 
-        componentDidMount(){
-            this.callAjax();
+        componentDidMount () {
+            if(this.state.initialLoaded){
+                this.callAjax();
+            }
         }
 
-        callAjax(){
+        componentWillReceiveProps (nextProps) {
+            if(nextProps.load){
+                this.setState({initialLoaded: true});
+            }
+        }
+
+        componentWillUpdate (nextProps, nextState) {
+            if(this.state.initialLoaded !== nextState.initialLoaded) {
+                this.callAjax();
+            }
+        }
+
+        callAjax () {
             $.ajax({
                 url: this.props.url,
                 dataType: 'json',
                 catche: false,
                 method: 'POST',
                 data: {word: this.props.word},
-                success: function(data){
+                success: (data) => {
                     if(!data.length){
                         this.setState({nodata: true});
                     } else {
-                        this.setState({definitions: data});
+                        this.setState({data: data});
                     }
-                }.bind(this),
-                error: function(xhr, status, error){
+                },
+                error: (xhr, status, error) => {
                     console.log(this.props.url, status, error.toString());
                     this.setState({error: true});
-                }.bind(this)
+                }
             });
         }
 
-        render(){
+        render () {
             let body,
                 error = this.state.error;
 
             if(this.state.nodata){
                 body = <div>No definition found</div>
             } else {
-                body = <DataTab definitions={this.state.definitions} title={this.props.word}/>
+                body = <DataTab data={this.state.data} title={this.props.word}/>
             }
 
             return (

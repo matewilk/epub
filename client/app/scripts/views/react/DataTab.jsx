@@ -9,7 +9,7 @@ define(function(require){
             return (
                 <div>
                     <div className="tab-title">{this.props.title}</div>
-                    <DataBody definitions={this.props.definitions} />
+                    <DataBody data={this.props.data} />
                 </div>
             )
         }

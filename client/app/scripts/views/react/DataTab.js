@@ -34,7 +34,7 @@ define(function (require) {
                         { className: 'tab-title' },
                         this.props.title
                     ),
-                    React.createElement(DataBody, { definitions: this.props.definitions })
+                    React.createElement(DataBody, { data: this.props.data })
                 );
             }
         }]);

@@ -20,6 +20,12 @@ define(function() {
             },
             dictionary: function() {
                 return '/api/dictionary'
+            },
+            translator: function() {
+                return '/api/translator'
+            },
+            wiki: function() {
+                return '/api/wiki'
             }
         };
 

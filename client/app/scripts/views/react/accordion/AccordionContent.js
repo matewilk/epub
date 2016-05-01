@@ -5,8 +5,7 @@ define(function (require) {
 
     var React = require('react'),
         classNames = require('classnames'),
-        DictionaryCall = require('views/react/DictionaryCall'),
-        Loader = require('react-loader');
+        DictionaryCall = require('views/react/DictionaryCall');
 
     return React.createClass({
         displayName: 'AccordionContent',
@@ -16,9 +15,11 @@ define(function (require) {
             };
         },
         componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+            var _this = this;
+
             var self = this;
             setTimeout(function () {
-                self.setState({ loaded: nextProps.open });
+                _this.setState({ loaded: nextProps.open });
             }, 1500);
         },
         render: function render() {
@@ -28,11 +29,7 @@ define(function (require) {
             return React.createElement(
                 'div',
                 { className: classNames("panel-body", classes) },
-                React.createElement(
-                    Loader,
-                    { loaded: this.state.loaded },
-                    React.createElement(DictionaryCall, { url: this.props.url, word: this.props.word })
-                )
+                React.createElement(DictionaryCall, { load: this.props.open, url: this.props.url, word: this.props.word })
             );
         }
     });

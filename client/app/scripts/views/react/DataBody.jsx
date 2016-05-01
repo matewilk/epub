@@ -21,7 +21,7 @@ define(function(require){
         }
 
         render(){
-            var items = this.props.definitions.map(this.createItem);
+            var items = this.props.data.map(this.createItem);
             return (
                 <div className="tab-body">{items}</div>
             )

@@ -27,15 +27,16 @@ define(function(require){
             this.setState({activeTab: event.detail.tab})
         },
         getTabs: function(){
-            return this.state.tabs.map(function(tab, index){
+            return this.state.tabs.map((tab, index) => {
+                let endpoint = tab.title.toLowerCase();
                 return <AccordionTab
                             word={this.props.word}
                             key={tab.tabNo}
                             tabNo={tab.tabNo}
                             open={tab.tabNo === this.state.activeTab}
-                            url={apiUrls.getUrl("dictionary")}
+                            url={apiUrls.getUrl(endpoint)}
                         title={tab.title} />
-            }.bind(this));
+            });
         },
         render: function(){
             return (

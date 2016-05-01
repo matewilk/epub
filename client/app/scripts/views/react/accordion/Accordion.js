@@ -25,15 +25,18 @@ define(function (require) {
             this.setState({ activeTab: event.detail.tab });
         },
         getTabs: function getTabs() {
+            var _this = this;
+
             return this.state.tabs.map(function (tab, index) {
+                var endpoint = tab.title.toLowerCase();
                 return React.createElement(AccordionTab, {
-                    word: this.props.word,
+                    word: _this.props.word,
                     key: tab.tabNo,
                     tabNo: tab.tabNo,
-                    open: tab.tabNo === this.state.activeTab,
-                    url: apiUrls.getUrl("dictionary"),
+                    open: tab.tabNo === _this.state.activeTab,
+                    url: apiUrls.getUrl(endpoint),
                     title: tab.title });
-            }.bind(this));
+            });
         },
         render: function render() {
             return React.createElement(

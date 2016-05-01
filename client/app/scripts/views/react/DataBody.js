@@ -65,7 +65,7 @@ define(function (require) {
         }, {
             key: 'render',
             value: function render() {
-                var items = this.props.definitions.map(this.createItem);
+                var items = this.props.data.map(this.createItem);
                 return React.createElement(
                     'div',
                     { className: 'tab-body' },

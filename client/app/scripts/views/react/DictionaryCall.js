@@ -26,10 +26,10 @@ define(function (require) {
 
             _this.state = {
                 word: '',
-                definitions: [],
-                pronunciation: '',
+                data: [],
                 error: false,
-                nodata: false
+                nodata: false,
+                initialLoaded: props.load
             };
             return _this;
         }
@@ -37,28 +37,46 @@ define(function (require) {
         _createClass(DictionaryCall, [{
             key: 'componentDidMount',
             value: function componentDidMount() {
-                this.callAjax();
+                if (this.state.initialLoaded) {
+                    this.callAjax();
+                }
+            }
+        }, {
+            key: 'componentWillReceiveProps',
+            value: function componentWillReceiveProps(nextProps) {
+                if (nextProps.load) {
+                    this.setState({ initialLoaded: true });
+                }
+            }
+        }, {
+            key: 'componentWillUpdate',
+            value: function componentWillUpdate(nextProps, nextState) {
+                if (this.state.initialLoaded !== nextState.initialLoaded) {
+                    this.callAjax();
+                }
             }
         }, {
             key: 'callAjax',
             value: function callAjax() {
+                var _this2 = this;
+
                 $.ajax({
                     url: this.props.url,
                     dataType: 'json',
                     catche: false,
                     method: 'POST',
                     data: { word: this.props.word },
-                    success: function (data) {
+                    success: function success(data) {
                         if (!data.length) {
-                            this.setState({ nodata: true });
+                            _this2.setState({ nodata: true });
                         } else {
-                            this.setState({ definitions: data });
+                            _this2.setState({ data: data });
                         }
-                    }.bind(this),
-                    error: function (xhr, status, error) {
-                        console.log(this.props.url, status, error.toString());
-                        this.setState({ error: true });
-                    }.bind(this)
+                    },
+                    error: function error(xhr, status, _error) {
+                        console.log(_this2.props.url, status, _error.toString());
+                        _this2.setState({ error: true });
+                    }
                 });
             }
         }, {
@@ -74,7 +92,7 @@ define(function (require) {
                         'No definition found'
                     );
                 } else {
-                    body = React.createElement(DataTab, { definitions: this.state.definitions, title: this.props.word });
+                    body = React.createElement(DataTab, { data: this.state.data, title: this.props.word });
                 }
 
                 return React.createElement(

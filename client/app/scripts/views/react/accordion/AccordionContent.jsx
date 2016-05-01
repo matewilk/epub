@@ -3,8 +3,7 @@ define(function(require){
 
     let React = require('react'),
         classNames = require('classnames'),
-        DictionaryCall = require('views/react/DictionaryCall'),
-        Loader = require('react-loader');
+        DictionaryCall = require('views/react/DictionaryCall');
 
     return React.createClass({
         displayName: 'AccordionContent',
@@ -15,8 +14,8 @@ define(function(require){
         },
         componentWillReceiveProps: function(nextProps){
             var self = this;
-            setTimeout(function(){
-                self.setState({loaded: nextProps.open});
+            setTimeout(() => {
+                this.setState({loaded: nextProps.open});
             },1500);
         },
         render: function(){
@@ -25,9 +24,7 @@ define(function(require){
             }
             return (
                 <div className={classNames("panel-body", classes)}>
-                    <Loader loaded={this.state.loaded}>
-                        <DictionaryCall url={this.props.url} word={this.props.word}/>
-                    </Loader>
+                    <DictionaryCall load={this.props.open} url={this.props.url} word={this.props.word}/>
                 </div>
             );
         }

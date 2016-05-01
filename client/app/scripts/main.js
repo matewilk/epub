@@ -39,7 +39,6 @@ require.config({
         velocity: "../bower_components/velocity/velocity",
         react: "../bower_components/react/react",
         "backbone-react": "../bower_components/backbone-react-component/lib/component",
-        "react-loader": "../bower_components/react-loader/lib/react-loader",
         "classnames": "../bower_components/classnames/index"
     }
 });
